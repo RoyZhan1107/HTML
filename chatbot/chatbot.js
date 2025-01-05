@@ -25,7 +25,7 @@ const responses = {
     "知道瑞芳高工嗎": "當然知道，這是瑞芳高工的連結 <a href='https://web.jfvs.ntpc.edu.tw/' target='_blank'>瑞芳高工校網</a>",
     "知道曾柏翔嗎": "當然知道，這是曾柏翔(糯米糰子🍡)的哀居連結。<a href='https://www.instagram.com/xx.nn_17/' target='_blank'>哀居</a>",
     "知道張育嘉嗎": "當然知道，這是張育嘉的哀居連結。<a href='https://www.instagram.com/jiajia_126/' target='_blank'>哀居</a>",
-    "知道黃名謙嗎": "當然知道，這是黃銘謙的哀居連結。<a href='https://www.instagram.com/mingqian514/' target='_blank'>哀居</a>",
+    "知道黃名謙嗎": "當然知道，這是黃名謙的哀居連結。<a href='https://www.instagram.com/mingqian514/' target='_blank'>哀居</a>",
     "知道黃雅蕙嗎": "當然知道，這是黃雅蕙的哀居連結。<a href='https://www.instagram.com/yahui960824/' target='_blank'>哀居</a>",
     "知道胡語晨嗎": "當然知道，這是胡語晨的哀居連結。<a href='https://www.instagram.com/huyc_.7/' target='_blank'>哀居</a>",
     "知道黃淑芬嗎": "當然知道，這是黃淑芬的哀居連結。<a href='https://www.instagram.com/070_poq/' target='_blank'>哀居</a>",
