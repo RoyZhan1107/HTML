@@ -33,7 +33,7 @@ const responses = {
     "知道黃柏勳嗎": "當然知道，這是黃柏勳的哀居連結。<a href='https://www.instagram.com/h_y_h_07/' target='_blank'>哀居</a>",
     "知道周子景嗎": "當然知道，這是周子景的哀居連結。<a href='https://www.instagram.com/chou.zijing_1122/' target='_blank'>哀居</a>",
     "知道江竣翰嗎": "當然知道，這是江竣翰的哀居連結。<a href='https://www.instagram.com/harryhan_0603/' target='_blank'>哀居</a>",
-    "知道陳佳希嗎": "當然知道，這是陳佳希的哀居連結。<a href='https://www.instagram.com/_.cc_16/' tartget='_blank'>哀居</a>",
+    "知道陳佳希嗎": "當然知道，這是陳佳希的哀居連結。<a href='https://www.instagram.com/_.cc_16/' target='_blank'>哀居</a>",
     "知道呂玉龍嗎": "當然知道，這是呂玉龍的哀居連結。<a href='https://www.instagram.com/lyl_819_/' target='_blank'>哀居</a>",
     "知道連粟同嗎": "當然知道，這是連粟同的哀居連結。<a href='https://www.instagram.com/lian._.st0729/' target='_blank'>哀居</a>",
     "知道芊芊龍嗎": "當然知道，這是芊芊龍的哀居連結。<a href='https://www.instagram.com/xxxchainx2/' target='_blank'>哀居</a>",
