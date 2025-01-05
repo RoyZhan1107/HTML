@@ -4,8 +4,8 @@ const messagesContainer = document.getElementById("messages");
 const responses = {
     "你好": "您好!有什麼可以幫助您的嗎?",
     "你是誰": "我是您的聊天機器人!",
-    "天氣如何": "您可以查詢當地的天氣網站，我建議使用 windy，<a href='https://www.windy.com/24.999/121.499?24.858,121.499,10/' target='_blank'>點擊這裡查看天氣</a>",
-    //"天氣如何": "您可以查詢當地的天氣資訊，<a href='https://www.weather.com/' target='_blank'>點擊這裡查看天氣</a>。",
+    "天氣如何": "您可以查詢當地的天氣網站，我建議使用 windy，<a href='https://www.windy.com/' target='_blank'>點擊這裡查看天氣</a>",
+    "中和區的天氣如何": "您可以查詢當地的天氣網站，我建議使用 windy，<a href='https://www.windy.com/24.999/121.499?24.858,121.499,10/' target='_blank'>點擊這裡查看天氣</a>",
     "現在時間": () => {
         const now = new Date();
         const hours = String(now.getHours()).padStart(2, "0");
@@ -30,12 +30,20 @@ const responses = {
     "知道胡語晨嗎": "當然知道，這是胡語晨的哀居連結。<a href='https://www.instagram.com/huyc_.7/' target='_blank'>哀居</a>",
     "知道黃淑芬嗎": "當然知道，這是黃淑芬的哀居連結。<a href='https://www.instagram.com/070_poq/' target='_blank'>哀居</a>",
     "知道沈靜宜嗎": "當然知道，這是沈靜宜的哀居連結。<a href='https://www.instagram.com/jingyishen1218/' target='_blank'>哀居</a>",
-    "知道黃柏勳嗎": "不知道，他是誰?",
+    "知道黃柏勳嗎": "",
     "知道周子景嗎": "當然知道，這是周子景的哀居連結。<a href='https://www.instagram.com/chou.zijing_1122/' target='_blank'>哀居</a>",
     "知道江竣翰嗎": "當然知道，這是江竣翰的哀居連結。<a href='https://www.instagram.com/harryhan_0603/' target='_blank'>哀居</a>",
     "知道陳佳希嗎": "當然知道，這是陳佳希的哀居連結。<a href='https://www.instagram.com/_.cc_16/' target='_blank'>哀居</a>",
     "知道呂玉龍嗎": "當然知道，這是呂玉龍的哀居連結。<a href='https://www.instagram.com/lyl_819_/' target='_blank'>哀居</a>",
     "知道連粟同嗎": "當然知道，這是連粟同的哀居連結。<a href='https://www.instagram.com/lian._.st0729/' target='_blank'>哀居</a>",
+    "知道廖振媐嗎": "當然知道，這是廖振媐的哀居連結。<a href='https://www.instagram.com/jessie_916.star_bling/' target='_blank'>哀居</a>",
+    "知道陳俊瑋嗎": "當然知道，這是陳俊瑋的哀居連結。<a href='https://www.instagram.com/weiwei_96525/' target='_blank'>哀居</a>",
+    "知道藍心妤嗎": "當然知道，這是藍心妤的哀居連結。<a href='https://www.instagram.com/xinyu.0311/' target='_blank'>哀居</a>",
+    "知道游易鑫嗎": "當然知道，這是游易鑫的哀居連結。<a href='https://www.instagram.com/zt_ubiysta/' target='_blank'>哀居</a>",
+    "聽過boyfriend嗎?": "有的，這是 boyfrined 的 youtube music 連結<a href='https://music.youtube.com/watch?v=7GOFTXLSvMI' target='_blank'> youtube msuic</a>",
+    "聽過bet on me嗎?": "有的，這是 bet on me 的 youtube music 連結<a href='https://music.youtube.com/watch?v=lav3ImWcvAA' target='_blank'> youtube music</a>",
+    "聽過peaches嗎?": "有的，這是 peaches 的 youtube music 連結<a href='https://music.youtube.com/watch?v=5rnawnfK2sQ' target='_blank'> youtube music</a>",
+    "": "",
     "知道芊芊龍嗎": "當然知道，這是芊芊龍的哀居連結。<a href='https://www.instagram.com/xxxchainx2/' target='_blank'>哀居</a>",
     "知道邱致綸嗎": "當然知道，這是邱致綸的哀居連結。<a href='https://www.instagram.com/qi.ll18/' target='_blank'>哀居</a><br>同時他也是創作我的小小工程師，他還有 youtube 頻道<a href ='https://www.youtube.com/@zhanziqi' target='_blank'>youtube</a>",
     "知道嚴浩軒嗎": "當然知道，這是嚴浩軒的哀居連結。<a href='https://www.instagram.com/qi.ll18/' target='_blank'>哀居</a><br>同時他也是創作我的小小工程師，他還有 youtube 頻道<a href ='https://www.youtube.com/@zhanziqi' target='_blank'>youtube</a>",
