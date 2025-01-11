@@ -79,19 +79,23 @@ function sendMessage(){
     if(userInput === "") return;
 
     // 顯示使用者訊息
+    /*
     const userDiv = document.createElement("div");
     userDiv.className = "message user";
     userDiv.textContent = `使用者: ${userInput}`;
     chatLog.appendChild(userDiv);
+    */
     displayMessage(userInput, "user");
 
     // 取得機器人回應
-    //const botMessage = getBotResponse(userMessage);
+    /*
+    const botMessage = getBotResponse(userMessage);
     const botDiv = document.createElement("div");
     botDiv.className = "bot-message";
     botDiv.textContent = `機器人: ${getBotResponse(userInput)}`;
     chatLog.appendChild(botDiv);
-    const botResponse = getBotResponse(userInput);
+    */
+    const botResponse = getBotResponse(userInput);   
 
     // 模擬機器人延遲回應
     setTimeout(() => {
@@ -128,17 +132,11 @@ function getBotResponse(input){
 }
 
 function saveChatLog(){
-    let logContent = "";
-    const messages = chatLog.querySelectorAll(".div");
-    messages.forEach(message => {
-        logContent += message.textContent + "\n";
-    });
-
-    // 建立 Bloob 並下載
-    const blob = new Blob([logContent], {type: "text/plain"});
+    const chatLog = messagesContainer.innerText;
+    const blob = new Blob([chatLog], {type: "text/plain"});
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = "chat-log.txt";
+    link.download = "聊天紀錄.txt";
     link.click();
 }
 // 監聽輸入框按鍵事件
