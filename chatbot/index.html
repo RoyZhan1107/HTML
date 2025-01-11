@@ -7,6 +7,20 @@
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
+        <nav>
+            <div class="container">
+                <div class="box">
+                    <div class="menu">
+                        <ul>
+                            <li><a href="login.html"class="link">登入</a></li>
+                            <div class="chat-log" id="chat-log"></div>
+                            <li><button onclick="saveChatLog()" class="save">儲存聊天紀錄成文字檔</button></li>
+                            <li><button onclick="sendEmail()"></button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
         <div class="chat-container">
             <div class="messages" id="messages"></div>
             <div class="input-container">
@@ -14,6 +28,6 @@
                 <button onclick="sendMessage()">送出</button>
             </div>
         </div>
-        <script src="chatbot.js"></script>
+        <script src="chatbot v1.js"></script>
     </body>
 </html>

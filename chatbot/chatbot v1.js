@@ -1,8 +1,10 @@
-const messagesContainer = document.getElementById("messages");
-const chatLog = document.getElementById("chat-log");
-// 預設回答邏輯
+// 初始化聊天機器人
+const messagesDiv = document.getElementById("messages");
+const userInput = document.getElementById("userInput");
+
+// 聊天機器人回營邏輯
 const responses = {
-    "你好": "您好!有什麼可以幫助您的嗎?",
+    "你好": "你好",
     "你是誰": "我是您的聊天機器人!",
     "天氣如何": "您可以查詢當地的天氣網站，我建議使用 windy，<a href='https://www.windy.com/' target='_blank'>點擊這裡查看天氣</a>",
     "中和區的天氣如何": "您可以查詢當地的天氣網站，我建議使用 windy，<a href='https://www.windy.com/24.999/121.499?24.858,121.499,10/' target='_blank'>點擊這裡查看天氣</a>",
@@ -54,96 +56,73 @@ const responses = {
     "你知道什麼是愛情嗎": "關於愛情方面有很多話題可以聊，您想了解什麼?",
     "我想知道我的愛情是有用的嗎": "愛情這種東西一般來說是有用的，只要有付出都有結果，就像是給一束花澆水都能開花結果，我相信你的愛情也能像一束花一樣開花結果",
     "謝謝你的安慰": "不會~這都是我該做的，有需要歡迎找我~",
-    "再見": "再見!希望很快能夠與您再次聊天!",
-    "default": "抱歉，我不明白您的問題",
+    "再見": "再見",
+    "default": "抱歉，我不懂你在說什麼"
 };
 
-/*
-fetch('response.txt')
-    .then(response => response.text())
-    .then(text => {
-        const lines = text.split('\n');
-        const headers = lines[0].split(',');
-        const records = lines.slice(1).map(line => {
-            const value = line.split(',');
-            return headers.reduce((obj, header, index) => {
-                obj[header] = value[index];
-                return obj;
-            }, {});
-        });
-    });
-*/
-// 發送訊息函數
-function sendMessage(){
-    const userInput = document.getElementById("userInput").value.trim();
-    if(userInput === "") return;
-
-    // 顯示使用者訊息
-    const userDiv = document.createElement("div");
-    userDiv.className = "message user";
-    userDiv.textContent = `使用者: ${userInput}`;
-    chatLog.appendChild(userDiv);
-    displayMessage(userInput, "user");
-
-    // 取得機器人回應
-    //const botMessage = getBotResponse(userMessage);
-    const botDiv = document.createElement("div");
-    botDiv.className = "bot-message";
-    botDiv.textContent = `機器人: ${getBotResponse(userInput)}`;
-    chatLog.appendChild(botDiv);
-    const botResponse = getBotResponse(userInput);
-
-    // 模擬機器人延遲回應
-    setTimeout(() => {
-        displayMessage(botResponse, "bot", true);
-    }, 500);
-
-    // 清空輸入框
-    document.getElementById("userInput").value = "";
-}
-
-// 顯示訊息在畫面上
-function displayMessage(message, sender, isHTML = false){
-    const messageElement = document.createElement("div");
-    messageElement.classList.add("message", sender);
-    if(typeof message === "function"){
-        message = message();
-    }
-    if(isHTML){
-        messageElement.innerHTML= message;
-    }
-    
-    else{
-        messageElement.textContent = message;
-    }
-    
-    messagesContainer.appendChild(messageElement);
-    messagesContainer.scrollTop = messagesContainer.scrollHeight; // 自動捲動到底部
-    
-}
-
-// 根據使用者輸入取的回應
-function getBotResponse(input){
-    return responses[input] || responses["default"];
-}
-
+// 儲存聊天紀錄
 function saveChatLog(){
-    let logContent = "";
-    const messages = chatLog.querySelectorAll(".div");
-    messages.forEach(message => {
-        logContent += message.textContent + "\n";
-    });
-
-    // 建立 Bloob 並下載
-    const blob = new Blob([logContent], {type: "text/plain"});
+    const chatLog = messagesDiv.innerText;
+    const blob = new Blob([chatLog], {type: "text/plain"});
     const link = document.createElement("a");
     link.href = URL.createObjectURL(blob);
-    link.download = "chat-log.txt";
+    link.download = "聊天紀錄.txt";
     link.click();
 }
-// 監聽輸入框按鍵事件
-document.getElementById("userInput").addEventListener("keydown", function(event){
+
+// 發送訊息
+function sendMessage(){
+    const userMessage = userInput.value.trim();
+    if(!userMessage) return;
+
+    // 顯示使用者訊息
+    const botResponse = getBotResponse(userMessage);
+    setTimeout(() => {
+        appendMessage("bot", botResponse);
+    }, 500);
+    appendMessage("user", userMessage);
+
+    // 清空輸入框
+    userInput.value = "";
+    userInput.focus();
+}
+
+// 增加訊息到聊天框
+function appendMessage(sender, message){
+    const messageElement = document.createElement("div");
+    messageElement.className = `message ${sender}`;
+    messageElement.innerText = message;
+    messagesDiv.appendChild(messageElement);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight; // 自動捲動到底部
+}
+
+// 按下 Enter 鍵送出訊息
+userInput.addEventListener("keydown", function(event){
     if(event.key === "Enter"){
         sendMessage();
     }
 });
+
+function getBotResponse(input){
+    return responses[input] || responses["default"];
+}
+
+function sendEmail(){
+    const messages = chatLog.innerText; // 取得聊天紀錄的文字內容
+
+    fetch("sned_email.php",{
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ chatLog: messages})
+    })
+    .then(responses => responses.text())
+    .then(data => {
+        alert(data);
+    })
+    .catch(error => {
+        console.error("Error:", error);
+        alert("發生失敗，請檢查後端設定");
+    });
+}
