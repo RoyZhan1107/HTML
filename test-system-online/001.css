@@ -1,0 +1,17 @@
+*{
+    font-family: 'poppins', 'arial', '標楷體';
+}
+body{
+    background: #fff;
+}
+.btn{
+    height: 45px;
+    font-size: 15px;
+    background: #6FA0FF;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+.table{
+    border: 2px solid black;
+    border-radius: 10px;
+}
