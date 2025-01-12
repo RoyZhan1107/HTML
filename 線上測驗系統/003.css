@@ -1,0 +1,13 @@
+body{
+ border-radius: 1px ;   
+}
+table{
+    border-collapse: collapse;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+th, td{
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}

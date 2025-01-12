@@ -1,0 +1,231 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<title>檢定線上測驗</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+</head>
+
+<body>
+<!--請選擇您要測驗的檢定職類<br/>-->
+<label for="jobTypeSelect">請選擇您要測驗的檢定職類</label>
+	<select id="jobTypeSelect" onchange="onJobTypeChange(this.value)">
+		<option value="">---請選擇---</option>
+		<option value="02800工業電子">02800工業電子</option>
+		<option value="11800電腦軟體應用">11800電腦軟體應用</option>
+		<option value="11900電腦軟體設計">11900電腦軟體設計</option>
+		<option value="12000電腦硬體裝修">12000電腦硬體裝修</option>
+		<option value="11700數位電子乙級">11700數位電子乙級</option>
+		<option value="12000電腦硬體裝修乙級">12000電腦硬體裝修乙級</option>
+	</select>
+</body>
+
+<div>
+	<br>
+	<table cellpadding="2" style="width:20%;" class="table2">
+		<tr>
+	<td>範圍:</td>
+</tr>
+	<tr>
+		<td>工作項目01:</td>
+		<td id="item1">尚未載入</td>
+	</tr>
+	<tr>
+		<td>工作項目02:</td>
+		<td id="item2">尚未載入</td>
+	</tr>
+	<tr>
+		<td>工作項目03:</td>
+		<td id="item3">尚未載入</td>
+	</tr>
+	<tr>
+		<td>工作項目04:</td>
+		<td id="item4">尚未載入</td>
+	</tr>
+	<tr>
+		<td>工作項目05:</td>
+		<td id="item5">尚未載入</td>
+	</tr>
+</table>
+<script>
+	document.getElementById('excelFileInput').addEventListener('change',function(e){
+		const file = e.target.files[0];
+		const reader = new FileReader();
+
+		reader.onload = function(event){
+			const data = new Uint8Array(event.target.result);
+			const workbook = XLSX.read(data, {type: 'array'});
+
+			console.log(workbook.SheetNames);
+
+			//讀取第二個工作表
+			const worksheet = workbook.Sheets[workbook.SheetNames[1]];
+
+			console.log(XLSX.utils.sheet_to_json(workbook, {header: 1 }));
+			//讀取第二個工作表中的資料
+			const range = XLSX.utils.decode_range(worksheet['!ref']);
+			for(let rowNum = 1; rowNum <= 5; rowNum++){
+				const cellAddress = XLSX.endcode_cell({r: rowNum, c: 1});
+				const cell = worksheet[cellAddress];
+
+				console.log(`Row${rowNum}:`, cell ? cell.v :"無資料");
+				if(cell){
+					document.getElementById(`item${rowNum}`).textContent = cell.v;
+				}else{
+					document.getElementById(`item${rowNum}`).textContent = "無資料";
+				}
+			}
+		};
+		reader.readAsArrayBuffer(file);
+	});
+</script>
+
+</div>
+<p>倒計時</p>
+<head>
+	<style>
+	meta{
+		font-family: Arial, sans-serif;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 20%;
+		margin: 0;
+		background-color: #f4f4f4;
+	}
+	.countdown{
+		font-family: 2rem;
+		padding: 20px;
+		border: 2px solid #333;
+		border-radius: 10px;
+		background-color: #fff;
+		box-shadow: 0 0 10px rgba(0, 0 , 0, 0.1);
+	}
+	</style>
+</head>
+	<meta>
+	<div class="countdown" id="countdown"></div>
+	<br/>
+
+	<script>
+		//設定倒計時的總秒數
+		const countdownDuration = 60 * 60 + 2400 // 1 小時 40 分鐘 = 100 分鐘的秒數
+		//計算倒計時結束時間
+		const countdownEnd = Date.now() + countdownDuration * 1000;
+
+		function updateCountdown(){
+			const now = Date.now();
+			const remainingTime = countdownEnd - now;
+
+			if(remainingTime <= 0){
+				document.getElementById('countdown').innerText = '時間到!';
+				clearInterval(timerInterval);
+				return;
+			}
+			// 計算小時、分鐘和秒
+			const hours = Math.floor((remainingTime / 1000 / 60 / 60) % 24); //小時
+			const minutes = Math.floor((remainingTime / 1000  / 60) % 60);	// 分鐘
+			const seconds = Math.floor((remainingTime / 1000) % 60);		// 秒鐘
+			
+			//更新倒計時顯示
+			document.getElementById('countdown').innerText = `${String(hours).padStart(2, '0')} 小時` + `${String(minutes).padStart(2, '0')}分 ${String(seconds).padStart(2, '0')}秒`;
+		}
+		
+		// 每秒更新一次倒計時
+		const timerInterval = setInterval(updateCountdown, 1000);
+		// 初始顯示
+		updateCountdown();
+</script>
+
+	<h2>題目內容:</h2>
+	<table cellpadding="5" style="width:100%;" class="table" id="questionTable">
+		<thead>
+			<tr>
+				<th>編號</th>
+				<th>題目</th>
+				<th>選項</th>
+				<th>作答</th>
+			</tr>
+			<tbody>
+
+			</tbody>
+		</thead>
+</table>
+
+<script>
+	document.getElementById('jobClassSelect').addEventListener('change', function(){
+		const selectedValue = this.value;
+		if(selectedValue){
+			loadExcelData(selectedValue);
+		}else{
+			//清空表格
+			for(let i = 1; i <= 5; i++){
+				document.getElementById(`item${i}`).textContent = "尚未載入";
+			}
+		}
+	});
+
+	function loadExcelData(selectedValue){
+		let filePath = '';
+		
+		if(selectedValue === "11800電腦軟體應用"){
+			window.open("D:/Program/PC/HTML/線上測驗系統-測驗卷/11800-Computer Soft Applications.xlsx", '_blank');
+		}else if(selectedValue === "11900電腦軟體設計"){
+			window.open("D:/Program/PC/HTML/線上測驗系統-測驗卷/11900-Computer Soft Design.xlsx", "_balnk");
+		}else{
+			console.error("無效的職類選擇");
+			return;
+		}
+
+		if(!filePath){
+			console.error("檔案位置錯誤");
+			return;
+		}
+
+		fetch(filePath)
+		.then(response => {
+			if(!response.ok){
+				throw new Error(`HTTP 錯誤! 狀態馬: ${response.status}`);
+			}
+			return response.arrayBuffer();
+		})
+		.then(data => {
+			const workbook = XLSX.read(data, {type: 'array'});
+
+			const worksheet = workbook.Sheets[workbook.SheetNames[0]];
+
+			const range = XLSX.utils.decode_range(worksheet['!ref']);
+
+			for(let rowNum = 1; rowNum <= 5; rowNum++){
+				const cellAddress = XLSX.utils.endcode_cell({r: rowNum, c: 1});
+				const cell = worksheet[cellAddress];
+
+				if(cell){
+					document.getElementById(`item${rowNum}`).textContent = cell.v;
+				}else{
+					document.getElementById(`item${rowNum}`).textContent = "無資料";
+				}
+			}
+		})
+		.catch(error => {
+			console.error("載入 Excel 檔案時發生錯誤:", error);
+		})
+	}
+</script>
+	</meta>
+</div>
+		<style>
+			.table{
+				border: 2px solid black;
+				border-radius: 10px;
+				background: white;
+			}
+			.table2{
+				border: 2px solid black;
+				border-radius: 10px;
+				background: white;
+			}
+		</style>
+	</body>
+</html>

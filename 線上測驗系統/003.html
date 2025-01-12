@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta content="zh-tw" http-equiv="Content-Language"/>
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+    <link rel="stylesheet" href="003.css">
+    <title>檢定線上模擬測驗</title>
+    <head>
+
+    </head>
+    <body>
+        <table id="dataTable" cellpadding="5" style="width: 100%;" class="table">
+            <tr>
+                <td>姓名</td>
+                <td>王小明</td>
+                <td>學科測試編號</td>
+                <td>A12345678</td>
+            </tr>
+            <tr>
+                <td>職類名稱</td>
+                <td>
+                    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+                    <select name="" id="jobTypeSelect" onchange="onJobTypeChange()">
+                        <option value="">---請選擇---</option>
+			            <option value="02800工業電子">02800工業電子</option>
+                        <option value="11800電腦軟體應用">11800電腦軟體應用</option>
+                        <option value="11900電腦軟體設計">11900電腦軟體設計</option>
+                        <option value="12000電腦硬體裝修">12000電腦硬體裝修</option>
+                        <option value="11700數位電子乙級">11700數位電子乙級</option>
+                        <option value="12000電腦硬體裝修乙級">12000電腦硬體裝修乙級</option>
+                    </select>
+                </td>
+                <td>剩餘時間</td>
+                <td>
+                    <div class="countdown" id="countdown">
+                        <link rel="stylesheet" href="countdown.css">
+                        <script src="countdown.js"></script>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>字型大小</td>
+                <td>
+                    <select name="" id="Font-Size" onchange="">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </td>
+                <td>測驗日期</td>
+                <td>
+                    <script>
+                        const now = new Date();
+                        const year = now.getFullYear();
+                        const month = String(now.getMonth() + 1).padStart(2, '0');
+                        const day = String(now.getDate()).padStart(2, '0');
+                        document.write(`${year}-${month}-${day}`);
+                    </script>
+                </td>
+                <td><button>題目總攬</button></td>
+            </tr>
+        </table>
+        <table cellpadding="5" style="width: 100%;" class="table2" >
+            <style href="003.css"></style>
+            <tr>
+                <th>
+                    題目內容
+                </th>
+            </tr>
+            <tr>
+                <th>選項一</th>
+            </tr>
+            <tr>
+                <th>選項二</th>
+            </tr>
+            <tr>
+                <th>選項三</th>
+            </tr>
+            <tr>
+                <th>選項四</th>
+            </tr>
+        </table>
+        <script src="003.js"></script>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+/*時間*/
+/*
+meta{
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20%;
+    margin: 0;
+    background-color: #f4f4f4;
+}
+.countdown{
+    font-family: 2rem;
+    padding: 20px;
+    border: 2px solid #333;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0 , 0, 0.1);
+    color: black;
+}
+*/
+/*表格*/
+.table{
+    border: 2px solid black;
+    border-radius: 10px;
+    background: white;
+}
+.table2{
+    border: 2px solid black;
+    border-radius: 10px;
+    background: white;
+}

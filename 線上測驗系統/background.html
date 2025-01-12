@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>改變表格背景顏色</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>改變表格背景顏色</h1>
+  <label for="jobCategory">選擇職類：</label>
+  <select id="jobCategory">
+    <option value="">請選擇</option>
+    <option value="11800電腦軟體應用">11800電腦軟體應用</option>
+    <option value="11801工程管理">11801工程管理</option>
+    <option value="11802行銷業務">11802行銷業務</option>
+  </select>
+
+  <table id="dataTable">
+    <tr>
+      <th>職類</th>
+      <th>說明</th>
+    </tr>
+    <tr>
+      <td>11800電腦軟體應用</td>
+      <td>負責軟體開發與應用</td>
+    </tr>
+    <tr>
+      <td>11801工程管理</td>
+      <td>負責項目管理</td>
+    </tr>
+    <tr>
+      <td>11802行銷業務</td>
+      <td>負責市場推廣與銷售</td>
+    </tr>
+  </table>
+
+  <script>
+    // 取得 select 和 table 的參考
+    const jobCategorySelect = document.getElementById('jobCategory');
+    const table = document.getElementById('dataTable');
+
+    // 監聽 select 的變化
+    jobCategorySelect.addEventListener('change', function() {
+      // 根據選中的值變更表格背景顏色
+      const selectedValue = this.value;
+
+      if (selectedValue === "11800電腦軟體應用") {
+        table.style.backgroundColor = "yellow";
+      } else if (selectedValue === "11801工程管理") {
+        table.style.backgroundColor = "lightblue";
+      } else if (selectedValue === "11802行銷業務") {
+        table.style.backgroundColor = "lightgreen";
+      } else {
+        table.style.backgroundColor = ""; // 恢復默認顏色
+      }
+    });
+  </script>
+</body>
+</html>
