@@ -60,8 +60,7 @@ function displayData(data) {
     });
 
 }
-
-
+    
 // 變更職類時變化背景
 const jobTypeSelect = document.getElementById('jobTypeSelect');
 const dttable = document.getElementById('dataTable');

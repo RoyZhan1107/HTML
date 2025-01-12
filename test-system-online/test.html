@@ -17,6 +17,7 @@
                 <td>王小明</td>
                 <td>學科測試編號</td>
                 <td>A12345678</td>
+                <td>跳轉到</td>
             </tr>
             <tr>
                 <td>職類名稱</td>
@@ -38,6 +39,21 @@
                         <link rel="stylesheet" href="countdown.css">
                         <script src="countdown.js"></script>
                     </div>
+                </td>
+                <td>
+                    <select name="" id="option">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    題
                 </td>
             </tr>
             <tr>
@@ -67,22 +83,26 @@
             <style href="test.css"></style>
             <tr>
                 <th>
-                    題目內容
+                    <label for="" id="question">題目內容</label>
                 </th>
             </tr>
             <tr>
-                <th><input type="radio">選項一</th>
+                <th><input type="radio" id="option1">選項一</th>
             </tr>
             <tr>
-                <th><input type="radio">選項二</th>
+                <th><input type="radio" id="option2">選項二</th>
             </tr>
             <tr>
-                <th><input type="radio">選項三</th>
+                <th><input type="radio" id="option3">選項三</th>
             </tr>
             <tr>
-                <th><input type="radio">選項四</th>
+                <th><input type="radio" id="option4">選項四</th>
+            </tr>
+            <tr>
+                <th><button>上一題</button></th>
+                <th><button>下一題</button></th>
             </tr>
         </table>
-        <script src="test.js"></script>
+        <script src="test v1.js"></script>
     </body>
 </html>
