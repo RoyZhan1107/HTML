@@ -47,7 +47,7 @@ function displayData(data) {
         table.innerHTML = '<tr><td colspan="5">無數據可顯示</td></tr>';
         return;
     }
-/*
+
     // 遍歷數據並填充表格
     data.forEach((row, index) => {
         const tr = document.createElement('tr');
@@ -58,17 +58,9 @@ function displayData(data) {
         });
         table.appendChild(tr);
     });
-*/
+
 }
-const firstColumn = jsonData.map(column => column[1]).filter(item => item);
-const optionsContainer = document.getElementById('optionsContainer');
-optionsContainer.innerHTML = ''; // 清空選項
-firstColumn.forEach((item, index) => {
-    const option = document.createElement('option');
-    option.value = index;
-    option.textContent = item;
-    optionsContainer.appendChild(option);
-});
+
 
 // 變更職類時變化背景
 const jobTypeSelect = document.getElementById('jobTypeSelect');
