@@ -79,22 +79,9 @@ function sendMessage(){
     if(userInput === "") return;
 
     // 顯示使用者訊息
-    /*
-    const userDiv = document.createElement("div");
-    userDiv.className = "message user";
-    userDiv.textContent = `使用者: ${userInput}`;
-    chatLog.appendChild(userDiv);
-    */
     displayMessage(userInput, "user");
 
     // 取得機器人回應
-    /*
-    const botMessage = getBotResponse(userMessage);
-    const botDiv = document.createElement("div");
-    botDiv.className = "bot-message";
-    botDiv.textContent = `機器人: ${getBotResponse(userInput)}`;
-    chatLog.appendChild(botDiv);
-    */
     const botResponse = getBotResponse(userInput);   
 
     // 模擬機器人延遲回應
@@ -138,6 +125,9 @@ function saveChatLog(){
     link.href = URL.createObjectURL(blob);
     link.download = "聊天紀錄.txt";
     link.click();
+}
+function clearMessage(){
+    messagesContainer.innerHTML = "";
 }
 // 監聽輸入框按鍵事件
 document.getElementById("userInput").addEventListener("keydown", function(event){
