@@ -47,7 +47,7 @@ function displayData(data) {
         table.innerHTML = '<tr><td colspan="5">無數據可顯示</td></tr>';
         return;
     }
-
+/*
     // 遍歷數據並填充表格
     data.forEach((row, index) => {
         const tr = document.createElement('tr');
@@ -58,25 +58,36 @@ function displayData(data) {
         });
         table.appendChild(tr);
     });
+*/
 }
+const firstColumn = jsonData.map(column => column[1]).filter(item => item);
+const optionsContainer = document.getElementById('optionsContainer');
+optionsContainer.innerHTML = ''; // 清空選項
+firstColumn.forEach((item, index) => {
+    const option = document.createElement('option');
+    option.value = index;
+    option.textContent = item;
+    optionsContainer.appendChild(option);
+});
+
 // 變更職類時變化背景
 const jobTypeSelect = document.getElementById('jobTypeSelect');
-const table = document.getElementById('dataTable');
+const dttable = document.getElementById('dataTable');
 // 監聽 select 變化
 jobTypeSelect.addEventListener('change', function() {
     const selectedValue = this.value;
     if(selectedValue === "11800電腦軟體應用"){
-        table.style.backgroundColor = "#27FF26";   
+        dttable.style.backgroundColor = "#27FF26";   
     }
     else if(selectedValue === "02800工業電子"){
-        table.style.backgroundColor = "#27FF26";
+        dttable.style.backgroundColor = "#27FF26";
     }else if(selectedValue === "11900電腦軟體設計"){
-        table.style.backgroundColor = "#27FF26";
+        dttable.style.backgroundColor = "#27FF26";
     }else if(selectedValue === "12000電腦硬體裝修"){
-        table.style.backgroundColor = "#27FF26";
+        dttable.style.backgroundColor = "#27FF26";
     }else if(selectedValue === "11700數位電子乙級"){
-        table.style.backgroundColor = "yellow";
+        dttable.style.backgroundColor = "yellow";
     }else if(selectedValue === "12000電腦硬體裝修乙級"){
-        table.style.backgroundColor = "yellow";
+        dttable.style.backgroundColor = "yellow";
     }
 });
