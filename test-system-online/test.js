@@ -4,7 +4,7 @@ function onJobTypeChange() {
 
     // 如果未選擇檔案，清空表格
     if (!selectedFile) {
-        const table = document.getElementById('dataTable');
+        const table = document.getElementById('question table');
         table.innerHTML = '<tr><td colspan="5">請選擇上方選單以載入資料</td></tr>';
         return;
     }
@@ -39,7 +39,7 @@ function fetchExcelFile(fileName) {
 }
 
 function displayData(data) {
-    const table = document.getElementById('dataTable');
+    const table = document.getElementById('question table');
     table.innerHTML = ''; // 清空表格內容
 
     // 如果沒有數據，顯示提示
