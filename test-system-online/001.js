@@ -1,48 +1,33 @@
-let excelData = null;
+document.getElementById('fileInput').addEventListener('change', function(event) {
+	const file = event.target.files[0];
+	if (!file) return;
 
-	//當選擇 Excel 檔案時觸發
-	document.getElementById('excelFileInput').addEventListener('change', function(e){
-		const file = e.target.files[0];
-		const reader = new FileReader();
-		reader.onload = function(event){
-			const data = new Uint8Array(event.target.result);
-			const workbook = XLSX.read(Data, { type: 'array'});
+	const reader = new FileReader();
+	reader.onload = function(e) {
+		const data = new Uint8Array(e.target.result);
+		const workbook = XLSX.read(data, { type: 'array' });
 
-			const worksheet = workbook.Sheets[workbook.SheetNames[0]];
-			excelData = XLSX.sheet_to_json(worksheet, {Headers :1});
+		// 假設只讀取第一個工作表
+		const firstSheetName = workbook.SheetNames[0];
+		const worksheet = workbook.Sheets[firstSheetName];
 
-			matchFileNameWithJobType(selectedJobType);
-		};
-		reader.readAsArrayBuffer(file);
-	});
+		// 將工作表轉換為 JSON 格式
+		const jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
 
-	function onJobTypeChange(selectedJobType){
-		// 顯示 Excel 題目到表格裡
-		const tableBody = document.querySelector("#questionTable tbody");
-		tableBody.innerHTML = ""; // 清空表格內容
-		
-		for(let i = 2; i < excelData.length; i++){ //假設題目從第三行開始
-			const row = excelData[i];
-			if(row){
-				const tr = document.createElement("tr");
-				const tdNumber = document.createElement("td");
-				const tdQuestion = document.createElement("td");
-				const tdOptions = document.createElement("td");
+		// 清空表格並填入資料
+		const table = document.getElementById('excelTable');
+		table.innerHTML = '';
 
-				tdNumber.textContent = i - 1; //題號
-				tdQuestion.textContent = row[1] || "無內容"; // 題目內容(假設題目在第二欄)
-				const optionHtml = `
-					<input type="radio" name="question_${i}" value="${row[2]}"> ${row[2]}
-					<input type="radio" name="question_${i}" value="${row[3]}"> ${row[3]}
-					<input type="radio" name="question_${i}" value="${row[4]}"> ${row[4]}
-					<input type="radio" name="question_${i}" value="${row[5]}"> ${row[5]}
-					`;
-					tdOptions.innerHTML = optionHtml;
-				
-				tr.appendChild(tdNumber);
-				tr.appendChild(tdQuestion);
-				tr.appendChild(tdOptions);
-				tableBody.appendChild(tr);
-			}
-		}
-	}
+		jsonData.forEach((row, rowIndex) => {
+			const tr = document.createElement('tr');
+			row.forEach(cell => {
+				const td = document.createElement(rowIndex === 0 ? 'th' : 'td');
+				td.textContent = cell || '';
+				tr.appendChild(td);
+			});
+			table.appendChild(tr);
+		});
+	};
+
+	reader.readAsArrayBuffer(file);
+});

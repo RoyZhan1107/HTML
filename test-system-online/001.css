@@ -1,17 +1,12 @@
-*{
-    font-family: 'poppins', 'arial', '標楷體';
+table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
-body{
-    background: #fff;
+table, th, td{
+    border: 1px solid black;
 }
-.btn{
-    height: 45px;
-    font-size: 15px;
-    background: #6FA0FF;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-}
-.table{
-    border: 2px solid black;
-    border-radius: 10px;
+th, td{
+    padding: 8px;
+    text-align: left;
 }
