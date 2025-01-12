@@ -52,7 +52,7 @@ function displayData(data) {
     data.forEach((row, index) => {
         const tr = document.createElement('tr');
         row.forEach(cell => {
-            const td = document.createElement('th');
+            const td = document.createElement('td');
             td.textContent = cell || ''; // 防止空值
             tr.appendChild(td);
         });
