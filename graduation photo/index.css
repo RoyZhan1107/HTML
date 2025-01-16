@@ -53,11 +53,9 @@ footer{
     padding: 10px 20px;
     position: fixed;
     bottom: 0;
-    height: 3%;
     width: 100%;
     font-size: 12px;
-    margin: 3px 0;
 }
-footer .p{
-    margin: 3px 0;
+footer .a{
+    margin: 5%;
 }
