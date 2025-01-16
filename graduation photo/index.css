@@ -55,7 +55,9 @@ footer{
     bottom: 0;
     width: 100%;
     font-size: 12px;
+    margin: 3%;
 }
+/*
 footer .a{
-    margin: 5%;
-}
+    margin: 3%;
+}*/
