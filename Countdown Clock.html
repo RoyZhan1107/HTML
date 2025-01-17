@@ -19,7 +19,7 @@
             padding: 50px;
         }
         #countdown {
-            font-size: 8rem;
+            font-size: 6rem;
             margin-top: 20px;
             background: #333;
             padding: 20px;
@@ -29,10 +29,10 @@
             margin-bottom: 20px;
         }
         p{
-            font-size: 3rem;
+            font-size: 2rem;
         }
         h1{
-            font-size: 4rem;
+            font-size: 3rem;
         }
     </style>
 </head>
@@ -71,7 +71,9 @@
     //const targetDate = document.getElementById("targetDate").innerText;
     const targetDate = "2025-04-27 00:00:00";
     startCountdown(targetDate);
-
+	document.addEventListener("contextmenu", function(event){
+		event.preventDefault();
+	});
     
 </script>
 </body>
