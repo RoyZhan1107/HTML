@@ -59,6 +59,16 @@ button:hover{
     font-size: 18px;
     font-weight: bold;
 }
+footer{
+    background-color: #333;
+    color: fff;
+    text-align: center;
+    padding: 10px 20px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 12px;
+}
 ::-webkit-scrollbar{
     width: 12px;
     background-color: #fff6cc;
