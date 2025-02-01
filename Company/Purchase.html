@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="Purchase.css">
+        <title>請購系統</title>
+    </head>
+    <body>
+        <nav>   
+            <header>請購系統</header>
+            <div class="container">
+                <div class="box form-box">
+                    <div class="menu">
+                        <ul>
+                            <a href="index.html" class="link">公司首頁</a>
+                            <a href="Department/Department.html" class="link">各部門專區</a>
+                            <a href=""></a>
+                            <a href=""></a>
+                            <a href="Purchase.html" class="link">請購系統</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+            <div class="content">
+                <p>請選擇您的部門</p>
+                <div class="menu">
+                    <a href="#" class="dp-link" data-department="人事室">人事室</a>
+                    <a href="#" class="dp-link" data-department="財務部">財務部</a>
+                    <a href="#" class="dp-link" data-department="銷售部">銷售部</a>
+                    <a href="#" class="dp-link" data-department="公關部">公關部</a>
+                </div>
+            </div>
+            <div class="function">
+                <table>
+                    <tr>
+                        <td>部門</td>
+                        <td id="departmentCall">---</td>
+                        <script>
+                            document.querySelectorAll(".dp-link").forEach(link => {
+                                link.addEventListener("click", function(event){
+                                    event.preventDefault();
+                                    const dpName = this.dataset.department;
+                                    document.getElementById("departmentCall").textContent = dpName;
+                                });
+                            });
+                        </script>
+                        <td>申請日期</td>
+                        <td>
+                            <script>
+                                const now = new Date()
+                                const year = now.getFullYear();
+                                const month = String(now.getMonth() + 1).padStart(2, '0');
+                                const day = String(now.getDate()).padStart(2, '0');
+                                document.write(`${year}-${month}-${day}`);
+                            </script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>申請時間</td>
+                        <td id="timeCall">--:--:--
+                            <script>
+                                function upTime(){
+                                    const time = new Date();
+                                    const hours = String(time.getHours()).padStart(2, '0');
+                                    const minutes = String(time.getMinutes()).padStart(2, '0');
+                                    const seconds = String(time.getSeconds()).padStart(2, '0');
+                                    document.getElementById("timeCall").textContent = `${hours}-${minutes}-${seconds}`;
+                                }
+                                upTime();
+                                setInterval(upTime, 1000);
+                            </script>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>申請內容</td>
+                    </tr>
+                    <tr>
+                        <td id="radioOptions">
+                        </td>
+                        <script>
+                            const dpOptions = {
+                                "人事室": ["員工請假", "在家上班", "人事調動", "入職申請"],
+                                "財務部": ["報銷申請", "預算審批", "薪水發放", "財務報表"],
+                                "銷售部": ["客戶開發", "訂單處理", "業績報告", "市場調查"],
+                                "公關部": ["媒體聯絡", "品牌推廣", "活動策畫", "官方媒體"]
+                            }
+                            function upRadioOptions(department){
+                                const radioContainer = document.getElementById("radioOptions");
+                                radioContainer.innerHTML = "";
+                                
+                                if(dpOptions[department]){
+                                    dpOptions[department].forEach(Option => {
+                                        const radioInput = document.createElement("input");
+                                        radioInput.type = "radio";
+                                        radioInput.name = "apply-content";
+                                        radioInput.value = Option;
+
+                                        const label = document.createElement("label");
+                                        label.textContent = Option;
+                                        label.style.marginRight = "10px";
+
+                                        radioContainer.appendChild(radioInput);
+                                        radioContainer.append(label);
+                                    });
+                                }
+                            }
+                            document.querySelectorAll(".dp-link").forEach(link => {
+                                link.addEventListener("click", function(event){
+                                    event.preventDefault();
+                                    const dpName = this.dataset.department;
+                                    document.getElementById("departmentCall").textContent = dpName;
+                                    upRadioOptions(dpName);
+                                });
+                            });
+                        </script>
+                    </tr>
+                    <tr>
+                        <td id="tbContent"></td>
+                    </tr>
+                </table>
+            </div>
+        <footer>
+            &copy;作者:嚴浩軒
+            <div class="footer-content">
+                <a href="Libary/Home.html" class="link">圖書館</a>
+                <a href="Restaurant/index.html" class="link">員工餐廳評分系統</a>
+            </div>
+        </footer>
+        <script src="Purchase.js"></script>
+    </body>
+</html>

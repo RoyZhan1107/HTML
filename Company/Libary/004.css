@@ -1,0 +1,26 @@
+body{
+    background: #FF812E;
+}
+header{
+    font-size: 20px;
+}
+nav{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 45px;
+    pad: 1rem 0rem;
+    background-color: #1d1d1d;
+    color: aqua;
+}
+.link{
+    text-decoration: none;
+    color: #fff;
+    font-size: 15px;
+    padding: 1.5rem;
+    position: relative;
+}
