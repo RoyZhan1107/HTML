@@ -1,9 +1,9 @@
 <?php
 session_start(); // 啟動 Session
 
-$servername = "localhost";
-$username = "root";
-$password = "";
+$servername = "sql207.infinityfree.com";
+$username = "if0_38225053";
+$password = "nvGsFNwP4ITGL";
 $database = "staff";
 
 try {
@@ -15,7 +15,7 @@ try {
         $input_password = $_POST['password'];
 
         // 檢查帳號是否存在
-        $stmt = $conn->prepare("SELECT * FROM users WHERE username = :username");
+        $stmt = $conn->prepare("SELECT * FROM username WHERE username = :username");
         $stmt->bindParam(':username', $input_username);
         $stmt->execute();
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
