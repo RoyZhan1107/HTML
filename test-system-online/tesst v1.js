@@ -14,6 +14,23 @@ function onJobTypeChange() {
     fetchExcelFile(selectedFile);
 }
 
+function fetchExcelFile(fileName){
+    if(select === "11700數位電子乙級"){
+        fetch("11700.json")
+            .then(response => response.json())
+            .then(data => {
+                question = data;
+            })
+    }else if(select === "18000電腦軟體應用"){
+        fetch("18000.json")
+            .then(response => response.json())
+            .then(data => {
+                question = data;
+            })
+    }
+
+}
+/*
 function fetchExcelFile(fileName) {
     // 使用 Fetch API 加載本地 Excel 文件
     fetch(fileName)
@@ -86,3 +103,4 @@ jobTypeSelect.addEventListener('change', function() {
         dttable.style.backgroundColor = "yellow";
     }
 });
+*/

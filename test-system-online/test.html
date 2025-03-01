@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <head>
     <meta charset="UTF-8"/>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,10 +8,19 @@
     <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
     <link rel="stylesheet" href="test.css">
     <title>檢定線上模擬測驗</title>
-    <head>
-
     </head>
     <body>
+        <nav>
+            <div class="container">
+                <div class="box">
+                    <div class="menu">
+                        <ul>
+                            <li><button onclick="sendEmail()">將答案寄送到email</button></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
         <table id="dataTable" cellpadding="5" style="width: 100%;" class="table">
             <tr>
                 <td>姓名</td>
@@ -18,6 +28,7 @@
                 <td>學科測試編號</td>
                 <td>A12345678</td>
                 <td>跳轉到</td>
+                <td>座號:</td>
             </tr>
             <tr>
                 <td>職類名稱</td>
@@ -55,16 +66,17 @@
                     </select>
                     題
                 </td>
+                <td style="font-size: 30px;">1118</td>
             </tr>
             <tr>
                 <td>字型大小</td>
                 <td>
-                    <select name="" id="Font-Size" onchange="">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                    </select>
+                    <select name="fontSizeSelect" id="fontSizeSelect" onchange="changeFontSize()">
+                        <option value="12" selected>1</option>
+                        <option value="24">2</option>
+                        <option value="36">3</option>
+                        <option value="48">4</option>
+                    </select>  
                 </td>
                 <td>測驗日期</td>
                 <td>
@@ -99,8 +111,8 @@
                 <th><input type="radio" id="option4">選項四</th>
             </tr>
             <tr>
-                <th><button>上一題</button></th>
-                <th><button>下一題</button></th>
+                <th><button onclick="Previous()">上一題</button></th>
+                <th><button onclick="Next()">下一題</button></th>
             </tr>
         </table>
         <script src="test v1.js"></script>
