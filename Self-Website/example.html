@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>語言切換</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .lang-btn {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="title">歡迎來到我的網站</h1>
+    <p id="description">請選擇你的語言：</p>
+
+    <a href="" class="" onclick="changeLanguage('zh')">中文</a>
+    <a href="" class="" onclick="changeLanguage('en')">English</a>
+
+    <script>
+        function changeLanguage(lang) {
+            if (lang === "en") {
+                document.getElementById("title").textContent = "Welcome to my website";
+                document.getElementById("description").textContent = "Please select your language:";
+            } else if (lang === "zh") {
+                document.getElementById("title").textContent = "歡迎來到我的網站";
+                document.getElementById("description").textContent = "請選擇你的語言：";
+            }
+        }
+    </script>
+
+</body>
+</html>
