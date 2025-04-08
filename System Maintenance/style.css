@@ -1,0 +1,27 @@
+body{
+    background: #000;
+    margin: 0;
+}
+header{
+    color: #fff;
+    align-items: center;
+    display: flex;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #000;
+    text-align: center;
+    font-size: 3rem;
+}
+p{
+    color: #fff;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #000;
+    text-align: center;
+    font-size: 3rem;
+}
