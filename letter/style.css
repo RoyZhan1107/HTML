@@ -67,7 +67,12 @@ body {
     color: #333;
     line-height: 1.6;
 }
-
+.time{
+    position: absolute;
+    bottom: 10px;
+    font-size: 14px;
+    color: #444;
+}
 .signature{
     position: absolute;
     bottom: 10px;
