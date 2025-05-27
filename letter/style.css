@@ -61,7 +61,12 @@ body {
     color: #5e412f;
     display: block;
 }
-
+.textbox{
+    max-height: 450px;
+    overflow-y: auto;
+    border-radius: 12px;
+    line-height: 1.8;
+}
 .card p {
     font-size: 14px;
     color: #333;
