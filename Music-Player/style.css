@@ -1,34 +1,42 @@
 body {
+  margin: 0;
+  padding: 0;
   background: #111;
   color: #fff;
-  font-family: sans-serif;
+  font-family: Arial, Helvetica, sans-serif;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+#audio-player{
+  margin: 20px;
+}
+#lyrics-container{
+  height: 300px;
+  width: 80%;
+  max-width: 600px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 10px;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  height: 100vh;
-  margin: 0;
+  position: relative;
 }
-
-.player {
-  max-width: 600px;
-  width: 90%;
+.lyrics-line{
+  opacity: 0.4;
+  transform: scale(1);
+  transition: all 0.3s ease;
 }
-
-#lyrics{
-  height: 300px;
-  overflow-y: auto;
-  font-size: 1.5rem;
-}
-
-#lyrics div{
-  line-height: 1.8;
-  opacity: 0.5;
-  transition: 0.2s;
-}
-
-#lyrics div.active {
-  font-weight: bold;
-  color: #0f0;
+.lyrics-line.active{
   opacity: 1;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #00ffcc;
+  transform: scale(1.1);
 }

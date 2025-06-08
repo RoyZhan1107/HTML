@@ -1,54 +1,43 @@
 const audio = document.getElementById("audio");
-const lyricsBox = document.getElementById("lyrics-list");
+const lyricsDisplay = document.getElementById("lyrics-display");
 let lyrics = [];
 
 fetch("lyrics.lrc")
-  .then(res => res.text())
-  .then(data => {
-    lyrics = parseLRC(data);
-    lyrics.forEach(line => {
-      const div = document.createElement("div");
-      div.textContent = line.text;
-      div.dataset.time = line.time;
-      lyricsBox.appendChild(div);
-    });
+  .then(response => response.text())
+  .then(text => {
+    const lines = text.split("\n");
+    lyrics = lines
+      .filter(line => /\[\d{2}:\d{2}\.\d{2}\]/.test(line))
+      .map(line => {
+        const match = line.match(/\[(\d{2}):(\d{2})\.(\d{2})\](.*)/);
+        const time = parseInt(match[1]) * 60 + parseInt(match[2]) + parseInt(match[3]) / 100;
+        return { time: time, text: match[4] };
+      });
+
+    updateLyrics(0);
   });
 
-function parseLRC(data) {
-  const lines = data.split("\n");
-  const result = [];
-
-  for (const line of lines) {
-    const match = line.match(/\[(\d+):(\d+(?:\.\d+)?)\](.*)/);
-    if (match) {
-      const min = parseInt(match[1]);
-      const sec = parseFloat(match[2]);
-      const time = min * 60 + sec;
-      const text = match[3].trim();
-      result.push({ time, text });
-    }
+function updateLyrics(activeIndex) {
+  lyricsDisplay.innerHTML = '';
+  const linesToShow = 5;
+  const start = Math.max(0, activeIndex - 2);
+  const end = Math.min(lyrics.length, activeIndex + 3);
+  for (let i = start; i < end; i++) {
+    const line = document.createElement("div");
+    line.className = "lyrics-line" + (i === activeIndex ? " active" : "");
+    line.textContent = lyrics[i].text;
+    lyricsDisplay.appendChild(line);
   }
-  return result;
 }
 
-// 自動滾動 + 歌詞標記
 audio.addEventListener("timeupdate", () => {
   const currentTime = audio.currentTime;
-  let activeIndex = -1;
-
   for (let i = 0; i < lyrics.length; i++) {
-    if (currentTime >= lyrics[i].time) {
-      activeIndex = i;
+    const current = lyrics[i];
+    const next = lyrics[i + 1] || { time: Infinity };
+    if (currentTime >= current.time && currentTime < next.time) {
+      updateLyrics(i);
+      break;
     }
-  }
-
-  const lines = lyricsBox.children;
-  for (let i = 0; i < lines.length; i++) {
-    lines[i].classList.remove("active");
-  }
-
-  if (activeIndex >= 0) {
-    lines[activeIndex].classList.add("active");
-    lines[activeIndex].scrollIntoView({ behavior: "smooth", block: "center" });
   }
 });
