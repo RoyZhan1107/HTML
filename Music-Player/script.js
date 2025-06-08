@@ -1,6 +1,6 @@
 
   // 載入並解析 lrc 檔
-  fetch("boyfriend lyrics.lrc")
+  fetch("boyfriend lyrics.LRC")
     .then(r => {
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       return r.text();
