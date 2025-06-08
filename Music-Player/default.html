@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>音樂播放器</title>
+  <style>
+    body {
+      background: #000;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    audio {
+      margin-bottom: 40px;
+    }
+    #lyrics-display {
+      font-size: 4em;
+      text-align: center;
+      width: 90%;
+      max-width: 1000px;
+      height: 150px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #00ffcc;
+      transition: all 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <audio id="audio" controls>
+    <source src="music.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+  <div id="lyrics-display">Loading lyrics...</div>
+
+  <script>
+    const audio = document.getElementById("audio");
+    const display = document.getElementById("lyrics-display");
+    let lyrics = [];
+
+    fetch("lyrics.lrc")
+      .then(res => res.text())
+      .then(data => {
+        lyrics = parseLRC(data);
+        display.textContent = "♪ 歌詞準備好了 ♪";
+      });
+
+    function parseLRC(data) {
+      return data.split("\n").map(line => {
+        const match = line.match(/\[(\d+):(\d+(?:\.\d+)?)\](.*)/);
+        if (match) {
+          const min = parseInt(match[1]);
+          const sec = parseFloat(match[2]);
+          const time = min * 60 + sec;
+          const text = match[3].trim();
+          return { time, text };
+        }
+      }).filter(Boolean);
+    }
+
+    audio.addEventListener("timeupdate", () => {
+      const currentTime = audio.currentTime;
+      for (let i = lyrics.length - 1; i >= 0; i--) {
+        if (currentTime >= lyrics[i].time) {
+          display.textContent = lyrics[i].text;
+          break;
+        }
+      }
+    });
+  </script>
+</body>
+</html>
