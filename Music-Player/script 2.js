@@ -22,10 +22,18 @@ function getProgress() {
 // 更新顯示的歌詞內容
 function updateLyrics() {
     const progress = getProgress();
-    const lyricTime = progress.toFixed(2);
+    let lyricTime = "";
+    for (const time in lyrics) {
+        if (time > progress.toFixed(2)) {
+            lyricTime = time;
+        }
+    }
     const lyricText = lyrics[lyricTime];
     if (lyricText) {
         lyricContainer.innerHTML = lyricText;
+    } else {
+        // 如果找不到歌詞，顯示"歌詞未找到"
+        lyricContainer.innerHTML = "歌詞未找到";
     }
 }
 
@@ -33,3 +41,11 @@ function updateLyrics() {
 document.addEventListener("play", () => {
     updateLyrics();
 });
+
+// 這裡是播放進度變化事件的代碼，假設您已經有這個功能
+const musicPlayer = document.getElementById("music-player");
+if (musicPlayer) {
+    musicPlayer.addEventListener("progress", () => {
+        updateLyrics();
+    });
+}
