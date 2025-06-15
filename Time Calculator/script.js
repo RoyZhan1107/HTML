@@ -24,7 +24,7 @@ function calculateTime(){
         return;
     }
 
-    const totalSec = startSec - endSec;
+    const totalSec = endSec - startSec;
     const resultTime = formatTime(totalSec % 86400); // 超過一天會重設
     document.getElementById("result").textContent = `計算結果: ${resultTime}`;
 }
