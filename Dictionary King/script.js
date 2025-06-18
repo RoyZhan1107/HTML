@@ -20,3 +20,8 @@ function generate(){
     const randomWord = words[Math.floor(Math.random() * words.length)];
     document.getElementById("word").textContent = randomWord;
 }
+
+// right button eliminate
+document.addEventListener("contextmenu", function(event){
+    event.preventDefault();
+});
