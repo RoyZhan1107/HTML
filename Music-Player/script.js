@@ -1,6 +1,5 @@
-
   // 載入並解析 lrc 檔
-  fetch("boyfriend-lyrics.LRC?v=" + Date.now())
+  fetch("boyfriend-lyrics.txt?v=" + Date.now())
     .then(r => {
       if (!r.ok) throw new Error(`HTTP ${r.status}`);
       return r.text();
@@ -28,6 +27,8 @@
       }
     }
   });
+
+  
 
   let lyrics = [], lastIndex = -1;
 
