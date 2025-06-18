@@ -2,6 +2,7 @@ body{
     margin: 0;
     padding: 0;
     background: #000;
+    height: 95vh;
 }
 header{
     height: 12px;
@@ -69,8 +70,30 @@ ul{
     border: none;
     cursor: pointer;
     margin: 0;
-    position: 0;
+    padding: 0;
     text-align: center;
+}
+#history{
+    top: 5rem;
+    right: 20px;
+    display: flex;
+    position: absolute;
+}
+.history-btn{
+    right: 20px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    background: none;
+    font-size: 20px;
+    right: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.history-list{
+    color: #fff;
+    font-size: 15px;
 }
 .menu-wrapper{
     position: absolute;
