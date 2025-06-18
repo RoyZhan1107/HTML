@@ -5,6 +5,7 @@ function toggle(){
 }
 
 // generate
+let history = [];
 let words = [];
 fetch('vocabulary.txt')
     .then(res => res.text())
@@ -19,6 +20,8 @@ function generate(){
     }
     const randomWord = words[Math.floor(Math.random() * words.length)];
     document.getElementById("word").textContent = randomWord;
+    history.push(randomWord);
+    updatehistory();
 }
 
 function updatehistory(){
