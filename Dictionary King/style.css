@@ -86,14 +86,13 @@ ul{
     cursor: pointer;
     background: none;
     font-size: 20px;
-    right: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .history-list{
     color: #fff;
-    font-size: 15px;
+    font-size: 18px;
     display: none;
     margin: 0;
     padding: 0;
