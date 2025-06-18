@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <title>Dictionary King</title>
+    </head>
+    <body>
+        <nav>
+            <header>Who's the King of the English Dictionary?</header>
+            <div class="container">
+                <div class="box form-box">
+                    <div class="menu">
+                        <ul>
+                            <a href="" class="link">Home</a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="menu-wrapper">
+            <button class="rules" onclick="tooggle('rules')">Rules</button>
+            <ul class="dropdown-rules" id="dropdown-rules">
+                <li>
+                    <span>How to Play:</span>
+                    <p>The screen will show a forbidden word.</p>
+                    <p>Each player must quickly say a new English word that starts with a capital letter.</p>
+                    <p>If someone says the banned word or repeats a word that;s already been used, thry're eliminate.</p>
+                </li>
+            </ul>
+        </div>
+        <div class="vocabulary">
+            <div class="word" id="word"></div>
+            <button class="text" onclick="generate()">Generate</button>
+        </div>
+        <footer>&copy;Writer: Roy Yan</footer>
+    </body>
+    <script src="script.js"></script>
+</html>
