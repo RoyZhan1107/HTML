@@ -94,6 +94,15 @@ ul{
 .history-list{
     color: #fff;
     font-size: 15px;
+    display: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    max-width: 200px;
+    overflow-y: hidden;
+}
+.history-list li{
+    margin: 3px 0;
 }
 .menu-wrapper{
     position: absolute;

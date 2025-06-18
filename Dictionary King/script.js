@@ -34,7 +34,7 @@ function updatehistory(){
     });
 }
 
-function history(){
+function toggleHistory(){
     const list = document.getElementById("history-list");
     list.style.display = (list.style.display === "block") ?  "none" : "block";
 }
