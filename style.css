@@ -157,9 +157,6 @@ footer {
 }
 
 @media (max-width: 450px) {
-    .menu-label{
-        padding: 10px 10px;
-    }
     .link {
         font-size: 14px;
     }
