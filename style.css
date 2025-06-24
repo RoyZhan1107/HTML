@@ -137,23 +137,18 @@ footer {
 
 /* 響應式設計 */
 @media (max-width: 100%) {
-    .menu-label{
-        padding: 10px 10px;
-    }
+    
     nav, .menu-wrapper {
         flex-direction: column;
         align-items: center;
     }
-
     .menu-wrapper {
         margin-top: 6rem;
     }
-
     .menu-item span {
         top: 0;
         font-size: 18px;
     }
-
     .dropdown {
         position: static;
         width: 100%;
@@ -162,19 +157,19 @@ footer {
 }
 
 @media (max-width: 450px) {
+    .menu-label{
+        padding: 10px 10px;
+    }
     .link {
         font-size: 14px;
     }
-
     .Home {
         font-size: 18px;
     }
-
     .dropdown li a {
         font-size: 14px;
         padding: 8px;
     }
-
     .menu-label {
         font-size: 14px;
         padding: 8px 16px;
