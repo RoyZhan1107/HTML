@@ -171,9 +171,14 @@ footer {
         font-size: 14px;
         padding: 5px 10px;
     }
+    .dropdown{
+        position: static;
+        text-align: center;
+    }
     footer{
         text-align: center;
         padding: 10px 20px;
         font-size: 15px;
+        margin-top: 6rem;
     }
 }
