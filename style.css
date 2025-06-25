@@ -114,13 +114,23 @@ ul {
 .menu-item:hover .dropdown {
     display: block;
 }
-
+/* 語言 */
+.language{
+    left: 0;
+    position: relative;
+    flex-direction: column;
+    display: flex;
+}
+.language, .menu-item span{
+    left: 0;
+    display: flex;
+}
 /* 主內容區域 */
 .content {
     margin-top: 9rem;
     padding: 2rem;
     text-align: center;
-    font-size: 18px;
+    font-size: 18px;    
 }
 
 /* 頁尾 */
@@ -156,7 +166,7 @@ footer {
     }
 }
 
-@media (max-width: 450px) {
+@media (max-width: 400px) {
     .link {
         font-size: 14px;
     }
