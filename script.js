@@ -26,7 +26,7 @@ function language(lang){
         document.getElementById("content").textContent = "These websites are all beta versions.";
         document.getElementById("TSO").textContent = "Test-System-Online";
         document.getElementById("OOXX").textContent = "Tic-Tac-Toe";
-        document.getElementById("footer").innerHTML = "&copy; Writer: Roy Zhan<br> Our beta websites are still in active development.<br> They're available now to help us test if everything works as intended.<br>Some fetures are still missing, and we appreciate your patience and understanding!";
+        document.getElementById("footer").innerHTML = "&copy; Writer: Roy Zhan<br> Our beta websites are still in active development.<br> They're available now to help us test if everything <br> works as intended.<br>Some fetures are still missing, and we appreciate your <br> patience and understanding!";
     }
     else if(lang === "zh"){
         document.getElementById("header").textContent = "HTML 網站首頁";
