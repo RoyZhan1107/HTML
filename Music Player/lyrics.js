@@ -29,7 +29,9 @@ player.addEventListener("timeupdate", () => {
 
 // 載入對應 .txt 檔案的歌詞
 function loadLyrics(songName) {
-  const txtPath = `lyrics/${songName}.txt`;
+  // 移除括號及其內容，並去除空格
+  const cleanName = songName.replace(/\(.*\)/, "").trim();
+  const txtPath = `lyrics/${cleanName}.txt`;
 
   fetch(txtPath)
     .then(res => {
@@ -41,6 +43,7 @@ function loadLyrics(songName) {
       lyricsList.innerHTML = "<li>找不到歌詞</li>";
     });
 }
+
 
 // 解析 .txt 檔（內容需為 LRC 格式）
 function parseLRCFromTXT(txt) {
