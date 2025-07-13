@@ -1,4 +1,4 @@
-const player = document.getElementById("player");
+const player = document.getElementById("audio");
 const lyricsList = document.getElementById("lyrics-list");
 let lyricsMap = [];
 
