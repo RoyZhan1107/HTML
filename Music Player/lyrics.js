@@ -27,22 +27,22 @@ player.addEventListener("timeupdate", () => {
   }
 });
 
-// 載入對應 .txt 檔案的歌詞
 function loadLyrics(songName) {
-  // 移除括號及其內容，並去除空格
-  const cleanName = songName.replace(/\(.*\)/, "").trim();
+  const cleanName = songName.replace(/\(.*\)/g, "").trim().toLowerCase();  // e.g. Green(綠色) -> green
   const txtPath = `lyrics/${cleanName}.txt`;
 
   fetch(txtPath)
     .then(res => {
-      if (!res.ok) throw new Error("無法載入歌詞檔");
+      if (!res.ok) throw new Error("歌詞讀取失敗");
       return res.text();
     })
     .then(parseLRCFromTXT)
-    .catch(() => {
+    .catch(err => {
+      console.error(err);
       lyricsList.innerHTML = "<li>找不到歌詞</li>";
     });
 }
+
 
 
 // 解析 .txt 檔（內容需為 LRC 格式）
