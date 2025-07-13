@@ -2,6 +2,14 @@ const player = document.getElementById("player");
 const lyricsList = document.getElementById("lyrics-list");
 let lyricsMap = [];
 
+function showLyrics(index) {
+  const song = songQueue[index];
+  if (song) {
+    const name = song.name.split("(")[0].trim(); // 提取檔名
+    loadLyrics(name); // 呼叫載入對應歌詞
+  }
+}
+
 function loadLyrics(songName) {
   const txtPath = `lyrics/${encodeURIComponent(songName)}.txt`;
   fetch(txtPath)
