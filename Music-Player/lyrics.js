@@ -54,8 +54,9 @@ player.addEventListener("timeupdate", () => {
 
   const activeLine = document.getElementById(`line-${currentLineIndex}`);
   if (activeLine) {
+    const half = lyricsList.clientHeight / 2;
     lyricsList.scrollTo({
-      top: activeLine.offsetTop - 60,
+      top: activeLine.offsetTop - half,
       behavior: "smooth"
     });
   }
