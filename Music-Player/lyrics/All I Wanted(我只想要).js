@@ -1,3 +1,4 @@
+window.lyricsData = `
 [00:00.0]我只想要 - 七朵花
 [00:10.67]词：James Chu
 [00:21.35]曲：柯呈雄
@@ -45,4 +46,4 @@
 [03:52.33]我只想要和你在一起
 [03:57.6]You are my baby my darling
 [04:05.21]我只想要和你不分离
-[04:09.75]Be with you
+[04:09.75]Be with you`;
