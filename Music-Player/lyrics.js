@@ -11,18 +11,19 @@ function showLyrics(index) {
 }
 
 function loadLyrics(songName) {
-  const txtPath = `lyrics/${encodeURIComponent(songName)}.txt`;
+  const txtPath = `lyrics/${songName}.txt`;
+
   fetch(txtPath)
     .then(res => {
-      if (!res.ok) throw new Error(`載入失敗: ${res.status}`);
+      if (!res.ok) throw new Error("無法載入歌詞檔");
       return res.text();
     })
     .then(parseLRCFromTXT)
-    .catch(err => {
-      console.error(err);
+    .catch(() => {
       lyricsList.innerHTML = "<li>找不到歌詞</li>";
     });
 }
+
 
 function parseLRCFromTXT(txt) {
   lyricsMap = [];
