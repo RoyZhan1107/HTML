@@ -106,15 +106,19 @@ function removeFromQueue(index) {
     updateQueueDisplay();
 }
 // key function
-document.addEventListener("keydown", function(event) {
+document.addEventListener("keydown", function(e) {
     const audio = document.getElementById("audio");
     const speedSelect = document.getElementById("speed");
     const msgbox = document.getElementById("msgbox");    
 
-    const key = event.key.toLowerCase();
+    if(e.key === "arrowup" || e.key === "arrowdown") {
+        e.preventDefault(); // Prevent scrolling
+    }
+
+    const key = e.key.toLowerCase();
     switch(key) {
         case " ":
-            event.preventDefault();
+            e.preventDefault();
             if(audio.paused) {
                 audio.play();
                 showHint("▶");
@@ -150,8 +154,6 @@ document.addEventListener("keydown", function(event) {
     }
 });
 function showHint(message) {
-
-    
     hint.textContent = message;
     hint.style.display = "block";
     clearInterval(hint._timeout);
