@@ -166,8 +166,8 @@ function showHint(message) {
 function playCurrentSong(){
     if(currentIndex < songQueue.length){
         const song = songQueue[currentIndex];
-        player.src = song.url;
-        player.play();
+        audio.src = song.url;
+        audio.play();
         loadLyrics(song.name);
         updateQueueDisplay();
     }
@@ -208,8 +208,8 @@ function parseLRC(lrc) {
   });
 }
 
-player.addEventListener("timeupdate", () => {
-    const currentTime = player.currentTime;
+audio.addEventListener("timeupdate", () => {
+    const currentTime = audio.currentTime;
     const currentIndex = lyricsMap.findIndex((line, i) => {
         const next = lyricsMap[i + 1];
         return currentTime >= line.time && (!next || currentTime < next.time);
