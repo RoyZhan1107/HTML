@@ -1,9 +1,8 @@
-// 元素參考
 const player = document.getElementById("player");
 const lyricsList = document.getElementById("lyrics-list");
 let lyricsMap = [];
 
-// 每秒同步歌詞滾動
+// 播放器時間更新時，同步歌詞滾動
 player.addEventListener("timeupdate", () => {
   const currentTime = player.currentTime;
   const currentLineIndex = lyricsMap.findIndex((line, index) => {
@@ -27,25 +26,29 @@ player.addEventListener("timeupdate", () => {
   }
 });
 
+// 載入歌詞（從 .txt 檔）
 function loadLyrics(songName) {
-  const cleanName = songName.replace(/\(.*\)/g, "").trim().toLowerCase();  // e.g. Green(綠色) -> green
+  const cleanName = songName
+    .replace(/[()]/g, "")        // 移除括號
+    .replace(/\s+/g, "_")        // 空格換底線（若需要）
+    .replace(/\.mp3$/i, "")      // 移除.mp3
+    .trim();
+
   const txtPath = `lyrics/${cleanName}.txt`;
 
   fetch(txtPath)
     .then(res => {
-      if (!res.ok) throw new Error("歌詞讀取失敗");
+      if (!res.ok) throw new Error(`${res.status} ${res.statusText}`);
       return res.text();
     })
     .then(parseLRCFromTXT)
     .catch(err => {
-      console.error(err);
+      console.error("歌詞載入錯誤:", err);
       lyricsList.innerHTML = "<li>找不到歌詞</li>";
     });
 }
 
-
-
-// 解析 .txt 檔（內容需為 LRC 格式）
+// 解析 LRC 格式的 TXT 歌詞
 function parseLRCFromTXT(txt) {
   lyricsMap = [];
   lyricsList.innerHTML = "";
