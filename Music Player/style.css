@@ -1,0 +1,130 @@
+body{
+    background: #44FF66;
+}
+.player{
+    width: 100%;
+    margin-top: 20px;
+}
+.list{
+    max-height: 300px;
+    overflow-y: auto;
+}
+.list::-webkit-scrollbar{
+    width: 6px;
+}
+.list::-webkit-scrollbar-track{
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+.list::-webkit-scrollbar-thumb{
+    background: #A327FF;
+    border-radius: 10px;
+}
+#list li{
+    margin: 5px 0;
+    list-style: none;
+}
+.queue{
+    margin-top: 20px;
+    padding: 10px;
+    background: #d0ffd0;
+    border-radius: 10px;
+}
+audio{
+    width: 100%;
+    margin-top: 20px;
+}
+.msgbox{
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    padding: 30px;
+    border-radius: 16px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+    width: 20%;
+    color: #000;
+    margin-bottom: 15px;
+    align-items: center;
+}
+.msgbox span{
+    font-size: 20px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.msg-list{
+    list-style: none;
+    padding-left: 0;
+    line-height: 2;
+    font-size: 16px;
+    margin-bottom: 20px;
+    flex-direction: column;
+}
+.msg-list li{
+    border-bottom: 1px solid #e0e0e0;
+    padding: 6px 0;
+    line-height: 1.6;
+    display: flex;
+}
+.floatHint{
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    font-size: 18px;
+    z-index: 9999;
+    margin-left: 18rem;
+    display: none;
+    border-radius: 8px;
+}
+.container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 90vh;
+}
+.form-box header{
+    background: #24FF2D;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 30px;
+    border-radius: 25px;
+    box-shadow: 0 0 125px 0 rgba(0, 0, 0, 0.1),
+                0 30px 50px -45px rgba(0, 0, 0, 0.5);
+}
+.form-box{
+    width: 450px;
+    margin: 0px 10px;
+}
+.form-box header{
+    font-size: 25px;
+    font-weight: 600;
+    padding-bottom: 1px solid #ccc;
+    margin-bottom: 12px;
+    align-items: center;
+}
+.form-box form .song{
+    display: flex;
+    margin-bottom: 15px;
+    flex-direction: column;
+}
+.form-box form .input input{
+    height: 45px;
+    width: 100%;
+    font-size: 25px;
+    padding: 0 12px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+.text{
+    text-decoration: none;
+    color: #A327FF;
+}
