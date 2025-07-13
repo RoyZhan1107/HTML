@@ -84,6 +84,7 @@ function updateQueueDisplay(){
        const line = `<div id=item-${index} style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 5px;">
        <span>${index === currentIndex ? "▶ " : ""}${song.name}</span>
        <button onclick="removeFromQueue(${index})" style="margin-left: 10px;">Remove</button>
+       <button onclick="showLyrics(${index})" style="margin-left: 5px;">Lyrics</button>
        </div>
        `;
        content += line;
@@ -161,3 +162,67 @@ function showHint(message) {
         hint.style.display = "none";
     }, 1000);
 }
+// read lyrics file
+function playCurrentSong(){
+    if(currentIndex < songQueue.length){
+        const song = songQueue[currentIndex];
+        player.src = song.url;
+        player.play();
+        loadLyrics(song.name);
+        updateQueueDisplay();
+    }
+}
+// load lyrics
+function loadLyrics(songName) {
+    const lrcFile = `lyrics/${songName}.lrc`;
+    fetch(lrcFile)
+    .then(res => res.ok ? res.text() : Promise.reject("Lyrics not found"))
+    .then(text => parseLRC(text))
+    .catch(() => {
+        lyricsMap = [];
+        document.getElementById("lyrics-list").innerHTML = "<li>Lyrics not found.</li>";
+    });
+}
+// Parse LRC file
+function parseLRC(lrc) {
+  lyricsMap = [];
+  const list = document.getElementById("lyrics-list");
+  list.innerHTML = "";
+
+  const lines = lrc.split("\n");
+  for (let line of lines) {
+    const match = line.match(/\[(\d+):(\d+\.\d+)\](.*)/);
+    if (match) {
+      const time = parseInt(match[1]) * 60 + parseFloat(match[2]);
+      const text = match[3].trim();
+      lyricsMap.push({ time, text });
+    }
+  }
+
+  lyricsMap.forEach((line, index) => {
+    const li = document.createElement("li");
+    li.className = "lyrics-line";
+    li.id = "line-" + index;
+    li.textContent = line.text;
+    list.appendChild(li);
+  });
+}
+
+player.addEventListener("timeupdate", () => {
+    const currentTime = player.currentTime;
+    const currentIndex = lyricsMap.findIndex((line, i) => {
+        const next = lyricsMap[i + 1];
+        return currentTime >= line.time && (!next || currentTime < next.time);
+    });
+
+    if(currentIndex !== -1){
+        document.querySelectorAll(".lyrics-line").forEach((el, i) => {
+            el.classList.toggle("active", i === currentIndex);
+        });
+
+        const activeLine = document.getElementById("line-" + currentIndex);
+        if(activeLine) {
+            activeLine.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+    }
+});
