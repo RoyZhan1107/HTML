@@ -11,7 +11,7 @@ function showLyrics(index) {
 }
 
 function loadLyrics(songName) {
-  const fileName = encodeURIComponent(songName) + ".txt";
+  const fileName = encodeURIComponent(songName) + ".json";
   fetch(`lyrics/${fileName}`)
     .then(res => {
       if (!res.ok) throw new Error("載入失敗");
@@ -23,7 +23,6 @@ function loadLyrics(songName) {
       document.getElementById("lyrics-list").innerHTML = "<li>找不到歌詞</li>";
     });
 }
-
 
 
 function parseLRCFromTXT(txt) {
