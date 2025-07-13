@@ -1,67 +1,69 @@
-const player = document.getElementById("player");
+const player = document.getElementById("audio");
 const lyricsList = document.getElementById("lyrics-list");
 let lyricsMap = [];
 
-function showLyrics(index) {
-  const song = songQueue[index];
-  if (song) {
-    const name = song.name.split("(")[0].trim(); // 提取檔名
-    loadLyrics(name); // 呼叫載入對應歌詞
-  }
-}
-
+// 讀取歌詞檔（以 .txt 儲存）
 function loadLyrics(songName) {
-  const script = document.createElement("script");
-  script.src = `lyrics/${songName}.js`;
-  script.onload = () => {
-    if (window.lyricsData) {
-      parseLRCFromTXT(window.lyricsData);
-    }
-  };
-  script.onerror = () => {
-    lyricsList.innerHTML = "<li>歌詞載入失敗</li>";
-  };
-  document.body.appendChild(script);
+  fetch(`lyrics/${songName}.txt`)
+    .then(res => {
+      if (!res.ok) throw new Error("無法讀取歌詞");
+      return res.text();
+    })
+    .then(parseLyrics)
+    .catch(err => {
+      lyricsList.innerHTML = "<li>歌詞載入失敗</li>";
+      console.error(err);
+    });
 }
 
-function parseLRCFromTXT(txt) {
+// 解析時間格式為 [00:00.0] 的歌詞檔
+function parseLyrics(text) {
   lyricsMap = [];
   lyricsList.innerHTML = "";
-  txt.split("\n").forEach(v => {
-    const m = v.match(/\[(\d+):(\d+\.\d+)\](.*)/);
-    if (m) {
-      lyricsMap.push({
-        time: parseInt(m[1]) * 60 + parseFloat(m[2]),
-        text: m[3].trim()
-      });
+
+  const lines = text.split("\n");
+  lines.forEach((line, index) => {
+    const match = line.match(/\[(\d{2}):(\d{2}\.\d)\](.*)/);
+    if (match) {
+      const minutes = parseInt(match[1]);
+      const seconds = parseFloat(match[2]);
+      const time = minutes * 60 + seconds;
+      const lyric = match[3].trim();
+      lyricsMap.push({ time, text: lyric });
+
+      const li = document.createElement("li");
+      li.className = "lyrics-line";
+      li.id = `line-${index}`;
+      li.textContent = lyric;
+      lyricsList.appendChild(li);
     }
-  });
-  lyricsMap.forEach((ln,i) => {
-    const li = document.createElement("li");
-    li.className = "lyrics-line";
-    li.id = "line-" + i;
-    li.textContent = ln.text;
-    lyricsList.appendChild(li);
   });
 }
 
+// 歌詞滾動對齊播放進度
 player.addEventListener("timeupdate", () => {
-  const t = player.currentTime;
-  const idx = lyricsMap.findIndex((ln,i) => {
-    const next = lyricsMap[i+1];
-    return t >= ln.time && (!next || t < next.time);
+  const currentTime = player.currentTime;
+  const currentLineIndex = lyricsMap.findIndex((line, idx) => {
+    const next = lyricsMap[idx + 1];
+    return currentTime >= line.time && (!next || currentTime < next.time);
   });
-  if (idx !== -1) {
-    lyricsList.querySelectorAll(".lyrics-line").forEach((el,i) => {
-      el.style.color = i === idx ? "red" : "#888";
-      el.style.fontSize = i === idx ? "20px" : "14px";
+
+  document.querySelectorAll(".lyrics-line").forEach((el, i) => {
+    el.classList.toggle("active", i === currentLineIndex);
+  });
+
+  const activeLine = document.getElementById(`line-${currentLineIndex}`);
+  if (activeLine) {
+    lyricsList.scrollTo({
+      top: activeLine.offsetTop - 60,
+      behavior: "smooth"
     });
-    const active = document.getElementById(`line-${idx}`);
-    if (active) {
-      lyricsList.scrollTo({
-        top: active.offsetTop - lyricsList.clientHeight/2,
-        behavior: "smooth"
-      });
-    }
   }
 });
+
+// 手動設定要播放的音樂和歌詞（以檔名為基準）
+window.onload = () => {
+  const songName = "Green";
+  player.src = `Music/${songName}.mp3`;
+  loadLyrics(songName);
+};
