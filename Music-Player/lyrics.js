@@ -64,7 +64,7 @@ player.addEventListener("timeupdate", () => {
 
 // 手動設定要播放的音樂和歌詞（以檔名為基準）
 window.onload = () => {
-  const songName = "Green";
+  const songName = "I Like You";
   player.src = `Music/${songName}.mp3`;
   loadLyrics(songName);
 };
