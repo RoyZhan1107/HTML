@@ -11,18 +11,19 @@ function showLyrics(index) {
 }
 
 function loadLyrics(songName) {
-  const txtPath = `lyrics/${songName}.txt`;
-
-  fetch(txtPath)
+  const fileName = encodeURIComponent(songName) + ".txt";
+  fetch(`lyrics/${fileName}`)
     .then(res => {
-      if (!res.ok) throw new Error("無法載入歌詞檔");
+      if (!res.ok) throw new Error("載入失敗");
       return res.text();
     })
     .then(parseLRCFromTXT)
-    .catch(() => {
-      lyricsList.innerHTML = "<li>找不到歌詞</li>";
+    .catch(err => {
+      console.error(err);
+      document.getElementById("lyrics-list").innerHTML = "<li>找不到歌詞</li>";
     });
 }
+
 
 
 function parseLRCFromTXT(txt) {
