@@ -163,66 +163,80 @@ function showHint(message) {
     }, 1000);
 }
 // read lyrics file
-function playCurrentSong(){
-    if(currentIndex < songQueue.length){
-        const song = songQueue[currentIndex];
-        audio.src = song.url;
-        audio.play();
-        loadLyrics(song.name);
-        updateQueueDisplay();
-    }
-}
-// load lyrics
+const player = document.getElementById("player");
+const lyricsList = document.getElementById("lyrics-list");
+let lyricsMap = [];
+
+player.addEventListener("timeupdate", () => {
+  const currentTime = player.currentTime;
+  const currentLineIndex = lyricsMap.findIndex((line, index) => {
+    const next = lyricsMap[index + 1];
+    return currentTime >= line.time && (!next || currentTime < next.time);
+  });
+
+  if (currentLineIndex !== -1) {
+    document.querySelectorAll(".lyrics-line").forEach((el, i) => {
+      el.style.color = i === currentLineIndex ? "red" : "#000";
+      el.style.fontSize = i === currentLineIndex ? "20px" : "14px";
+    });
+
+    lyricsList.scrollTo({
+      top: document.getElementById("line-" + currentLineIndex).offsetTop - 60,
+      behavior: "smooth"
+    });
+  }
+});
+
 function loadLyrics(songName) {
-    const lrcFile = `lyrics/${songName}.lrc`;
-    fetch(lrcFile)
-    .then(res => res.ok ? res.text() : Promise.reject("Lyrics not found"))
-    .then(text => parseLRC(text))
+  const base = "lyrics/" + songName;
+  const lrcPath = base + ".lrc";
+  const txtPath = base + ".txt";
+
+  fetch(lrcPath)
+    .then(res => res.ok ? res.text() : Promise.reject())
+    .then(parseLRC)
     .catch(() => {
-        lyricsMap = [];
-        document.getElementById("lyrics-list").innerHTML = "<li>Lyrics not found.</li>";
+      // fallback: try .txt
+      fetch(txtPath)
+        .then(res => res.text())
+        .then(parsePlainLyrics)
+        .catch(() => {
+          lyricsList.innerHTML = "<li>找不到歌詞</li>";
+        });
     });
 }
-// Parse LRC file
-function parseLRC(lrc) {
-  lyricsMap = [];
-  const list = document.getElementById("lyrics-list");
-  list.innerHTML = "";
 
-  const lines = lrc.split("\n");
-  for (let line of lines) {
+function parseLRC(lrcText) {
+  lyricsMap = [];
+  lyricsList.innerHTML = "";
+  const lines = lrcText.split("\n");
+  lines.forEach((line, index) => {
     const match = line.match(/\[(\d+):(\d+\.\d+)\](.*)/);
     if (match) {
       const time = parseInt(match[1]) * 60 + parseFloat(match[2]);
       const text = match[3].trim();
       lyricsMap.push({ time, text });
     }
-  }
+  });
 
   lyricsMap.forEach((line, index) => {
     const li = document.createElement("li");
     li.className = "lyrics-line";
     li.id = "line-" + index;
     li.textContent = line.text;
-    list.appendChild(li);
+    lyricsList.appendChild(li);
   });
 }
 
-audio.addEventListener("timeupdate", () => {
-    const currentTime = audio.currentTime;
-    const currentIndex = lyricsMap.findIndex((line, i) => {
-        const next = lyricsMap[i + 1];
-        return currentTime >= line.time && (!next || currentTime < next.time);
-    });
-
-    if(currentIndex !== -1){
-        document.querySelectorAll(".lyrics-line").forEach((el, i) => {
-            el.classList.toggle("active", i === currentIndex);
-        });
-
-        const activeLine = document.getElementById("line-" + currentIndex);
-        if(activeLine) {
-            activeLine.scrollIntoView({ behavior: "smooth", block: "center" });
-        }
-    }
-});
+function parsePlainLyrics(txt) {
+  lyricsMap = [];
+  lyricsList.innerHTML = "";
+  const lines = txt.split("\n");
+  lines.forEach((line, index) => {
+    const li = document.createElement("li");
+    li.className = "lyrics-line";
+    li.id = "line-" + index;
+    li.textContent = line.trim();
+    lyricsList.appendChild(li);
+  });
+}
