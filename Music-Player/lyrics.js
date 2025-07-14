@@ -58,9 +58,10 @@ player.addEventListener("timeupdate", () => {
 
     const currentLine = document.getElementById(`line-${currentLineIndex}`);
     if (currentLine) {
+      const maxScroll = lyricsList.scrollHeight - lyricsList.clientHeight;
       const scrollOffset = currentLine.offsetTop - lyricsList.clientHeight / 2 + currentLine.clientHeight / 2;
       lyricsList.scrollTo({
-        top: scrollOffset,
+        top: Math.min(scrollOffset, maxScroll),
         behavior: "smooth"
       });
     }
