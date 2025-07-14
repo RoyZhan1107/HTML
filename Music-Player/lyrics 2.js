@@ -1,57 +1,65 @@
 const player = document.getElementById("audio");
 const lyricsList = document.getElementById("lyrics-list");
-let lyricsMap = [], currentLineIndex = -1;
+let lyricsMap = [];
+let currentLineIndex = -1;
 
 function loadLyrics(songName) {
   fetch(`lyrics/${songName}.txt`)
-    .then(res => {
-      if (!res.ok) throw new Error(res.status);
-      return res.text();
-    })
+    .then(res => res.ok ? res.text() : Promise.reject("歌詞載入失敗"))
     .then(parseLyrics)
     .catch(err => {
-      console.error("載入錯誤:", err);
-      lyricsList.innerHTML = "<li>歌詞載入失敗</li>";
+      console.error(err);
+      lyricsList.innerHTML = "<li>找不到歌詞</li>";
     });
 }
 
 function parseLyrics(txt) {
   lyricsMap = [];
   lyricsList.innerHTML = "";
-  txt.split("\n").forEach((line, idx) => {
-    const m = line.match(/\[(\d{2}):(\d{2}(?:\.\d+)?)\](.*)/);
-    if (m) {
-      const time = parseInt(m[1]) * 60 + parseFloat(m[2]);
-      lyricsMap.push({ time, text: m[3].trim() });
+
+  txt.split("\n").forEach((line, index) => {
+    const match = line.match(/\[(\d{2}):(\d{2}(?:\.\d+)?)\](.*)/);
+    if (match) {
+      const time = parseInt(match[1]) * 60 + parseFloat(match[2]);
+      const text = match[3].trim();
+      lyricsMap.push({ time, text });
+
       const li = document.createElement("li");
-      li.id = `line-${idx}`;
-      li.textContent = m[3].trim();
+      li.className = "lyrics-line";
+      li.id = `line-${index}`;
+      li.textContent = text;
       lyricsList.appendChild(li);
     }
   });
 }
 
 player.addEventListener("timeupdate", () => {
-  const t = player.currentTime;
-  const idx = lyricsMap.findIndex((l,i) => {
-    const next = lyricsMap[i+1];
-    return t >= l.time && (!next || t < next.time);
+  const currentTime = player.currentTime;
+
+  const index = lyricsMap.findIndex((line, i) => {
+    const next = lyricsMap[i + 1];
+    return currentTime >= line.time && (!next || currentTime < next.time);
   });
-  if (idx !== -1 && idx !== currentLineIndex) {
-    currentLineIndex = idx;
+
+  if (index !== -1 && index !== currentLineIndex) {
+    currentLineIndex = index;
+
     document.querySelectorAll(".lyrics-line").forEach((el, i) => {
-      el.classList.toggle("active", i === idx);
+      el.classList.toggle("active", i === index);
     });
-    const active = document.getElementById(`line-${idx}`);
-    if (active) {
-      const top = active.offsetTop - lyricsList.clientHeight/2;
-      lyricsList.scrollTo({ top, behavior: "smooth" });
+
+    const activeLine = document.getElementById(`line-${index}`);
+    if (activeLine) {
+      const scrollContainer = lyricsList;
+      const scrollOffset = activeLine.offsetTop - scrollContainer.offsetTop - scrollContainer.clientHeight / 2 + activeLine.clientHeight / 2;
+      scrollContainer.scrollTo({ top: scrollOffset, behavior: "smooth" });
     }
   }
 });
 
-// 页面初始化
+// Example usage on page load
 window.onload = () => {
-  player.src = "Music/I Like You.mp3";
-  loadLyrics("I Like You");
+  const songName = "I Like You"; // 檔名不含副檔名
+  player.src = `Music/${songName}.mp3`;
+  loadLyrics(songName);
 };
