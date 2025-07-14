@@ -84,10 +84,10 @@ audio{
     display: none;
     border-radius: 8px;
 }
-/* .lyrics-list{
+.lyrics-list{
     max-height: 250px;
     overflow-y: auto;
-} */
+}
 .lyrics{
     overflow-y: auto;
     max-height: 75vh;
