@@ -85,7 +85,7 @@ audio{
     border-radius: 8px;
 }
 .lyrics-list{
-    max-height: 250px;
+    max-height: 50vh;
     overflow-y: auto;
 }
 .lyrics{
@@ -94,6 +94,7 @@ audio{
     text-align: center;
     font-size: 18px;
     color: #000;
+    text-decoration: none;
 }
 .lyrics-line{
     color: #000;
