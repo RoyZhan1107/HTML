@@ -86,7 +86,7 @@ audio{
 }
 .lyrics-list{
     max-height: 250px;
-    overflow-y: auto; padding: 0; margin: 0; list-style: none;
+    overflow-y: auto;
 }
 .lyrics{
     overflow-y: hidden;
