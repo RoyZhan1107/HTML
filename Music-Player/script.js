@@ -174,3 +174,16 @@ function showHint(message) {
         hint.style.display = "none";
     }, 1000);
 }
+// Show Lyrics for the Current Song
+songLinks.forEach((link, index) => {
+    link.addEventListener("click", function(e) {
+        e.preventDefault();
+
+        const url = this.getAttribute("href");
+        const name = url.split("/").pop().replace(".mp3", "");
+        
+        player.src = url;
+        player.play();
+        loadLyrics(name);
+    });
+});

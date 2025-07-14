@@ -54,9 +54,9 @@ function loadLyrics(songName) {
     });
 }
 
-// 頁面載入時播放指定歌曲並載入歌詞
-window.onload = () => {
-  const songName = "boyfriend"; // 改成你的音樂名稱
-  player.src = `Music/${songName}.mp3`;
-  loadLyrics(songName);
-};
+// // 頁面載入時播放指定歌曲並載入歌詞
+// window.onload = () => {
+//   const songName = "boyfriend"; // 改成你的音樂名稱
+//   player.src = `Music/${songName}.mp3`;
+//   loadLyrics(songName);
+// };
