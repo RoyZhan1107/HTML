@@ -1,7 +1,7 @@
 const player = document.getElementById("audio");
 const lyricsList = document.getElementById("lyrics-list");
 let lyricsMap = [];
-let currentLineIndex = -1;
+// let currentLineIndex = -1;
 
 function loadLyrics(songName) {
   fetch(`lyrics/${songName}.txt`)
@@ -33,37 +33,33 @@ function parseLyrics(txt) {
   });
 }
 
+let lastLineIndex = -1;  // 全域變數
 
 player.addEventListener("timeupdate", () => {
   const currentTime = player.currentTime;
-
-  const index = lyricsMap.findIndex((line, i) => {
-    const next = lyricsMap[i + 1];
+  const currentLineIndex = lyricsMap.findIndex((line, idx) => {
+    const next = lyricsMap[idx + 1];
     return currentTime >= line.time && (!next || currentTime < next.time);
   });
 
-  // ✅ 只有當歌詞行數真的有變動時才更新樣式與滾動
-  if (index !== -1 && index !== currentLineIndex) {
-    currentLineIndex = index;
+  if (currentLineIndex === -1 || currentLineIndex === lastLineIndex) return;
 
-    // 更新樣式
-    document.querySelectorAll(".lyrics-line").forEach((el, i) => {
-      el.style.color = i === index ? "red" : "#000";
-      el.style.fontSize = i === index ? "20px" : "14px";
+  lastLineIndex = currentLineIndex;
+
+  document.querySelectorAll(".lyrics-line").forEach((el, i) => {
+    el.classList.toggle("active", i === currentLineIndex);
+  });
+
+  const activeLine = document.getElementById(`line-${currentLineIndex}`);
+  if (activeLine) {
+    const half = lyricsList.clientHeight / 2;
+    lyricsList.scrollTo({
+      top: activeLine.offsetTop - half,
+      behavior: "smooth"
     });
-
-    // 滾動
-    const activeLine = document.getElementById(`line-${index}`);
-    if (activeLine) {
-      const scrollContainer = lyricsList;
-      const scrollOffset = activeLine.offsetTop - scrollContainer.offsetTop - scrollContainer.clientHeight / 2 + activeLine.clientHeight / 2;
-      scrollContainer.scrollTo({
-        top: scrollOffset,
-        behavior: "smooth"
-      });
-    }
   }
 });
+
 
 
 // Example usage on page load
