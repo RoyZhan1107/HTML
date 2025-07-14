@@ -1,3 +1,15 @@
+// Music Search Switch
+function Search(event){
+    event.preventDefault();
+    const search = document.getElementById("search");
+    search.style.display = (search.style.display === "block") ? "none" : "block";
+}
+// Music Song List Switch
+function SongList(event){
+    event.preventDefault();
+    const list = document.getElementById("list");
+    list.style.display = (list.style.display === "block") ? "none" : "block";
+}
 const hint = document.getElementById("floatHint");
 
 // Search Bar Functionality
@@ -162,4 +174,3 @@ function showHint(message) {
         hint.style.display = "none";
     }, 1000);
 }
-

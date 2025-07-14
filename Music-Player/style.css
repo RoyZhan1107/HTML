@@ -1,6 +1,9 @@
 body{
     background: #44FF66;
 }
+.search{
+    display: none;
+}
 .player{
     width: 100%;
     margin-top: 20px;
@@ -19,6 +22,9 @@ body{
 .list::-webkit-scrollbar-thumb{
     background: #A327FF;
     border-radius: 10px;
+}
+.list{
+    display: none;
 }
 #list li{
     margin: 5px 0;
@@ -85,7 +91,8 @@ audio{
     border-radius: 8px;
 }
 .lyrics-list{
-    max-height: 50vh;
+    list-style: none;
+    max-height: 55vh;
     overflow-y: auto;
 }
 .lyrics{

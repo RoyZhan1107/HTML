@@ -11,12 +11,14 @@
         <div class="container">
             <div class="box form-box">
                 <header>Music Player</header>
+                <a href="#" onclick="Search(event)" id="search-btn" class="text">🔍 搜尋</a>
                 <form action="" method="post">
-                    <div class="song input">
-                        <input type="text" id="search" onkeyup="onSearch()" placeholder="Search for song...">
+                    <div class="song input" id="song-input">
+                        <input type="text" id="search" class="search" onkeyup="onSearch()" placeholder="Search for song...">
                     </div>
-                    <div class="list">
-                        <ul id="list">    
+                    <a href="#" onclick="SongList(event)" id="song-list-btn" class="text">🎵歌曲列表</a>
+                    <div>
+                        <ul id="list" class="list">
                             <li><a href="Music/綠色.mp3" class="text" target="_blank">Green(綠色)</a></li>
                             <li><a href="Music/我只想要.mp3" class="text" target="_blank">All I Wanted(我只想要)</a></li>
                             <li><a href="Music/姐姐戀愛吧.mp3" class="text" target="_blank">Sis, Go Fall in Love(姐姐戀愛吧)</a></li>
@@ -53,7 +55,7 @@
                         <strong>Queue:</strong>
                     </div>
                     <div class="lyrics" id="lyrics-box">
-                        <ul id="lyrics-list" class="lyrics-list"></ul>
+                        <ul id="lyrics-list" class="lyrics-list" style="text-decoration: none;"></ul>
                     </div>
                     <audio src="" class="player" id="audio" controls autoplay ></audio>
                     <div class="floatHint" id="floatHint"></div>
