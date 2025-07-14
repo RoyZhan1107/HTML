@@ -90,22 +90,11 @@ audio{
 }
 .lyrics{
     overflow-y: auto;
-    max-height: 75vh;
+    height: 50vh;
     text-align: center;
     font-size: 18px;
     color: #000;
 }
-/* .lyrics::-webkit-scrollbar{
-    width: 6px;
-}
-.lyrics::-webkit-scrollbar-track{
-    background: #f1f1f1;
-    border-radius: 10px;
-}
-.lyrics::-webkit-scrollbar-thumb{
-    background: #A327FF;
-    border-radius: 10px;
-} */
 .lyrics-line{
     color: #000;
     font-size: 16px;
