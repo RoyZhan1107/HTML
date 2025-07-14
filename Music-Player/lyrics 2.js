@@ -56,7 +56,7 @@ function loadLyrics(songName) {
 
 // 頁面載入時播放指定歌曲並載入歌詞
 window.onload = () => {
-  const songName = "I Like You"; // 改成你的音樂名稱
+  const songName = "boyfriend"; // 改成你的音樂名稱
   player.src = `Music/${songName}.mp3`;
   loadLyrics(songName);
 };
