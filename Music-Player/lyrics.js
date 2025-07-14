@@ -58,7 +58,7 @@ player.addEventListener("timeupdate", () => {
 
     const currentLine = document.getElementById(`line-${currentLineIndex}`);
     if (currentLine) {
-      currentLine.scrollIntoView({ behavior: "smooth", block: "start" });
+      currentLine.scrollIntoView({ top: lineTop, behavior: "smooth" });
     }
   }
 });
