@@ -33,6 +33,7 @@ function parseLyrics(txt) {
   });
 }
 
+
 player.addEventListener("timeupdate", () => {
   const currentTime = player.currentTime;
 
@@ -41,21 +42,29 @@ player.addEventListener("timeupdate", () => {
     return currentTime >= line.time && (!next || currentTime < next.time);
   });
 
+  // ✅ 只有當歌詞行數真的有變動時才更新樣式與滾動
   if (index !== -1 && index !== currentLineIndex) {
     currentLineIndex = index;
 
+    // 更新樣式
     document.querySelectorAll(".lyrics-line").forEach((el, i) => {
-      el.classList.toggle("active", i === index);
+      el.style.color = i === index ? "red" : "#000";
+      el.style.fontSize = i === index ? "20px" : "14px";
     });
 
+    // 滾動
     const activeLine = document.getElementById(`line-${index}`);
     if (activeLine) {
       const scrollContainer = lyricsList;
       const scrollOffset = activeLine.offsetTop - scrollContainer.offsetTop - scrollContainer.clientHeight / 2 + activeLine.clientHeight / 2;
-      scrollContainer.scrollTo({ top: scrollOffset, behavior: "smooth" });
+      scrollContainer.scrollTo({
+        top: scrollOffset,
+        behavior: "smooth"
+      });
     }
   }
 });
+
 
 // Example usage on page load
 window.onload = () => {

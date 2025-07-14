@@ -107,7 +107,7 @@ audio{
     color: #000;
     font-size: 16px;
     line-height: 1.5;
-    transition: all 0.3s ease;
+    transition: color 0.3s ease, font-size 0.3s ease;
 }
 .lyrics-line.active{
     color: #00A2E8;
