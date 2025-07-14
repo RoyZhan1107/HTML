@@ -89,8 +89,8 @@ audio{
     overflow-y: auto;
 }
 .lyrics{
-    overflow-y: hidden;
-    max-height: 200px;
+    overflow-y: auto;
+    max-height: 250px;
     text-align: center;
     font-size: 18px;
     color: #000;
