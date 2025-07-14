@@ -84,18 +84,18 @@ audio{
     display: none;
     border-radius: 8px;
 }
-.lyrics-list{
+/* .lyrics-list{
     max-height: 250px;
     overflow-y: auto;
-}
+} */
 .lyrics{
     overflow-y: auto;
-    max-height: 250px;
+    max-height: 75vh;
     text-align: center;
     font-size: 18px;
     color: #000;
 }
-.lyrics::-webkit-scrollbar{
+/* .lyrics::-webkit-scrollbar{
     width: 6px;
 }
 .lyrics::-webkit-scrollbar-track{
@@ -105,7 +105,7 @@ audio{
 .lyrics::-webkit-scrollbar-thumb{
     background: #A327FF;
     border-radius: 10px;
-}
+} */
 .lyrics-line{
     color: #000;
     font-size: 16px;
