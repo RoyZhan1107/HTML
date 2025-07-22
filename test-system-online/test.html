@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="zh-tw" http-equiv="Content-Language"/>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+        <link rel="stylesheet" href="style.css">
+        <title>檢定線上模擬測驗</title>
+    </head>
+    <body>
+        <div class="top-menu">
+            <li><button onclick="sendEmail()">將答案寄送到email</button></li>
+        </div>
+        <table id="dataTable" cellpadding="5" style="width: 100%;" class="table">
+            <tr>
+                <td>姓名</td>
+                <td>王小明</td>
+                <td>學科測試編號</td>
+                <td>A12345678</td>
+                <td>跳轉到</td>
+                <td>座號:</td>
+            </tr>
+            <tr>
+                <td>職類名稱</td>
+                <td>
+                    <select name="" id="JobCategory">
+                        <option value="">---請選擇---</option>
+                        <option value="02800">02800工業電子</option>
+                        <option value="11800">11800電腦軟體應用</option>
+                        <option value="11900">11900電腦軟體設計</option>
+                        <option value="12000">12000電腦硬體裝修</option>
+                        <option value="11700">11700數位電子乙級</option>
+                        <option value="12001">12000電腦硬體裝修乙級</option>
+                    </select>
+                </td>
+                <td>剩餘時間</td>
+                <td>
+                    <div class="countdown" id="countdown">
+                        <label for="countdown">請選擇職類以開始倒計時</label>
+                        <script src="exam-countdown.js"></script>
+                    </div>
+                </td>
+                <td>
+                    <select name="" id="option">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                    </select>
+                    題
+                </td>
+                <td style="font-size: 30px;">1118</td>
+            </tr>
+            <tr>
+                <td>字型大小</td>
+                <td>
+                    <select name="fontSizeSelect" id="fontSizeSelect" onchange="changeFontSize()">
+                        <option value="15" selected>1</option>
+                        <option value="24">2</option>
+                        <option value="36">3</option>
+                        <option value="48">4</option>
+                    </select>
+                    <script src="font-size.js"></script>
+                </td>
+                <td>測驗日期</td>
+                <td>
+                    <script>
+                        const now = new Date();
+                        const year = now.getFullYear();
+                        const month = String(now.getMonth() + 1).padStart(2, '0');
+                        const day = String(now.getDate()).padStart(2, '0');
+                        document.write(`${year}-${month}-${day}`);
+                    </script>
+                </td>
+                <td><button onclick="queTotal(event)">題目總攬</button></td>
+                <td><button name="countdouwnBtn" id="countdownBtn">提前交卷</button></td>
+                <script src="15min-coutdown.js"></script>
+            </tr>
+        </table>
+        <div class="que-total" id="que-total">
+
+        </div>
+        <table id="question table" cellpadding="5" style="width: 100%;" class="table2" >
+            <style href="test.css"></style>
+            <tr><th><label for="" id="question">題目內容</label></th></tr>
+            <tr><th><input type="radio" id="option1" value="1"><label for="option1">選項一</label></th></tr>
+            <tr><th><input type="radio" id="option2" value="2"><label for="option2">選項二</label></th></tr>
+            <tr><th><input type="radio" id="option3" value="3"><label for="option3">選項三</label></th></tr>
+            <tr><th><input type="radio" id="option4" value="4"><label for="option4">選項四</label></th></tr>
+            <tr><td><th><img id="que-img" src="" alt="題目圖片" style="max-width: 200px;"></th></td></tr>
+            <tr>
+                <th><button onclick="Previous()">上一題</button></th>
+                <th><button onclick="Next()">下一題</button></th>
+            </tr>
+        </table>
+        <script src="qeustion.js"></script>
+    </body>
+</html>
