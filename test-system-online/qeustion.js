@@ -7,17 +7,18 @@ document.getElementById("JobCategory").addEventListener("change", function(){
     if(category){
         fetch(`question/${category}.json`)
             .then(res => {
-                if(!res.ok) throw new Error("載入錯誤");
-                })
-            .then(data => {
-                question = data;
-                currentQuestionIndex = 0;
-                loadQuestion(currentQuestionIndex);
-            })
-            .catch(err => {
-                console.error("載入失敗: ",err);
-                alert("無法載入題庫檔案");
-            });
+            console.log("fetch 回應狀態:", res.status, res.ok);
+            if (!res.ok) throw new Error(`fetch 錯誤: ${res.status}`);
+            return res.json();
+        })
+        .then(data => {
+            console.log("讀到 JSON:", data);
+            // 處理題庫
+        })
+        .catch(err => {
+            console.error("Q 檔載入失敗:", err);
+            alert("題庫載入失敗，請開發者查看 console");
+        });
     }
 });
 // 載入題目
