@@ -1,5 +1,5 @@
 let timerInterval;
-let countdownEnd;
+let cdEnd;
 
 document.getElementById('JobCategory').addEventListener('change', function(){
     const selected = this.value;
@@ -8,7 +8,7 @@ document.getElementById('JobCategory').addEventListener('change', function(){
         //設定倒計時總秒數
         const countdown = 60 * 15; // 15 分鐘的秒數
         // 計數倒計時結束時間
-        const cdEnd = Date.now() + countdown * 1000;
+        cdEnd = Date.now() + countdown * 1000;
         // 若已經有 timerInterval，先清除再重新啟動
         if(timerInterval) clearInterval(timerInterval);
         // 啟動倒數
@@ -35,8 +35,3 @@ function upCountdown(){
     // 更新倒計時顯示
     document.getElementById('countdownBtn').textContent = `${String(minutes).padStart(2, '0')}: ${String(seconds).padStart(2, '0')}`;
 }
-
-// 每秒更新一次倒計時
-const timer = setInterval(upCountdown, 1000);
-// 初始顯示
-upCountdown();
