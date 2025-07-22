@@ -31,7 +31,6 @@ function displayQuestion(){
 }
 
 function Next(){
-    currentIndex--;
     if(currentIndex < questions.length - 1){
         currentIndex++;
         displayQuestion();
