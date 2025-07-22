@@ -40,7 +40,7 @@ function loadQuestion(index){
     }
 }
 
-function nextQuestion(){
+function Next(){
     if(currentQuestionIndex < question.length - 1){
         currentQuestionIndex++;
         loadQuestion(currentQuestionIndex);
