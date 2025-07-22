@@ -1,6 +1,6 @@
 // 載入題庫 json 檔
 let questions = [];
-let currentQuestionIndex = 0;
+
 // 根據職類名稱正確載入
 document.getElementById("JobCategory").addEventListener("change", function(){
     const category = this.value;
@@ -39,12 +39,24 @@ function loadQuestion(index){
         }
     }
 }
+let currentIndex = 0;
 
 function Next(){
-    if(currentQuestionIndex < question.length - 1){
-        currentQuestionIndex++;
-        loadQuestion(currentQuestionIndex);
+    currentIndex++;
+    if(currentIndex >= questions.length){
+        alert("已經是最後一題");
+        currentIndex = questions.length - 1;
     }else{
-        alert("已經是最後一題")
+        loadQuestion(currentIndex);
+    }
+}
+
+function Prev(){
+    currentIndex--;
+    if(currentIndex <0){
+        alert("這是第一題!");
+        currentIndex = 0;
+    }else{
+        loadQuestion(currentIndex);
     }
 }
