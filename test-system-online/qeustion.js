@@ -19,11 +19,12 @@ function loadQuestion(category){
 // 載入題目
 function displayQuestion(){
     const q = questions[currentIndex];
-    document.getElementById('question').textContent = q.question;
-    document.getElementById('label1').textContent = q.options[0];
-    document.getElementById('label2').textContent = q.options[1];
-    document.getElementById('label3').textContent = q.options[2];
-    document.getElementById('label4').textContent = q.options[3];
+    document.getElementById("question").textContent = q.question;
+
+    document.querySelector("label[for='option1']").textContent = q.options[0];
+    document.querySelector("label[for='option2']").textContent = q.options[1];
+    document.querySelector("label[for='option3']").textContent = q.options[2];
+    document.querySelector("label[for='option4']").textContent = q.options[3];
 
     ['option1', 'option2', 'option3', 'option4'].forEach(id => {
         document.getElementById(id).checked = false;
