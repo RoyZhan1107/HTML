@@ -1,6 +1,6 @@
 // 載入題庫 json 檔
 let questions = [];
-
+let currentIndex = 0;
 // 根據職類名稱正確載入
 document.getElementById("JobCategory").addEventListener("change", function(){
     const category = this.value;
@@ -39,7 +39,6 @@ function loadQuestion(index){
         }
     }
 }
-let currentIndex = 0;
 
 function Next(){
     currentIndex++;
@@ -51,7 +50,7 @@ function Next(){
     }
 }
 
-function Prev(){
+function Previous(){
     currentIndex--;
     if(currentIndex <0){
         alert("這是第一題!");
