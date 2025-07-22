@@ -2,60 +2,45 @@
 let questions = [];
 let currentIndex = 0;
 // 根據職類名稱正確載入
-document.getElementById("JobCategory").addEventListener("change", function(){
-    const category = this.value;
-    if(category){
-        fetch(`question/${category}.json`)
-            .then(res => {
-            console.log("fetch 回應狀態:", res.status, res.ok);
-            if (!res.ok) throw new Error(`fetch 錯誤: ${res.status}`);
+function loadQuestion(category){
+    fetch(`question/${category}.json`)
+        .then(res => {
+            if(!res.ok) throw new Error('載入失敗');
             return res.json();
         })
         .then(data => {
-            console.log("讀到 JSON:", data);
-            // 處理題庫
+            questions = data;
+            currentIndex = 0;
+            displayQuestion();
         })
-        .catch(err => {
-            console.error("Q 檔載入失敗:", err);
-            alert("題庫載入失敗，請開發者查看 console");
-        });
-    }
-});
+        .catch(err => console.error('讀到 JSON 但顯示失敗:', err));
+}
+
 // 載入題目
-function loadQuestion(index){
-    const q = questions[index];
-    if(!q) return;
+function displayQuestion(){
+    const q = questions[currentIndex];
+    document.getElementById('question').textContent = q.question;
+    document.getElementById('label1').textContent = q.options[0];
+    document.getElementById('label2').textContent = q.options[1];
+    document.getElementById('label3').textContent = q.options[2];
+    document.getElementById('label4').textContent = q.options[3];
 
-    document.getElementById("question").innerText = q.question;
-    document.getElementById("que-img").src = q.image;
-
-    for(let i = 0; i < 4; i++){
-        const opt = document.getElementById(`opetion${i + 1}`);
-        const label = document.getElementById(`label${i + 1}`);
-        if(opt && label){
-            opt.checked = false;
-            opt.value = q.options[i]
-            label.innerText = q.options[i];
-        }
-    }
+    ['option1', 'option2', 'option3', 'option4'].forEach(id => {
+        document.getElementById(id).checked = false;
+    });
 }
 
 function Next(){
-    currentIndex++;
-    if(currentIndex >= questions.length){
-        alert("已經是最後一題");
-        currentIndex = questions.length - 1;
-    }else{
-        loadQuestion(currentIndex);
+    currentIndex--;
+    if(currentIndex < questions.length - 1){
+        currentIndex++;
+        displayQuestion();
     }
 }
 
 function Previous(){
-    currentIndex--;
-    if(currentIndex <0){
-        alert("這是第一題!");
-        currentIndex = 0;
-    }else{
-        loadQuestion(currentIndex);
+        if(currentIndex > 0){
+        currentIndex++;
+        displayQuestion();
     }
 }
