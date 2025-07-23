@@ -33,10 +33,9 @@ function renderQuestion(index){
     for(let i = 0; i < 4; i++){
         document.getElementById(`label${i + 1}`).textContent = q.options[i];
         document.getElementById(`option${i + 1}`).value = q.options[i];
-
-        // 清空 label 內容
         if(!radioEl || labelEl) continue;
-
+    }
+        // 清空 label 內容
         radioEl.value = optionText;
 
         // 判斷是否為圖片路徑
@@ -47,7 +46,6 @@ function renderQuestion(index){
             // 顯示文字
             labelEl.textContent = optionText;
         }
-    }
 }
 function Next(){
     if(currentIndex < questions.length - 1){
