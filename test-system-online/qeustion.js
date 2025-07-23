@@ -34,8 +34,22 @@ function renderQuestion(index){
         document.getElementById(`label${i + 1}`).textContent = q.options[i];
         document.getElementById(`option${i + 1}`).value = q.options[i];
     }
-}
 
+    // 清空 label 內容
+    labelEl.innerHTML = "";
+
+    // 判斷是否為圖片路徑
+    if (/\.(jpg|jpeg|png|gif|svg)$/i.test(optionVal.trim())) {
+    const img = document.createElement("img");
+    img.src = optionVal.trim();
+    img.alt = `選項 ${i + 1}`;
+    img.style.maxHeight = "80px"; // 你可自行調整大小
+    labelEl.appendChild(img);
+    } else {
+    labelEl.textContent = optionVal;
+    }
+
+}
 function Next(){
     if(currentIndex < questions.length - 1){
         currentIndex++;
