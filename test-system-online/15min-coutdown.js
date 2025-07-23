@@ -1,3 +1,4 @@
+let timerInterval;
 let cdEnd;
 
 document.getElementById('JobCategory').addEventListener('change', function(){
@@ -18,7 +19,7 @@ document.getElementById('JobCategory').addEventListener('change', function(){
     }
 });
 
-function upCountdown(){
+function updateCountdown(){
     const now = Date.now();
     const remainingTime = cdEnd - now;
 
