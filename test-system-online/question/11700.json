@@ -79,12 +79,12 @@
     },
     {
         "question": "下列何者為示波器測試棒的等效電路？",
-        "options": ["img/1-14-1.jpg", "img/1-14-2.jpg", "img/1-14-3.jpg", "img/1-14-4.jpg"],
-        "image" : "img/11700/1-14-x.jpg",
+        "options": ["img/11700/1-14-1.jpg", "img/11700/1-14-2.jpg", "img/11700/1-14-3.jpg", "img/11700/1-14-4.jpg"],
+        "image" : "",
         "answer": "img/1-14-4.jpg"
     },
     {
-        "question": "已知a圖為，b圖為之電子符號，則【】元件",
+        "question": "已知a圖為，b圖為之電子符號，則【   】元件",
         "options": ["a為PUT，b為SCR", "a為SCR，b為PUT", "a為SCR，b為SCS", "a為PUT，b為SCS"],
         "image" : "img/11700/1-15-x.jpg",
         "answer": "a為PUT，b為SCS"
