@@ -13,7 +13,9 @@ function loadExam(){
         currentIndex = 0;
         renderQuestion(currentIndex);
     })
-    .catch(err => console.error('讀到 JSON 但顯示失敗:', err));
+    .catch(err => {
+        console.error('讀到 JSON 但顯示失敗:', err);
+    });
 }
 
 // 載入題目
