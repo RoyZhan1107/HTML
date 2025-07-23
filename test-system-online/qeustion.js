@@ -4,9 +4,9 @@ let currentIndex = 0;
 // 根據職類名稱正確載入
 function loadExam(){
     const category = document.getElementById("JobCategory").ariaValueMax;
-    if(!category) alert("請選擇職類!");
+         
 
-    fetch("question/${category}.json")
+    fetch(`question/${category}.json`)
     .then(res => res.json())
     .then(data => {
         questions = data;
