@@ -9,7 +9,6 @@ function loadExam(){
     .then(res => res.json())
     .then(data => {
         questions = data;
-        currentIndex = 0;
         renderQuestion(currentIndex);
     })
     .catch(err => {
@@ -38,7 +37,7 @@ function renderQuestion(index){
 }
 
 function Next(){
-    if(currentIndex > 0){
+    if(currentIndex < questions.length - 1){
         currentIndex++;
         loadExam();
     }
