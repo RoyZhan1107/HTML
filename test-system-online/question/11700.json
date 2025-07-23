@@ -88,6 +88,83 @@
         "options": ["a為PUT，b為SCR", "a為SCR，b為PUT", "a為SCR，b為SCS", "a為PUT，b為SCS"],
         "image" : "img/11700/1-15-x.jpg",
         "answer": "a為PUT，b為SCS"
+    },
+    {
+        "question": "下圖為何種之電路符號？",
+        "options": ["RCT(reverseconductingthyristor)", "SCS(siliconcontrolledswitch)", "SBS(siliconbilateralswitch)", "MCT(MOS-controlledthyristor)"],
+        "image": "img/11700/1-16-x.jpg",
+        "answer": "MCT(MOS-controlledthyristor)"
+    },
+    {
+        "question": "依據美國國家標準協會(ANSI)編製的標準流程圖符號，以下何者名稱與其符號並不相符？",
+        "options": ["img/11700/1-17-1.jpg", "img/11700/1-17-2.jpg", "img/11700/1-17-3.jpg", "img/11700/1-17-4.jpg"],
+        "image": "",
+        "answer": "img/11700/1-17-2.jpg"
+    },
+    {
+        "question": "下列何者並不屬於閘流體(Thyristor)裝置？",
+        "options": ["img/11700/1-18-1.jpg", "img/11700/1-18-2.jpg", "img/11700/1-18-3.jpg", "img/11700/1-18-4.jpg"],
+        "image": "",
+        "answer": "img/11700/1-18-3.jpg"
+    },
+    {
+        "question": "下圖符號為何種元件？",
+        "options": ["光敏電阻", " NTC型溫度電阻", "Thermistor", "Photocell"],
+        "image": "img/11700/1-19-x.jpg",
+        "answer": ["光敏電阻", "Photocell"]
+    },
+    {
+        "question": "如下圖所示為低態動作的三態閘，下列敘述何者正確？",
+        "options": ["當B=0時，C=A=0", "當B=0時，C=A=1", "當B=1時，C=A=1", "當B=1時，C=A=0"],
+        "image": "img/11700/1-20-x.jpg",
+        "answer": ["當B=0時，C=A=0", "當B=0時，C=A=1"]
+    },
+    {
+        "question": "如下圖所示，下列敘述何者正確？",
+        "options": ["互補式輸出的緩衝器，當D=1時，E=1及F=0", "互補式輸出的反相器，當D=1時，E=0及F=1 ", "互補式輸出的緩衝器，當D=0時，E=0及F=1", "互補式輸出的反相器，當D=0時，E=1及F=0"],
+        "image": "img/11700/1-21-x.jpg",
+        "answer": ["互補式輸出的緩衝器，當D=1時，E=1及F=0", "互補式輸出的緩衝器，當D=0時，E=0及F=1"]
+    },
+    {
+        "question": "如下圖所示，下列敘述何者正確？",
+        "options": ["T2為PMOS元件", "T1為PMOS元件", "T2為NMOS元件", "T1為NMOS元件"],
+        "image": "img/11700/1-22-x.jpg",
+        "answer": ["T1為PMOS元件", "T2為NMOS元件"]
+    },
+    {
+        "question": "下列圖示哪些是與光電有關的組件？",
+        "options": ["img/1-23-1.jpg", "img/1-23-2.jpg", "img/1-23-3.jpg", "img/1-23-4.jpg"],
+        "image": "",
+        "answer": ["img/1-23-1.jpg", "img/1-23-2.jpg"]
+    },
+    {
+        "question": "下列圖示哪些為被動元件？",
+        "options": ["img/1-24-1.jpg", "img/1-24-2.jpg", "img/1-24-3.jpg", "img/1-24-4.jpg"],
+        "image": "",
+        "answer": ["img/1-24-1.jpg", "img/1-24-3.jpg"]
+    },
+    {
+        "question": "下列圖示哪些為主動元件？",
+        "options": ["img/1-25-1.jpg", "img/1-25-2.jpg", "img/1-25-3.jpg", "img/1-25-4.jpg"],
+        "image": "",
+        "answer": ["img/1-25-3.jpg", "img/1-25-4.jpg"]
+    },
+    {
+        "question": "依據美國國家標準協會(ANSI)編製的標準流程圖符號，下列符號表示何者正確？",
+        "options": ["img/1-26-1.jpg", "img/1-26-2.jpg", "img/1-26-3.jpg", "img/1-26-4.jpg"],
+        "image": "",
+        "answer": ["img/1-26-2.jpg", "img/1-26-4.jpg"]
+    },
+    {
+        "question": "下列何者工作於逆向偏壓？",
+        "options": ["img/1-27-1.jpg", "img/1-27-2.jpg", "img/1-27-3.jpg", "img/1-27-4.jpg"],
+        "image": "",
+        "answer": ["img/1-27-2.jpg", "img/1-27-3.jpg"]
+    },
+    {
+        "question": "有關印刷電路板元件面的安排與繪製，下列敘述何者正確？",
+        "options": ["IC依形狀擺放不需特別標示腳位", "以IC或電晶體位置為中心向外安排其他元件", "連接器必須標示第一腳位", "並排電阻盡量靠近以節省空間及連接線"],
+        "image": "",
+        "answer": ["以IC或電晶體位置為中心向外安排其他元件", "連接器必須標示第一腳位"]
     }
-    
 ]
