@@ -30,22 +30,23 @@ function renderQuestion(index){
         imgEl.style.display = "none";
     }
     // 顯示選項
-    for(let i = 0; i < 4; i++){
-        document.getElementById(`label${i + 1}`).textContent = q.options[i];
-        document.getElementById(`option${i + 1}`).value = q.options[i];
-        if(!radioEl || labelEl) continue;
-    }
-        // 清空 label 內容
-        radioEl.value = optionText;
+    for (let i = 0; i < 4; i++) {
+    const option = q.options[i];
+    const radio = document.getElementById(`option${i + 1}`);
+    const label = document.getElementById(`label${i + 1}`);
 
-        // 判斷是否為圖片路徑
-        if (/\.(jpg|jpeg|png|gif)$/i.test(optionText.trim())) {
-            // 顯示圖片
-            labelEl.innerHTML = `<img src="${optionText}" alt="選項${i + 1}" style="max-width: 200px;">`;
+    if (!radio || !label) continue;
+
+    radio.value = option;
+
+        if (/\.(jpg|jpeg|png|gif)$/i.test(option.trim())) {
+            // 如果是圖片選項
+            label.innerHTML = `<img src="${option}" alt="選項${i + 1}" style="max-width: 250px; vertical-align: middle;">`;
         } else {
-            // 顯示文字
-            labelEl.textContent = optionText;
+            // 如果是文字選項
+            label.textContent = option;
         }
+    }
 }
 function Next(){
     if(currentIndex < questions.length - 1){
