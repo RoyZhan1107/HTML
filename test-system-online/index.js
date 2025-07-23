@@ -10,8 +10,8 @@ function openFashionWinow(){
     if(selectedOption.nextSibling.textContent.includes("檢定測驗")){
         window.open("test.html",'_blank');
     }
-    if(selectedOption.nextSibling.textContent.includes("Excel 檔上傳測驗")){
-        window.open("001.html",'_blank');
+    if(selectedOption.nextSibling.textContent.includes("職業安全與衛生共同科目")){
+        window.open("general-subject.html",'_blank');
     }
 }
 
