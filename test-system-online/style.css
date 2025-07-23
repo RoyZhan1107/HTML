@@ -1,6 +1,7 @@
 body{
     margin: 0;
     width: 100%;
+    font-size: 15px;
 }
 table{
     margin-top: 20px;
@@ -31,7 +32,36 @@ button{
     color: white;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 15px;
+}
+.button{
+    padding: 10px;
+}
+.Next{
+    right: 50%;
+    position: absolute;
+}
+.calculator{
+    right: 0;
+    bottom: 0;
+    position: absolute;
+    font-size: 18px;
+}
+.number{
+    background: #007bff;
+    padding: 10px 10px 10px 10px;
+    border-radius: 3px;
+    bottom: 0;
+    position: absolute;
+    color: #fff;
 }
 .que-total{
     display: none;
+}
+.link{
+    color: #fff;
+    text-decoration: none;
+}
+.top-menu span{
+    color: #fff;
 }
