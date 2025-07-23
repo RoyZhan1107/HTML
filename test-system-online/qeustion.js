@@ -2,13 +2,21 @@
 let questions = [];
 let currentIndex = 0;
 // 根據職類名稱正確載入
-fetch("question/${category}.json")
-.then(res => res.json())
-.then(data => {
-    questions = data;
-    renderQuestion(currentIndex);
-})
-.catch(err => console.error('讀到 JSON 但顯示失敗:', err));
+function startExam(){
+    const category = document.getElementById("JobCategory").ariaValueMax;
+    if(!category){
+        alert("請選擇職類!");
+    }
+
+    fetch("question/${category}.json")
+    .then(res => res.json())
+    .then(data => {
+        questions = data;
+        currentIndex = 0;
+        renderQuestion(currentIndex);
+    })
+    .catch(err => console.error('讀到 JSON 但顯示失敗:', err));
+}
 
 // 載入題目
 function renderQuestion(index){
