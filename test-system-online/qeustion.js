@@ -4,7 +4,6 @@ let currentIndex = 0;
 // 根據職類名稱正確載入
 function loadExam(){
     const category = document.getElementById("JobCategory").value;
-         
 
     fetch(`question/${category}.json`)
     .then(res => res.json())
@@ -14,7 +13,7 @@ function loadExam(){
         renderQuestion(currentIndex);
     })
     .catch(err => {
-        console.error('讀到 JSON 但顯示失敗:', err);
+        console.error("讀到 JSON 但顯示失敗:", err);
     });
 }
 
@@ -41,13 +40,13 @@ function renderQuestion(index){
 function Next(){
     if(currentIndex < questions.length - 1){
         currentIndex++;
-        displayQuestion();
+        loadExam();
     }
 }
 
 function Previous(){
         if(currentIndex > 0){
         currentIndex++;
-        displayQuestion();
+        loadExam();
     }
 }
