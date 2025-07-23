@@ -33,16 +33,18 @@ function renderQuestion(index){
     for(let i = 0; i < 4; i++){
         document.getElementById(`label${i + 1}`).textContent = q.options[i];
         document.getElementById(`option${i + 1}`).value = q.options[i];
-        
+
         // 清空 label 內容
         if(!radioEl || labelEl) continue;
 
         radioEl.value = optionText;
 
         // 判斷是否為圖片路徑
-        if (/\.(jpg|jpeg|png|gif|svg)$/i.test(optionText.trim())) {
+        if (/\.(jpg|jpeg|png|gif)$/i.test(optionText.trim())) {
+            // 顯示圖片
             labelEl.innerHTML = `<img src="${optionText}" alt="選項${i + 1}" style="max-width: 200px;">`;
         } else {
+            // 顯示文字
             labelEl.textContent = optionText;
         }
     }
