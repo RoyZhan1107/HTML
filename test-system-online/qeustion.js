@@ -3,7 +3,7 @@ let questions = [];
 let currentIndex = 0;
 // 根據職類名稱正確載入
 function loadExam(){
-    const category = document.getElementById("JobCategory").ariaValueMax;
+    const category = document.getElementById("JobCategory").value;
          
 
     fetch(`question/${category}.json`)
