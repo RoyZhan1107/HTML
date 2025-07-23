@@ -2,91 +2,91 @@
     {
         "question": "如下圖為",
         "options": ["1K×8的ROM", "2K×8的ROM", "1K×8的RAM ", "2K×8的RAM"],
-        "image" : "img/1-1-x.jpg",
+        "image" : "img/11700/1-1-x.jpg",
         "answer": "2K×8的RAM"
     },
     {
         "question": "如下圖在電路中代表",
         "options": ["解多工器", "多工器", "跳線", "解碼器"],
-        "image" : "img/1-2-x.jpg",
+        "image" : "img/11700/1-2-x.jpg",
         "answer": "多工器"
     },
     {
         "question": "如下圖為",
         "options": ["256×1DRAM ", "256×1SRAM", "64K×1DRAM", "64K×1SRAM  "],
-        "image" : "img/1-3-x.jpg",
+        "image" : "img/11700/1-3-x.jpg",
         "answer": "64K×1DRAM"
     },
     {
         "question": "如下圖為",
         "options": ["非穩態振盪器", "雙穩態電路", "單穩態電路", "三態電路"],
-        "image" : "img/1-4-x.jpg",
+        "image" : "img/11700/1-4-x.jpg",
         "answer": "非穩態振盪器"
     },
     {
         "question": "下圖為何種之電路符號？",
         "options": ["傳輸閘", "緩衝器", "跳放大器", "非反相器"],
-        "image" : "img/1-5-x.jpg",
+        "image" : "img/11700/1-5-x.jpg",
         "answer": " 傳輸閘"
     },
     {
         "question": "如下圖為",
         "options": ["DIAC", "SUS", "SSS", "SBS"],
-        "image" : "img/1-6-x.jpg",
+        "image" : "img/11700/1-6-x.jpg",
         "answer": "SSS"
     },
     {
         "question": "如下圖所示之接點符號，其為下列何種接點？",
         "options": ["a接點", "b接點", "c接點", "N.O.接點"],
-        "image" : "img/1-7-x.jpg",
+        "image" : "img/11700/1-7-x.jpg",
         "answer": "b接點"
     },
     {
         "question": "如下圖所示之符號，其為下列何者之電路圖符號？",
         "options": ["比流器", "比壓器", "電感器", "變壓器"],
-        "image" : "img/1-8-x.jpg",
+        "image" : "img/11700/1-8-x.jpg",
         "answer": "比流器"
     },
     {
         "question": "如下圖所示之符號，其為下列何者之電路圖符號？",
         "options": ["GTO", "IGBT", "GTO", "SITH "],
-        "image" : "img/1-9-x.jpg",
+        "image" : "img/11700/1-9-x.jpg",
         "answer": "GTO"
     },
     {
         "question": "如下圖所示之符號，其為下列何者之電路圖符號？",
         "options": ["RCT", "MCT", "SUS", "SBS"],
-        "image" : "img/1-10-x.jpg",
+        "image" : "img/11700/1-10-x.jpg",
         "answer": "SUS"
     },
     {
         "question": "如下圖所示之符號，其為下列何者之電路圖符號？",
         "options": ["RCT", "MCT", "SUS", "SBS"],
-        "image" : "img/1-11-x.jpg",
+        "image" : "img/11700/1-11-x.jpg",
         "answer": "SBS"
     },
     {
         "question": "如下圖所示之符號，其為下列何者之電路圖符號？",
         "options": ["空乏型N通道MOSFET", "增強型N通道MOSFET", "空乏型P通道MOSFET", "增強型P通道MOSFET"],
-        "image" : "img/1-12-x.jpg",
+        "image" : "img/11700/1-12-x.jpg",
         "answer": "空乏型N通道MOSFET"
     },
     {
         "question": "如下圖所示之電腦流程圖符號為",
         "options": ["處理", "判斷", "開始", "輸出"],
-        "image" : "img/1-13-x.jpg",
+        "image" : "img/11700/1-13-x.jpg",
         "answer": "判斷"
     },
     {
         "question": "下列何者為示波器測試棒的等效電路？",
         "options": ["img/1-14-1.jpg", "img/1-14-2.jpg", "img/1-14-3.jpg", "img/1-14-4.jpg"],
-        "image" : "img/1-14-x.jpg",
+        "image" : "img/11700/1-14-x.jpg",
         "answer": "img/1-14-4.jpg"
     },
     {
         "question": "已知a圖為，b圖為之電子符號，則【】元件",
         "options": ["a為PUT，b為SCR", "a為SCR，b為PUT", "a為SCR，b為SCS", "a為PUT，b為SCS"],
-        "image" : "img/1-15-x.jpg",
+        "image" : "img/11700/1-15-x.jpg",
         "answer": "a為PUT，b為SCS"
     }
     
