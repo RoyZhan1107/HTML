@@ -2,11 +2,9 @@
 let questions = [];
 let currentIndex = 0;
 // 根據職類名稱正確載入
-function startExam(){
+function loadExam(){
     const category = document.getElementById("JobCategory").ariaValueMax;
-    if(!category){
-        alert("請選擇職類!");
-    }
+    if(!category) alert("請選擇職類!");
 
     fetch("question/${category}.json")
     .then(res => res.json())
@@ -34,6 +32,7 @@ function renderQuestion(index){
     // 顯示選項
     for(let i = 0; i < 4; i++){
         document.getElementById(`label${i + 1}`).textContent = q.options[i];
+        document.getElementById(`option${i + 1}`).value = q.options[i];
     }
 }
 
