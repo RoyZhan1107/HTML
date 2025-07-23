@@ -38,7 +38,7 @@ function renderQuestion(index){
 }
 
 function Next(){
-    if(currentIndex < questions.length - 1){
+    if(currentIndex > 0){
         currentIndex++;
         loadExam();
     }
@@ -46,7 +46,7 @@ function Next(){
 
 function Previous(){
         if(currentIndex > 0){
-        currentIndex++;
+        currentIndex--;
         loadExam();
     }
 }
