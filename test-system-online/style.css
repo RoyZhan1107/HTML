@@ -1,17 +1,17 @@
 body{
     margin: 0;
     width: 100%;
-    font-size: 15px;
+    font-size: 18px;
 }
 table{
     margin-top: 20px;
     border-collapse: collapse;
     width: 100%;
-    border: 1px solid #ddd;
+    border: 1px solid none;
 }
-th, td{
-    border: 1px solid #ddd;
-    padding: 8px;
+th, td, tr{
+    border: 1px solid none;
+    padding: 10px;
     text-align: left;
 }
 .top-menu{
@@ -25,35 +25,44 @@ th, td{
     margin: 0;
     padding: 0;
 }
+.select{
+    font-size: 18px;
+}
 button{
-    padding: 10px;
+    padding: 10px 20px 10px 20px;
     border: none;
-    background: #007bff;
-    color: white;
+    color: #000;
     border-radius: 5px;
+    background: #DADADA ;
     cursor: pointer;
     font-size: 15px;
 }
-.button{
-    padding: 10px;
-}
-.Next{
-    right: 50%;
+.next{
+    left: 20px;
+    bottom: 10px;
     position: absolute;
 }
 .calculator{
-    right: 0;
-    bottom: 0;
+    right: 20px;
+    bottom: 10px;
     position: absolute;
     font-size: 18px;
 }
 .number{
     background: #007bff;
-    padding: 10px 10px 10px 10px;
     border-radius: 3px;
-    bottom: 0;
-    position: absolute;
+    font-size: 24px;
+    padding-right: 0;
     color: #fff;
+}
+.user-answer{
+    margin-top: 2px;
+    font-size: 10px;
+    color: #888;
+}
+.radio{
+    font-size: 18px;
+    color: #DADADA;
 }
 .que-total{
     display: none;
@@ -64,4 +73,12 @@ button{
 }
 .top-menu span{
     color: #fff;
+}
+.msg{
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+    background: #DADADA;
+    justify-content: center;
+    text-align: center;
 }

@@ -14,7 +14,7 @@ document.getElementById('JobCategory').addEventListener('change', function(){
         timerInterval = setInterval(updateCountdown, 1000);
         updateCountdown(); // 立即更新畫面
     }else{
-        document.getElementById('countdownBtn').innerText = "請選擇職類以開始倒計時";
+        document.getElementById('countdownBtn').innerText = "請選擇測試職類級別以開始倒計時";
     }
 });
 

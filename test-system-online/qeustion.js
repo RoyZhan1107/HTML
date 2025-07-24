@@ -48,13 +48,14 @@ function renderQuestion(index){
         }
     }
 }
+// 下一題
 function Next(){
     if(currentIndex < questions.length - 1){
         currentIndex++;
         loadExam();
     }
 }
-
+// 上一題
 function Previous(){
         if(currentIndex > 0){
         currentIndex--;
@@ -62,36 +63,51 @@ function Previous(){
     }
 }
 
-let userAnswers = []; //記錄用戶答題
-
+let userAnswers = new Array(80).fill(""); //記錄用戶答題，共計 80 題
+// 儲存答案
 function saveAnswer(){
     userAnswers[index] = value;
+    renderQueTotal();
 }
-
+// 答題紀錄
 function renderQueTotal(){
-    const total = document.getElementById("que-total");
-    total.innerHTML = "";
+    const table = document.getElementById("que-total");
+    table.innerHTML = "";
+    let index = 0;
 
-    for(let i = 0; i < questions.length; i++){
-        const btn = document.createElement("button");
-        btn.textContent = `第${i + 1}題${userAnswers[i] ? "V": "O"}`;
-        btn.onclick = function(){
-            currentIndex = i;
-            loadExam();
-            queTotal();
-        };
-        total.appendChild(btn);
-    }
-    if(userAnswers[currentIndex]){
-        const input = document.getElementById("option");
-        for(const input of inputs){
-            if(input.value === userAnswers[currentIndex]){
-                input.checked = true;
-            }
+    for(let i = 0; i < 8; i++){
+        const row = document.createElement("tr");
+        for(let j = 0; j < 10; j++){
+            const cell = document.createElement("td");
+            const btn = document.createElement("button");
+            btn.textContent = String(index + 1).padStart(2, '0');
+            btn.onclick = function(){
+                loadExam();
+                queTotal();
+            };
+            
+            const ansDiv = document.createElement("div");
+            ansDiv.className = "user-answer";
+            ansDiv.style.fontSize = "18px";
+            ansDiv.style.color = "#666";
+            ansDiv.textContent = userAnswers[index] || "";
+
+            cell.appendChild(btn);
+            cell.appendChild(ansDiv);
+            row.appendChild(cell);
+            index++;
         }
+        total.appendChild(row);
     }
 }
-function queTotal(){
+document.querySelectorAll("input[name='options']").forEach((radio, i) => {
+    radio.onclick = () => {
+        const selectedValue = radio.value;
+        saveAnswer(currentIndex, selectedValue);
+    };
+});
+// 顯示作答總覽
+function queTotal(event){
     event.preventDefault();
     const queTotal = document.getElementById("que-total");
     const queTable = document.getElementById("que-table");
@@ -106,3 +122,33 @@ function queTotal(){
         renderQueTotal();
     }
 }
+
+// 變更職類時變化背景
+const jobTypeSelect = document.getElementById('JobCategory');
+const dttable = document.getElementById('dataTable');
+// 監聽 select 變化
+jobTypeSelect.addEventListener('change', function() {
+    const selectedValue = this.value;
+    if(selectedValue === "11800"){
+        dttable.style.backgroundColor = "#9AED9A";   
+    }
+    else if(selectedValue === "02800"){
+        dttable.style.backgroundColor = "#9AED9A";
+    }else if(selectedValue === "11900"){
+        dttable.style.backgroundColor = "#9AED9A";
+    }else if(selectedValue === "12000"){
+        dttable.style.backgroundColor = "#9AED9A";
+    }else if(selectedValue === "11700"){
+        dttable.style.backgroundColor = "#FAF768";
+    }else if(selectedValue === "12001"){
+        dttable.style.backgroundColor = "#FAF768";
+    }
+});
+// 禁止右鍵
+document.addEventListener("contextmenu", function(event){
+    event.preventDefault();
+    const msg = document.getElementById("msg");
+    msg.style.display = ("block");
+    msg.style.flexDirection = ("column");
+    msg.style.justifyContent = ("center");
+})

@@ -17,15 +17,17 @@
             <tr>
                 <td>姓名</td>
                 <td>王小明</td>
-                <td>學科測試編號</td>
-                <td>A12345678</td>
-                <td>跳轉到</td>
+                <td>身分證統一編號</td>
+                <td>A000000001</td>
                 <td>座號:</td>
+                <td class="number">1016</td>
             </tr>
             <tr>
-                <td>職類名稱</td>
+                <td>學科測試編號</td>
+                <td>1068N666C24800282</td>
+                <td>測試職類級別</td>
                 <td>
-                    <select name="" id="JobCategory" onchange="loadExam()">
+                    <select class="select" name="" id="JobCategory" onchange="loadExam()">
                         <option value="">---請選擇---</option>
                         <option value="02800">02800工業電子</option>
                         <option value="11800">11800電腦軟體應用</option>
@@ -35,15 +37,37 @@
                         <option value="12001">12000電腦硬體裝修乙級</option>
                     </select>
                 </td>
+            </tr>
+            <tr>
+                <td>字型大小</td>
+                <td>
+                    <select class="select" name="fontSizeSelect" id="fontSizeSelect" onchange="changeFontSize()">
+                        <option value="18" selected>1</option>
+                        <option value="24">2</option>
+                        <option value="36">3</option>
+                        <option value="48">4</option>
+                    </select>
+                    <script src="font-size.js"></script>
+                </td>
                 <td>剩餘時間</td>
                 <td>
                     <div class="countdown" id="countdown">
-                        <label for="countdown">請選擇職類以開始倒計時</label>
+                        <label for="countdown">請選擇測試職類級別以開始倒計時</label>
                         <script src="exam-countdown.js"></script>
                     </div>
                 </td>
-                <td>
-                    <select name="" id="option">
+                <td><button name="countdouwnBtn" id="countdownBtn">請選擇測試職類級別以開始倒計時</button>
+                    <script src="15min-coutdown.js"></script></td>
+                <tr>
+                    <td>
+                        <button class="Next" onclick="Next()">下一題</button>
+                        <button onclick="Previous()">上一題</button>
+                        <button onclick="clear()">取消作答</button>
+                    </td>
+                    <td>已上傳題數:</td>
+                    <td><button onclick="queTotal(event)">作答總覽</button><script src="queTotal.js"></script></td>
+                    <td>
+                    <select class="select" name="" id="option">
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -57,32 +81,7 @@
                     </select>
                     題
                 </td>
-                <td style="font-size: 30px;">1118</td>
-            </tr>
-            <tr>
-                <td>字型大小</td>
-                <td>
-                    <select name="fontSizeSelect" id="fontSizeSelect" onchange="changeFontSize()">
-                        <option value="15" selected>1</option>
-                        <option value="24">2</option>
-                        <option value="36">3</option>
-                        <option value="48">4</option>
-                    </select>
-                    <script src="font-size.js"></script>
-                </td>
-                <td>測驗日期</td>
-                <td>
-                    <script>
-                        const now = new Date();
-                        const year = now.getFullYear();
-                        const month = String(now.getMonth() + 1).padStart(2, '0');
-                        const day = String(now.getDate()).padStart(2, '0');
-                        document.write(`${year}-${month}-${day}`);
-                    </script>
-                </td>
-                <td><button onclick="queTotal(event)">題目總攬</button><script src="queTotal.js"></script></td>
-                <td><button name="countdouwnBtn" id="countdownBtn">請選擇職類以開始倒計時</button></td>
-                <script src="15min-coutdown.js"></script>
+                </tr>
             </tr>
         </table>
         <div class="que-total" id="que-total">
@@ -100,7 +99,7 @@
                     <td>10</td>
                 </tr>
                 <tr>
-                    
+                    <div class="user-answer">1</div>
                 </tr>
                 <tr>
                     <td>11</td>
@@ -115,7 +114,16 @@
                     <td>20</td>
                 </tr>
                 <tr>
-
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>21</td>
@@ -130,7 +138,16 @@
                     <td>30</td>
                 </tr>
                 <tr>
-
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>31</td>
@@ -145,7 +162,16 @@
                     <td>40</td>
                 </tr>
                 <tr>
-
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>41</td>
@@ -160,7 +186,16 @@
                     <td>50</td>
                 </tr>
                 <tr>
-
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>51</td>
@@ -175,7 +210,16 @@
                     <td>60</td>
                 </tr>
                 <tr>
-
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>61</td>
@@ -190,7 +234,16 @@
                     <td>70</td>
                 </tr>
                 <tr>
-                    
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
                 </tr>
                 <tr>
                     <td>71</td>
@@ -204,26 +257,35 @@
                     <td>79</td>
                     <td>80</td>
                 </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
             </table>
         </div>
         <table id="que-table" cellpadding="5" style="width: 100%;" class="table2" >
             <style href="test.css"></style>
            <tr><td><label for="" id="question">題目內容</label></td></tr>
            <tr><td><img id="que-img" src="" alt="" style="display: none; max-width: 300px;"></td></tr>
-           <tr><td><input type="radio" name="option" id="option1"><label for="option1" id="label1">選項一</label></td></tr>
-           <tr><td><input type="radio" name="option" id="option2"><label for="option2" id="label2">選項二</label></td></tr>
-           <tr><td><input type="radio" name="option" id="option3"><label for="option3" id="label3">選項三</label></td></tr>
-           <tr><td><input type="radio" name="option" id="option4"><label for="option4" id="label4">選項四</label></td></tr>
-            <tr>
-                
-            </tr>
+           <tr><td><input class="option" type="radio" name="option" id="option1" onclick="saveAnswer(0, this.value)"><label for="option1" id="label1">選項一</label></td></tr>
+           <tr><td><input class="option" type="radio" name="option" id="option2" onclick="saveAnswer(1, this.value)"><label for="option2" id="label2">選項二</label></td></tr>
+           <tr><td><input class="option" type="radio" name="option" id="option3" onclick="saveAnswer(2, this.value)"><label for="option3" id="label3">選項三</label></td></tr>
+           <tr><td><input class="option" type="radio" name="option" id="option4" onclick="saveAnswer(3, this.value)"><label for="option4" id="label4">選項四</label></td></tr>
         </table>
-        <div class="button">
-            <button onclick="Previous()">上一題</button>
-            <button class="Next" onclick="Next()">下一題</button>
+        <div class="msg" id="msg">
+            <span>網頁訊息</span>
+            <label for="message">考試時間，僅可使用左鍵進行答題，禁止使用右鍵</label>
         </div>
         <div class="footer">
-            <label for="" class="number">座號:1118</label>
+            <button class="next" onclick="Next()">下一題</button>
             <button class="calculator">計算機</button>
         </div>
         <script src="qeustion.js"></script>
