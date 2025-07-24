@@ -8,8 +8,13 @@ function loadExam(){
     fetch(`question/${category}.json`)
     .then(res => res.json())
     .then(data => {
+        /*
         questions = data;
         renderQuestion(currentIndex);
+        */
+       questions = Random(data, 80);
+       currentIndex = 0;
+       loadExam();
     })
     .catch(err => {
         console.error("讀到 JSON 但顯示失敗:", err);
@@ -48,6 +53,20 @@ function renderQuestion(index){
         }
     }
 }
+// 亂數出題
+function shuffleArray(array){
+    // 
+    for(let i = array.length - 1; i > 0; i--){
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j] = [array[j], array[i]]];
+    }
+    return array;
+}
+
+function Random(allQuestions, count = 80){
+    const shuffled = shuffleArray([...allQuestions]);
+    return shuffled.slice(0, count);
+}
 // 下一題
 function Next(){
     if(currentIndex < questions.length - 1){
@@ -62,7 +81,11 @@ function Previous(){
         loadExam();
     }
 }
-
+// 取消作答
+function clear(){
+    const options = document.getElementById("options");
+    options.innerText = 0;
+}
 let userAnswers = new Array(80).fill(""); //記錄用戶答題，共計 80 題
 // 儲存答案
 function saveAnswer(){
@@ -97,7 +120,7 @@ function renderQueTotal(){
             row.appendChild(cell);
             index++;
         }
-        total.appendChild(row);
+        table.appendChild(row);
     }
 }
 document.querySelectorAll("input[name='options']").forEach((radio, i) => {
