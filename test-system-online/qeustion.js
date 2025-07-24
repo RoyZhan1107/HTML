@@ -61,3 +61,48 @@ function Previous(){
         loadExam();
     }
 }
+
+let userAnswers = []; //記錄用戶答題
+
+function saveAnswer(){
+    userAnswers[index] = value;
+}
+
+function renderQueTotal(){
+    const total = document.getElementById("que-total");
+    total.innerHTML = "";
+
+    for(let i = 0; i < questions.length; i++){
+        const btn = document.createElement("button");
+        btn.textContent = `第${i + 1}題${userAnswers[i] ? "V": "O"}`;
+        btn.onclick = function(){
+            currentIndex = i;
+            loadExam();
+            queTotal();
+        };
+        total.appendChild(btn);
+    }
+    if(userAnswers[currentIndex]){
+        const input = document.getElementById("option");
+        for(const input of inputs){
+            if(input.value === userAnswers[currentIndex]){
+                input.checked = true;
+            }
+        }
+    }
+}
+function queTotal(){
+    event.preventDefault();
+    const queTotal = document.getElementById("que-total");
+    const queTable = document.getElementById("que-table");
+    const isTrue = queTotal.style.display === "block";
+
+    if(isTrue){
+        queTotal.style.display = "none";
+        queTable.style.display = "table";
+    }else{
+        queTotal.style.display = "block";
+        queTable.style.display = "none";
+        renderQueTotal();
+    }
+}
