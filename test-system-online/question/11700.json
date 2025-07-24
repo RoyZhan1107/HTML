@@ -177,9 +177,9 @@
     {
         "no": "23",
         "question": "下列圖示哪些是與光電有關的組件？",
-        "options": ["img/1-23-1.jpg", "img/1-23-2.jpg", "img/1-23-3.jpg", "img/1-23-4.jpg"],
+        "options": ["img/11700/1-23-1.jpg", "img/11700/1-23-2.jpg", "img/11700/1-23-3.jpg", "img/11700/1-23-4.jpg"],
         "image": "",
-        "answer": ["img/1-23-1.jpg", "img/1-23-2.jpg"],
+        "answer": ["img/11700/1-23-1.jpg", "img/11700/1-23-2.jpg"],
         "type": "multiple"
     },
     {
@@ -506,8 +506,8 @@
         "no": "64",
         "question": "三用電表內部使用1mA，5Ω之永磁動圈式(PMMC)表頭，在使用50V電壓檔時，其輸入阻抗為",
         "options": ["50KΩ", "100KΩ", "1MΩ", "500KΩ"],
-        "image": "50KΩ",
-        "answer": "MASKROM",
+        "image": "",
+        "answer": "50KΩ",
         "type": "single"
     },
     {
