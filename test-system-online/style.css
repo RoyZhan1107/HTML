@@ -74,11 +74,20 @@ button{
 .top-menu span{
     color: #fff;
 }
-.msg{
-    flex-direction: column;
+#msg{
     display: flex;
-    align-items: center;
-    background: #DADADA;
-    justify-content: center;
+    flex-direction: column;
+}
+.msg{
+    width: 60%;
+    margin: 20px auto;
     text-align: center;
+    padding: 10px 20px;
+    background: #DADADA;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    display: none;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    flex-direction: column;
+    position: relative;
 }
