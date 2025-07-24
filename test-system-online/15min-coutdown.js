@@ -1,4 +1,3 @@
-let timerInterval;
 let cdEnd;
 
 document.getElementById('JobCategory').addEventListener('change', function(){
