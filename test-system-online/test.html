@@ -52,12 +52,10 @@
                 <td>剩餘時間</td>
                 <td>
                     <div class="countdown" id="countdown">
-                        <label for="countdown">請選擇測試職類級別以開始倒計時</label>
-                        <script src="exam-countdown.js"></script>
+                        <label for="">請選擇測試職類級別以開始倒計時</label>
                     </div>
                 </td>
-                <td><button name="countdouwnBtn" id="countdownBtn">請選擇測試職類級別以開始倒計時</button>
-                    <script src="15min-coutdown.js"></script></td>
+                <td><button name="countdouwnBtn" id="countdownBtn">請選擇測試職類級別以開始倒計時</button></td>
                 <tr>
                     <td>
                         <button class="Next" onclick="Next()">下一題</button>
@@ -280,15 +278,19 @@
            <tr><td><input class="option" type="radio" name="option" id="option3" onclick="saveAnswer(2, this.value)"><label for="option3" id="label3">選項三</label></td></tr>
            <tr><td><input class="option" type="radio" name="option" id="option4" onclick="saveAnswer(3, this.value)"><label for="option4" id="label4">選項四</label></td></tr>
         </table>
-        <div class="msg" id="msg">
+        <div class="msg" id="right-click-msg">
             <span>網頁訊息</span>
             <label for="message">考試時間，僅可使用左鍵進行答題，禁止使用右鍵</label>
+        </div>
+        <div class="msg" id="time-msg">
+            <span>網頁訊息</span>
+            <label for="message">時間到!系統自動收卷評分!</label>
         </div>
         <div class="footer">
             <button class="next" onclick="Next()">下一題</button>
             <button class="calculator">計算機</button>
         </div>
-        <script src="qeustion.js"></script>
+        <script src="script.js"></script>
         <script src="index.js"></script>
     </body>
 </html>
