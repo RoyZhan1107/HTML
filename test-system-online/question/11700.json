@@ -1,170 +1,801 @@
 [
     {
+        "no": "1",
         "question": "如下圖為",
         "options": ["1K×8的ROM", "2K×8的ROM", "1K×8的RAM ", "2K×8的RAM"],
         "image" : "img/11700/1-1-x.jpg",
-        "answer": "2K×8的RAM"
+        "answer": "2K×8的RAM",
+        "type": "single"
     },
     {
+        "no": "2",
         "question": "如下圖在電路中代表",
         "options": ["解多工器", "多工器", "跳線", "解碼器"],
         "image" : "img/11700/1-2-x.jpg",
-        "answer": "多工器"
+        "answer": "多工器",
+        "type": "single"
     },
     {
+        "no": "3",
         "question": "如下圖為",
         "options": ["256×1DRAM ", "256×1SRAM", "64K×1DRAM", "64K×1SRAM  "],
         "image" : "img/11700/1-3-x.jpg",
-        "answer": "64K×1DRAM"
+        "answer": "64K×1DRAM",
+        "type": "single"
     },
     {
+        "no": "4",
         "question": "如下圖為",
         "options": ["非穩態振盪器", "雙穩態電路", "單穩態電路", "三態電路"],
         "image" : "img/11700/1-4-x.jpg",
-        "answer": "非穩態振盪器"
+        "answer": "非穩態振盪器",
+        "type": "single"
     },
     {
+        "no": "5",
         "question": "下圖為何種之電路符號？",
         "options": ["傳輸閘", "緩衝器", "跳放大器", "非反相器"],
         "image" : "img/11700/1-5-x.jpg",
-        "answer": " 傳輸閘"
+        "answer": " 傳輸閘",
+        "type": "single"
     },
     {
+        "no": "6",
         "question": "如下圖為",
         "options": ["DIAC", "SUS", "SSS", "SBS"],
         "image" : "img/11700/1-6-x.jpg",
-        "answer": "SSS"
+        "answer": "SSS",
+        "type": "single"
     },
     {
+        "no": "7",
         "question": "如下圖所示之接點符號，其為下列何種接點？",
         "options": ["a接點", "b接點", "c接點", "N.O.接點"],
         "image" : "img/11700/1-7-x.jpg",
-        "answer": "b接點"
+        "answer": "b接點",
+        "type": "single"
     },
     {
+        "no": "8",
         "question": "如下圖所示之符號，其為下列何者之電路圖符號？",
         "options": ["比流器", "比壓器", "電感器", "變壓器"],
         "image" : "img/11700/1-8-x.jpg",
-        "answer": "比流器"
+        "answer": "比流器",
+        "type": "single"
     },
     {
+        "no": "9",
         "question": "如下圖所示之符號，其為下列何者之電路圖符號？",
         "options": ["GTO", "IGBT", "GTO", "SITH "],
         "image" : "img/11700/1-9-x.jpg",
-        "answer": "GTO"
+        "answer": "GTO",
+        "type": "single"
     },
     {
+        "no": "10",
         "question": "如下圖所示之符號，其為下列何者之電路圖符號？",
         "options": ["RCT", "MCT", "SUS", "SBS"],
         "image" : "img/11700/1-10-x.jpg",
         "answer": "SUS"
     },
     {
+        "no": "11",
         "question": "如下圖所示之符號，其為下列何者之電路圖符號？",
         "options": ["RCT", "MCT", "SUS", "SBS"],
         "image" : "img/11700/1-11-x.jpg",
-        "answer": "SBS"
+        "answer": "SBS",
+        "type": "single"
     },
     {
+        "no": "12",
         "question": "如下圖所示之符號，其為下列何者之電路圖符號？",
         "options": ["空乏型N通道MOSFET", "增強型N通道MOSFET", "空乏型P通道MOSFET", "增強型P通道MOSFET"],
         "image" : "img/11700/1-12-x.jpg",
-        "answer": "空乏型N通道MOSFET"
+        "answer": "空乏型N通道MOSFET",
+        "type": "single"
     },
     {
+        "no": "13",
         "question": "如下圖所示之電腦流程圖符號為",
         "options": ["處理", "判斷", "開始", "輸出"],
         "image" : "img/11700/1-13-x.jpg",
-        "answer": "判斷"
+        "answer": "判斷",
+        "type": "single"
     },
     {
+        "no": "14",
         "question": "下列何者為示波器測試棒的等效電路？",
         "options": ["img/11700/1-14-1.jpg", "img/11700/1-14-2.jpg", "img/11700/1-14-3.jpg", "img/11700/1-14-4.jpg"],
         "image" : "",
-        "answer": "img/1-14-4.jpg"
+        "answer": "img/1-14-4.jpg",
+        "type": "single"
     },
     {
+        "no": "15",
         "question": "已知a圖為，b圖為之電子符號，則【   】元件",
         "options": ["a為PUT，b為SCR", "a為SCR，b為PUT", "a為SCR，b為SCS", "a為PUT，b為SCS"],
         "image" : "img/11700/1-15-x.jpg",
-        "answer": "a為PUT，b為SCS"
+        "answer": "a為PUT，b為SCS",
+        "type": "single"
     },
     {
+        "no": "16",
         "question": "下圖為何種之電路符號？",
         "options": ["RCT(reverseconductingthyristor)", "SCS(siliconcontrolledswitch)", "SBS(siliconbilateralswitch)", "MCT(MOS-controlledthyristor)"],
         "image": "img/11700/1-16-x.jpg",
-        "answer": "MCT(MOS-controlledthyristor)"
+        "answer": "MCT(MOS-controlledthyristor)",
+        "type": "single"
     },
     {
+        "no": "17",
         "question": "依據美國國家標準協會(ANSI)編製的標準流程圖符號，以下何者名稱與其符號並不相符？",
         "options": ["img/11700/1-17-1.jpg", "img/11700/1-17-2.jpg", "img/11700/1-17-3.jpg", "img/11700/1-17-4.jpg"],
         "image": "",
-        "answer": "img/11700/1-17-2.jpg"
+        "answer": "img/11700/1-17-2.jpg",
+        "type": "single"
     },
     {
+        "no": "18",
         "question": "下列何者並不屬於閘流體(Thyristor)裝置？",
         "options": ["img/11700/1-18-1.jpg", "img/11700/1-18-2.jpg", "img/11700/1-18-3.jpg", "img/11700/1-18-4.jpg"],
         "image": "",
-        "answer": "img/11700/1-18-3.jpg"
+        "answer": "img/11700/1-18-3.jpg",
+        "type": "single"
     },
     {
+        "no": "19",
         "question": "下圖符號為何種元件？",
         "options": ["光敏電阻", " NTC型溫度電阻", "Thermistor", "Photocell"],
         "image": "img/11700/1-19-x.jpg",
-        "answer": ["光敏電阻", "Photocell"]
+        "answer": ["光敏電阻", "Photocell"],
+        "type": "multiple"
     },
     {
+        "no": "20",
         "question": "如下圖所示為低態動作的三態閘，下列敘述何者正確？",
         "options": ["當B=0時，C=A=0", "當B=0時，C=A=1", "當B=1時，C=A=1", "當B=1時，C=A=0"],
         "image": "img/11700/1-20-x.jpg",
-        "answer": ["當B=0時，C=A=0", "當B=0時，C=A=1"]
+        "answer": ["當B=0時，C=A=0", "當B=0時，C=A=1"],
+        "type":"multiple"
     },
     {
+        "no": "21",
         "question": "如下圖所示，下列敘述何者正確？",
         "options": ["互補式輸出的緩衝器，當D=1時，E=1及F=0", "互補式輸出的反相器，當D=1時，E=0及F=1 ", "互補式輸出的緩衝器，當D=0時，E=0及F=1", "互補式輸出的反相器，當D=0時，E=1及F=0"],
         "image": "img/11700/1-21-x.jpg",
-        "answer": ["互補式輸出的緩衝器，當D=1時，E=1及F=0", "互補式輸出的緩衝器，當D=0時，E=0及F=1"]
+        "answer": ["互補式輸出的緩衝器，當D=1時，E=1及F=0", "互補式輸出的緩衝器，當D=0時，E=0及F=1"],
+        "type": "multiple"
     },
     {
+        "no": "22",
         "question": "如下圖所示，下列敘述何者正確？",
         "options": ["T2為PMOS元件", "T1為PMOS元件", "T2為NMOS元件", "T1為NMOS元件"],
         "image": "img/11700/1-22-x.jpg",
-        "answer": ["T1為PMOS元件", "T2為NMOS元件"]
+        "answer": ["T1為PMOS元件", "T2為NMOS元件"],
+        "type": "multiple"
     },
     {
+        "no": "23",
         "question": "下列圖示哪些是與光電有關的組件？",
         "options": ["img/1-23-1.jpg", "img/1-23-2.jpg", "img/1-23-3.jpg", "img/1-23-4.jpg"],
         "image": "",
-        "answer": ["img/1-23-1.jpg", "img/1-23-2.jpg"]
+        "answer": ["img/1-23-1.jpg", "img/1-23-2.jpg"],
+        "type": "multiple"
     },
     {
+        "no": "24",
         "question": "下列圖示哪些為被動元件？",
         "options": ["img/1-24-1.jpg", "img/1-24-2.jpg", "img/1-24-3.jpg", "img/1-24-4.jpg"],
         "image": "",
-        "answer": ["img/1-24-1.jpg", "img/1-24-3.jpg"]
+        "answer": ["img/1-24-1.jpg", "img/1-24-3.jpg"],
+        "type": "multiple"
     },
     {
+        "no": "25",
         "question": "下列圖示哪些為主動元件？",
         "options": ["img/1-25-1.jpg", "img/1-25-2.jpg", "img/1-25-3.jpg", "img/1-25-4.jpg"],
         "image": "",
-        "answer": ["img/1-25-3.jpg", "img/1-25-4.jpg"]
+        "answer": ["img/1-25-3.jpg", "img/1-25-4.jpg"],
+        "type": "multiple"
     },
     {
+        "no": "26",
         "question": "依據美國國家標準協會(ANSI)編製的標準流程圖符號，下列符號表示何者正確？",
         "options": ["img/1-26-1.jpg", "img/1-26-2.jpg", "img/1-26-3.jpg", "img/1-26-4.jpg"],
         "image": "",
-        "answer": ["img/1-26-2.jpg", "img/1-26-4.jpg"]
+        "answer": ["img/1-26-2.jpg", "img/1-26-4.jpg"],
+        "type": "multiple"
     },
     {
+        "no": "27",
         "question": "下列何者工作於逆向偏壓？",
         "options": ["img/1-27-1.jpg", "img/1-27-2.jpg", "img/1-27-3.jpg", "img/1-27-4.jpg"],
         "image": "",
-        "answer": ["img/1-27-2.jpg", "img/1-27-3.jpg"]
+        "answer": ["img/1-27-2.jpg", "img/1-27-3.jpg"],
+        "type": "multiple"
     },
     {
+        "no": "28",
         "question": "有關印刷電路板元件面的安排與繪製，下列敘述何者正確？",
         "options": ["IC依形狀擺放不需特別標示腳位", "以IC或電晶體位置為中心向外安排其他元件", "連接器必須標示第一腳位", "並排電阻盡量靠近以節省空間及連接線"],
         "image": "",
-        "answer": ["以IC或電晶體位置為中心向外安排其他元件", "連接器必須標示第一腳位"]
+        "answer": ["以IC或電晶體位置為中心向外安排其他元件", "連接器必須標示第一腳位"],
+        "type": "multiple"
+    },
+    {
+        "no": "29",
+        "question": "下列何種IC不能由使用者規劃其內容？",
+        "options": ["PROM", "EPROM", "MASKROM", "EEPROM"],
+        "image": "",
+        "answer": "MASKROM",
+        "type": "single"
+    },
+    {
+        "no": "30",
+        "question": "霍爾晶片可檢知【　　】的大小",
+        "options": ["溫度", "照度", "濕度", "磁場"],
+        "image": "",
+        "answer": "磁場",
+        "type": "single"
+    },
+    {
+        "no": "31",
+        "question": "EPROM以標準燒錄法燒錄資料時，其燒錄脈波寬度為",
+        "options": ["100msec", "5msec", "50msec", "10msec"],
+        "image": "",
+        "answer": "50msec",
+        "type": "single"
+    },
+    {
+        "no": "32",
+        "question": "下列何種A/D轉換器的轉換速度最快？",
+        "options": ["計數式", "逐次漸近式", "雙斜波式", "並列式"],
+        "image": "",
+        "answer": "並列式",
+        "type": "single"
+    },
+    {
+        "no": "33",
+        "question": "J型(IC型)熱電耦其正線為何種金屬？",
+        "options": ["銅", "鋁", "鐵", "鎳"],
+        "image": "",
+        "answer": "鐵",
+        "type": "single"
+    },
+    {
+        "no": "34",
+        "question": "SCR控制電路，常見並聯一個二極體在SCR的閘極與陰極之間，此二極體作用是",
+        "options": ["保護SCR", "加快SCR轉換速度", "消除干擾", "減少觸發電流"],
+        "image": "",
+        "answer": "保護SCR",
+        "type": "single"
+    },
+    {
+        "no": "35",
+        "question": "熱電耦(thermocouple)之輸出信號型式為",
+        "options": ["Ω", "mV", "mA", "A"],
+        "image": "",
+        "answer": "mV",
+        "type": "single"
+    },
+    {
+        "no": "36",
+        "question": "正常的TRIAC，其G極對MT1極呈現",
+        "options": ["高電壓狀態", "高電阻", "高電流狀態", "低電阻"],
+        "image": "",
+        "answer": "MASKROM",
+        "type": "single"
+    },
+    {
+        "no": "37",
+        "question": "若步進馬達每一步階轉7.5度，則步進馬達轉一圈所需之步階數為幾步？",
+        "options": ["12", "24", "36", "48"],
+        "image": "",
+        "answer": "48",
+        "type": "single"
+    },
+    {
+        "no": "38",
+        "question": "8255IC為下列所示中之何種元件？",
+        "options": ["PIO", "EPROM", "MASKROM", "EEPROM"],
+        "image": "",
+        "answer": "PIO",
+        "type": "single"
+    },
+    {
+        "no": "39",
+        "question": "在精密儀表中所使用的電阻，最不需要考慮下列哪個因素？",
+        "options": ["溫度係數", "長期的安定性", "精密度", "瓦特數"],
+        "image": "",
+        "answer": "瓦特數",
+        "type": "single"
+    },
+    {
+        "no": "40",
+        "question": "下列四種TTL，何者的速度最快？",
+        "options": ["低功率TTL", "蕭特基TTL", "標準TTL", "低功率蕭特基TTL"],
+        "image": "",
+        "answer": "蕭特基TTL",
+        "type": "single"
+    },
+    {
+        "no": "41",
+        "question": "一般的數位元件中，何種輸出結構較適合大電流之輸出？",
+        "options": ["開路集極式輸出", "三態式輸出", "圖騰柱輸出", "單端式輸出"],
+        "image": "",
+        "answer": "開路集極式輸出",
+        "type": "single"
+    },
+    {
+        "no": "42",
+        "question": "雙極性電晶體在數位電路中主要是作為下列何種之用途？",
+        "options": ["混波", "檢波", "整流", "開關"],
+        "image": "",
+        "answer": "開關",
+        "type": "single"
+    },
+    {
+        "no": "43",
+        "question": "2SK30之電子元件為",
+        "options": ["P通道FET", "N通道FET", "PNP型電晶體", "NPN型電晶體"],
+        "image": "",
+        "answer": "N通道FET",
+        "type": "single"
+    },
+    {
+        "no": "44",
+        "question": "某電子元件之特性曲線係以電荷和電壓為座標軸表示時，則此元件為",
+        "options": ["電容器", "變壓器", "電晶體", "電感器"],
+        "image": "",
+        "answer": "電容器",
+        "type": "single"
+    },
+    {
+        "no": "45",
+        "question": "以下何種電阻器大多使用於要求長期穩定性、精確度、信賴性的測試儀器上？",
+        "options": ["碳膜電阻", "金屬皮膜電阻", "線繞電阻", "水泥電阻"],
+        "image": "",
+        "answer": "金屬皮膜電阻",
+        "type": "single"
+    },
+    {
+        "no": "46",
+        "question": "類比電路中，只講求比率精確度(相對精確度)時，以何種電阻器最適合？",
+        "options": ["集合電阻(排阻)", "水泥電阻", "碳膜電阻", "金屬皮膜電阻"],
+        "image": "",
+        "answer": "集合電阻(排阻)",
+        "type": "single"
+    },
+    {
+        "no": "47",
+        "question": "依據日本工業標準(JIS)之電晶體編號規定，編號2SB101A中，何者說明有誤？",
+        "options": ["“101”僅是登記之號碼", "“2”表示電晶體、FET、SCR或UJT等類別", "“B”表示NPN低頻用電晶體材質", "“A”表示改良的版本"],
+        "image": "",
+        "answer": "“B”表示NPN低頻用電晶體材質",
+        "type": "single"
+    },
+    {
+        "no": "48",
+        "question": "有關電容器之使用特性，下列敘述何者正確？",
+        "options": ["雲母電容有極性之分，穩定性高常用於高頻之調諧電路", "鉭質電容有極性之分，可供濾波電路使用", "電解電容有極性之分，用於時間常數及高頻電路", "紙質電容無極性之分，常用於馬達電路及低頻電路"],
+        "image": "",
+        "answer": "紙質電容無極性之分，常用於馬達電路及低頻電路 ",
+        "type": "single"
+    },
+    {
+        "no": "49",
+        "question": "在運算放大器μA741的內部電路中，不包含下列哪些電路？",
+        "options": ["放大級", "輸出級", "輸入級", "穩壓級"],
+        "image": "",
+        "answer": "穩壓級",
+        "type": "single"
+    },
+    {
+        "no": "50",
+        "question": "熱敏電阻分為熱阻器及敏阻器兩類，下列敘述何者正確？",
+        "options": ["熱阻器常用來做測過熱現象", "敏阻器屬正溫度係數", "熱阻器屬正溫度係數", "敏阻器常用來溫度測定"],
+        "image": "",
+        "answer": "敏阻器屬正溫度係數",
+        "type": "single"
+    },
+    {
+        "no": "51",
+        "question": "在光電效應中，欲增加所放射出光電子的動能，則需增大下列何種因素？",
+        "options": ["光電材料的功函數", "入射光的強度", "光電作用的表面積", "入射光的頻率"],
+        "image": "",
+        "answer": "入射光的頻率",
+        "type": "single"
+    },
+    {
+        "no": "52",
+        "question": "半導體在-273°C(即絕對溫度0°K)時，其特性為",
+        "options": ["純導體", "負電阻性", "正電阻性", "絕緣體"],
+        "image": "",
+        "answer": "絕緣體",
+        "type": "single"
+    },
+    {
+        "no": "53",
+        "question": "含有一個小數點的七段顯示器為",
+        "options": ["9隻接腳", "CA型或CK型", "8顆LED所組成", "10隻接腳"],
+        "image": "",
+        "answer": ["CA型或CK型", "8顆LED所組成", "10隻接腳" ],
+        "type": "multiple"
+    },
+    {
+        "no": "54",
+        "question": "如下圖所示，下列敘述何者正確？",
+        "options": ["Pre接0時，輸出Q=1", "Clr接0時，輸出Q=1", "Clr接0時，輸出Q=0 ", "Pre接0時，輸出Q=0"],
+        "image": "img/11700/2-26-x.jpg",
+        "answer": ["Pre接0時，輸出Q=1", "Clr接0時，輸出Q=0"],
+        "type": "multiple"
+    },
+    {
+        "no": "55",
+        "question": "下列何者是穩壓IC的型號類別？",
+        "options": ["NE555-X", "LD1117-XX", "LM78XX", "EPM3064-ALCXX"],
+        "image": "",
+        "answer": ["LD1117-XX", "EPM3064-ALCXX"],
+        "type": "multiple"
+    },
+    {
+        "no": "56",
+        "question": "有關固態繼電器(SolidStateRelay)的敘述，下列何者正確？",
+        "options": ["一種電子式無接點開關", "內部含有發光二極體與光電晶體組成光耦合器", "利用高電流控制低電流之驅動裝置", "利用低電壓控制高電壓之驅動裝置"],
+        "image": "",
+        "answer": ["一種電子式無接點開關", "內部含有發光二極體與光電晶體組成光耦合器", "利用低電壓控制高電壓之驅動裝置" ],
+        "type": "multiple"
+    },
+    {
+        "no": "57",
+        "question": "下圖中，感溫IC AD590的溫度係數為1μA/°K，25°C時其端電流為298.2μA，則下列敘述何者正確？",
+        "options": ["0°C時，Vo=0V", "15°C時，Vo=0.15V", "25°C時，Vo=2.982V", "0°C時，其端電流為273.2μA "],
+        "image": "",
+        "answer": ["0°C時，Vo=0V", "15°C時，Vo=0.15V" ],
+        "type": "multiple"
+    },
+    {
+        "no": "58",
+        "question": "若白金感溫電阻Pt100之電阻溫度係數為3850ppm/°C，下列敘述何者正確？",
+        "options": ["0°C時，其電阻值為100Ω", "每1°C電阻變化量為0.385Ω", "常溫25°C時，其電阻值為100Ω", "每1°C電阻變化量為3.85Ω"],
+        "image": "",
+        "answer": ["0°C時，其電阻值為100Ω", "每1°C電阻變化量為0.385Ω"],
+        "type": "multiple"
+    },
+    {
+        "no": "59",
+        "question": "應用於感測器模組中，除微控制器外尚會使用下列哪幾項元件？",
+        "options": ["複雜的可規劃邏輯元件(Complex Programmable Logic Device，CPLD)", "現場可程式化邏輯閘陣列(Field-Programmable Gate Arrays，FPGA)", "特殊應用積體電路(Application-Specific Integrated Circuit，ASIC)", "中央處理器(Central Processing Unit，CPU)"],
+        "image": "",
+        "answer": ["複雜的可規劃邏輯元件(Complex Programmable Logic Device，CPLD)", "現場可程式化邏輯閘陣列(Field-Programmable Gate Arrays，FPGA)", "特殊應用積體電路(Application-Specific Integrated Circuit，ASIC)"],
+        "type": "multiple"
+    },
+    {
+        "no": "60",
+        "question": "常用的陶瓷及薄膜電容器代碼標示，下列敘述何者正確？",
+        "options": ["102J是指電容值為img/11700/2-32-1x", "102J是指電容值為img/11700/2-32-2x", "104G是指電容值為img/11700/2-32-3x", "100K是指電容值為img/11700/2-32-4x"],
+        "image": "",
+        "answer": ["104G是指電容值為img/11700/2-32-3x", "100K是指電容值為img/11700/2-32-4x"],
+        "type": "multiple"
+    },
+    {
+        "no": "61",
+        "question": "有關電荷電位描述，下列敘述何者正確？",
+        "options": ["距電場無窮遠處之電位為零", "與溫度成正比", "愈靠近正電荷處電位愈高", "有方向性"],
+        "image": "",
+        "answer": ["距電場無窮遠處之電位為零", "愈靠近正電荷處電位愈高"],
+        "type": "multiple"
+    },
+    {
+        "no": "62",
+        "question": "十二位元之二進制輸入，若滿額輸出電壓為10V，那麼最小轉換值約為",
+        "options": ["4.8mV", "2.5mV", "12mV", "10mV"],
+        "image": "",
+        "answer": "2.5mV",
+        "type": "single"
+    },
+    {
+        "no": "63",
+        "question": "四位半之DMM，至少需使用多少位元之A/D轉換器？",
+        "options": ["14位元", "12位元", "10位元", "15位元"],
+        "image": "",
+        "answer": "15位元",
+        "type": "single"
+    },
+    {
+        "no": "64",
+        "question": "三用電表內部使用1mA，5Ω之永磁動圈式(PMMC)表頭，在使用50V電壓檔時，其輸入阻抗為",
+        "options": ["50KΩ", "100KΩ", "1MΩ", "500KΩ"],
+        "image": "50KΩ",
+        "answer": "MASKROM",
+        "type": "single"
+    },
+    {
+        "no": "65",
+        "question": "下列哪一種振盪器的穩定度(Stability)最高？",
+        "options": [" LC諧振電路", "溫度補償石英晶體", "韋恩電橋式", "一般石英晶體"],
+        "image": "",
+        "answer": "溫度補償石英晶體",
+        "type": "single"
+    },
+    {
+        "no": "66",
+        "question": "數位儲存示波器不需使用下列哪種元件？",
+        "options": ["D/A", "A/D", "記憶體", "鋸齒波產生器"],
+        "image": "",
+        "answer": "鋸齒波產生器",
+        "type": "single"
+    },
+    {
+        "no": "67",
+        "question": "示波器上之正弦波之峰對峰值為6.4㎝，若此時之垂直靈敏度選擇在2V/㎝，則待測波形之電壓Vrms等於",
+        "options": ["4.5V", "3V", "6.4V", "7.5V"],
+        "image": "",
+        "answer": "4.5V",
+        "type": "single"
+    },
+    {
+        "no": "68",
+        "question": "示波器的螢幕顯示：方波之週期為6㎝，若示波器水平時基旋鈕選擇為30μs/㎝，則此一方波之頻率為",
+        "options": ["556Hz", "5.56KHz", "556KHz", "55.6KHz"],
+        "image": "",
+        "answer": "5.56KHz",
+        "type": "single"
+    },
+    {
+        "no": "69",
+        "question": "量測1GHz之信號波形時，使用哪種儀器較適宜？",
+        "options": ["XY示波器", "計頻器", "取樣示波器", "記錄器"],
+        "image": "",
+        "answer": "MASKROM",
+        "type": "single"
+    },
+    {
+        "no": "70",
+        "question": "平均值式(Average-type)之DMM，可以量取下列哪一種AC波形之電壓？",
+        "options": ["失真之正弦波", "正弦波", "三角波", "方波"],
+        "image": "",
+        "answer": "正弦波",
+        "type": "single"
+    },
+    {
+        "no": "71",
+        "question": "以數位LCR表測量Z=R+jX之阻抗時，其Q值為",
+        "options": ["X/R", "R/Z", "R/X", "X/Z"],
+        "image": "",
+        "answer": "X/R",
+        "type": "single"
+    },
+    {
+        "no": "72",
+        "question": "GPIB界面之函數波產生器至少需具備下列哪一種功能？",
+        "options": ["傳送者(source)", "控制者(controller)", "收聽者(Listener)", "發言者(Talker)"],
+        "image": "",
+        "answer": "收聽者(Listener)",
+        "type": "single"
+    },
+    {
+        "no": "73",
+        "question": "測量600Ω負載之兩端為0dbm時，其端電壓為",
+        "options": ["1.414V", "0.707V", "0.636V", "0.775V"],
+        "image": "",
+        "answer": "0.775V",
+        "type": "single"
+    },
+    {
+        "no": "74",
+        "question": "邏輯分析儀之同步模式通常使用在",
+        "options": ["狀態分析", "時序分析", "暫態信號分析", "頻率計數"],
+        "image": "",
+        "answer": "狀態分析",
+        "type": "single"
+    },
+    {
+        "no": "75",
+        "question": "一般數位電表(DMM)在量測下列哪種參數時最為準確？",
+        "options": ["DCA", "R", "DCV", "ACV"],
+        "image": "",
+        "answer": "DCV",
+        "type": "single"
+    },
+    {
+        "no": "76",
+        "question": "八位數(8digit)計頻器之解析度為",
+        "options": ["0.01ppm", "10ppm", "0.001ppm", "1ppm"],
+        "image": "",
+        "answer": "0.01ppm",
+        "type": "single"
+    },
+    {
+        "no": "77",
+        "question": "三位半電表之解析度為",
+        "options": ["0.05％", "0.1％", "0.01％", "0.005％"],
+        "image": "",
+        "answer": "0.05％",
+        "type": "single"
+    },
+    {
+        "no": "78",
+        "question": "IEEE-488標準界面規定之匯流排總長度限制最多為【　　】公尺",
+        "options": ["10", "20", "30", "40"],
+        "image": "",
+        "answer": "20",
+        "type": "single"
+    },
+    {
+        "no": "79",
+        "question": "三用表之誤差若為±2％FS(Fullscale)，若使用50V電壓檔所量測之讀數為20V時，其實際誤差為",
+        "options": ["±1％", "±2％", "±3％", "±5％"],
+        "image": "",
+        "answer": "MASKROM",
+        "type": "single"
+    },
+    {
+        "no": "80",
+        "question": "數位儲存示波器內部一定需要使用下列哪種電路？",
+        "options": ["RC振盪電路", "A/D轉換電路", "Z軸調變電路", "觸發掃描電路"],
+        "image": "",
+        "answer": "A/D轉換電路",
+        "type": "single"
+    },
+    {
+        "no": "81",
+        "question": "以數位LCR表量測電感時，其顯示之電感值",
+        "options": ["與電壓偏壓成正比", "與量測頻率無關", "隨量測頻率不同而有差異", "與通過之電流成反比"],
+        "image": "",
+        "answer": "隨量測頻率不同而有差異",
+        "type": "single"
+    },
+    {
+        "no": "82",
+        "question": "計頻器之時基為10ms，而量測之總計數為1500count時，表示外加信號之頻率為",
+        "options": ["15KHz", "150KHz", "15MHz", "150MHz"],
+        "image": "",
+        "answer": "150MHz",
+        "type": "single"
+    },
+    {
+        "no": "83",
+        "question": "RS-232之資料接收線有幾條？",
+        "options": ["1", "4", "8", "16"],
+        "image": "",
+        "answer": "1",
+        "type": "single"
+    },
+    {
+        "no": "84",
+        "question": "負載阻抗為50Ω之函數波信號產生器之輸出準位為10dbm時，其電壓為",
+        "options": ["70.7mV", "0.707V", "1V", "7.07V"],
+        "image": "",
+        "answer": "0.707V",
+        "type": "single"
+    },
+    {
+        "no": "85",
+        "question": "邏輯分析儀同步模式(Syncmode)之資料取樣係使用",
+        "options": ["觸發信號", "外加時脈", "時脈限定子(clockgualifier)", "內部時脈"],
+        "image": "",
+        "answer": "外加時脈",
+        "type": "single"
+    },
+    {
+        "no": "86",
+        "question": "一般數位電壓表之輸入阻抗為",
+        "options": ["10MΩ", "600Ω", "100MΩ", "1MΩ"],
+        "image": "",
+        "answer": "10MΩ",
+        "type": "single"
+    },
+    {
+        "no": "87",
+        "question": "射極隨耦電路在電子儀表中主要是擔任下列何種作用？",
+        "options": ["阻抗匹配", "電壓放大", "振盪", "整流"],
+        "image": "",
+        "answer": "阻抗匹配",
+        "type": "single"
+    },
+    {
+        "no": "88",
+        "question": "下列何者為測試系統中之轉換器(transducer)的用途？",
+        "options": ["將非電氣的信號轉換為電氣的信號", "將類比信號轉換為數位信號", "將電氣的信號轉換為非電氣的信號", "將數位信號轉換為類比信號"],
+        "image": "",
+        "answer": "將非電氣的信號轉換為電氣的信號",
+        "type": "single"
+    },
+    {
+        "no": "89",
+        "question": "下列何者為照度計之單位？",
+        "options": ["燭光/平方公尺(cd/m2)", "安培(A)", "勒克斯(lux)", "流明(lm)"],
+        "image": "",
+        "answer": "勒克斯(lux)",
+        "type": "single"
+    },
+    {
+        "no": "90",
+        "question": "下列何者不是數位電表(DMM)的優點？",
+        "options": ["高精確度", "可判別各種閘流體", "消除讀取誤差", "易於讀取測量值"],
+        "image": "",
+        "answer": "可判別各種閘流體",
+        "type": "single"
+    },
+    {
+        "no": "91",
+        "question": "如下圖所示之調幅波，若A=10Vp-pB=2Vp-p時，其調變百分比為何？",
+        "options": ["67％", "10％", "50％", "2％"],
+        "image": "img/11700/3-30-x.jpg",
+        "answer": "67％",
+        "type": "single"
+    },
+    {
+        "no": "92",
+        "question": "電晶體基極輸入下列何種波形時，可在示波器上顯示多條電晶體共射極輸出曲線？",
+        "options": ["三角波", "正弦波", "方波", "階梯波"],
+        "image": "",
+        "answer": "階梯波",
+        "type": "single"
+    },
+    {
+        "no": "93",
+        "question": "線性IC測試器最常用來測量下列何種IC？",
+        "options": ["A/D轉換IC", "D/A轉換IC", "穩壓IC", "運算放大器"],
+        "image": "",
+        "answer": "A/D轉換IC",
+        "type": "single"
+    },
+    {
+        "no": "94",
+        "question": "一般函數波信號產生器，採用下列何者作為基本的振盪電路？",
+        "options": ["三角波振盪器", "相移振盪器", "考畢子振盪器", "韋恩振盪器"],
+        "image": "",
+        "answer": "三角波振盪器",
+        "type": "single"
+    },
+    {
+        "no": "95",
+        "question": "有一正弦波信號v(t)=2sin628t，不經衰減直接加到示波器垂直輸入端，在不使用水平放大增益，且微調旋鈕也置於校正位置時，若示波器所顯示的波形如下圖所示，則示波器水平與垂直旋鈕應分別是撥在下列何種位置？",
+        "options": ["2ms/DIV、1V/DIV", "2.5ms/DIV、2V/DIV", "2.5ms/DIV、1V/DIV", "5ms/DIV、2V/DIV"],
+        "image": "img/11700/3-34-x.jpg",
+        "answer": "2.5ms/DIV、1V/DIV",
+        "type": "single"
+    },
+    {
+        "no": "96",
+        "question": "若以單一頻率信號輸入到放大器中，以測其大致的頻率響應情形時，宜用下列何種波形測量？",
+        "options": ["方波", "正弦波", "三角波", "鋸齒波"],
+        "image": "",
+        "answer": "MASKROM",
+        "type": "single"
+    },
+    {
+        "no": "97",
+        "question": "電容器是否漏電，可用三用電表的何檔測試較為簡便？",
+        "options": ["ACV檔", "DCV檔", "DCA檔", "Ω檔"],
+        "image": "",
+        "answer": "Ω檔",
+        "type": "single"
+    },
+    {
+        "no": "98",
+        "question": "高阻計(MeggerMeter)是用來量測",
+        "options": ["絕緣電阻", "電解液電阻", "導線電阻", "接地電阻"],
+        "image": "",
+        "answer": "絕緣電阻",
+        "type": "single"
+    },
+    {
+        "no": "99",
+        "question": "2.5級的指針式電表，表示該儀器的精確度為",
+        "options": ["任一點的±2.5個單位", "滿刻度的±2.5％單位", "任一點的±2.5％單位", "滿刻度的±2.5個單位"],
+        "image": "",
+        "answer": "滿刻度的±2.5％單位",
+        "type": "single"
+    },
+    {
+        "no": "100",
+        "question": "二線式(A'，B')測溫感知器若使用在三線式(A-B-b)儀器時，應該",
+        "options": ["A'接A，B'接B與b", "B與b短路", "B端不接", "A'接A與b，B'接B"],
+        "image": "",
+        "answer": "A'接A，B'接B與b",
+        "type": "single"
     }
 ]
