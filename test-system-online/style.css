@@ -74,10 +74,7 @@ button{
 .top-menu span{
     color: #fff;
 }
-#msg{
-    display: flex;
-    flex-direction: column;
-}
+
 .msg{
     width: 60%;
     margin: 20px auto;
