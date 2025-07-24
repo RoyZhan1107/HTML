@@ -23,8 +23,9 @@ function loadExam(){
 
 // 載入題目
 function renderQuestion(index){
-    const q = questions[index];
+    const q = questions[currentIndex];
     document.getElementById("question").textContent = q.question;
+    document.getElementById("label1").textContent = q.option[0];
 
     // 顯示圖片 (如果有)
     const imgEl = document.getElementById("que-img");
