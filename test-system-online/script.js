@@ -122,6 +122,11 @@ function queTotal(event){
         renderQueTotal();
     }
 }
+// 確定按鈕
+function ok(){
+    const clear = document.getElementById("right-click-msg");
+    clear.style.display = "none";
+}
 // 定義兩個倒計時
 let cdEnd1, cdEnd2, timer1, timer2;
 // 
