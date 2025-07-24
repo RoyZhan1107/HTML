@@ -147,8 +147,8 @@ jobTypeSelect.addEventListener('change', function() {
 // 禁止右鍵
 document.addEventListener("contextmenu", function(event){
     event.preventDefault();
-    const msg = document.getElementById("#msg");
-    msg.style.display = ("block");
+    const msg = document.getElementById("msg");
+    msg.style.display = ("flex");
     msg.style.flexDirection = ("column");
     msg.style.justifyContent = ("center");
 })
