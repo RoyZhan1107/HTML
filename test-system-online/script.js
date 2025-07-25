@@ -12,8 +12,12 @@ function loadExam(){
         questions = data;
         renderQuestion(currentIndex);
         */
+       console.log("載入前:", data.length);
+       console.log("題庫長度:", data.length);
        questions = Random(data, 80);
-       currentIndex = 0;
+       console.log("隨機後 question 長度:", questions.length);
+       console.log("抽題後:", selected.length);
+    //    currentIndex = 0;
        loadExam();
     })
     .catch(err => {
