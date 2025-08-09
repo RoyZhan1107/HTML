@@ -1,6 +1,6 @@
 // 偵測語言
 const pathParts = window.location.pathname.split('/');
-const folder = pathParts.filter(Boolean)[3]; // 取第一層資料夾名稱
+const folder = pathParts.filter(Boolean)[2]; // 取第一層資料夾名稱
 // 依照語言切換打字內容
 const langData = {
     "tw-zh": {
