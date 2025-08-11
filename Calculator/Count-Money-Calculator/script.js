@@ -41,3 +41,6 @@ function resetBtn(){
     nt1000.value = "";
     result.innerHTML = "";
 }
+document.addEventListener("contextmenu", function(e){
+    e.preventDefault();
+});
