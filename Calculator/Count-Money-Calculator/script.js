@@ -26,9 +26,9 @@ const data = langData[folder] || langData["zh-tw"];
 function calculateBtn(){
     const total = (nt1.value * 1) + (nt5.value * 5) + (nt10.value * 10) + (nt50.value * 50) + (nt100.value * 100) + (nt500.value * 500) + (nt1000.value * 1000);
     if(nt1.value === "" && nt5.value === "" && nt10.value === "" && nt50.value === "" && nt100.value === "" && nt500.value === "" && nt1000.value === ""){
-        alert(langData[folder]["error"]);
+        alert(data["error"]);
     } else {
-        result.innerHTML = `${langData[folder]["total"]} ${total} ${langData[folder]["dollar"]}`;
+        result.innerHTML = `${data["total"]} ${total} ${data["dollar"]}`;
     }
 }
 function resetBtn(){
