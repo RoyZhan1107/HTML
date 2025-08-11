@@ -8,7 +8,7 @@ const nt1000 = document.getElementById("nt1000");
 const result = document.getElementById("result");
 
 const path = window.location.pathname.split('/');
-const folder = pathParts.filter(Boolean)[2]; // 取第一層資料夾名稱
+const folder = path.filter(Boolean)[4]; // 取第一層資料夾名稱
 
 const langData = {
     "us-en": {
