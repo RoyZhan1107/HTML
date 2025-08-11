@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../styles.css">
+        <title>Resistance Calculator</title>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <span>Resistance Calculator</span>
+                <div class="small">4/5 Band Support — Mobile/Desktop Friendly</div>
+            </header>
+            <div class="card">
+                <div class="controls">
+                    <div class="">
+                        <label for="bandCount">Number of Bands</label>
+                        <select name="" id="bandCount">
+                            <option value="4">4 Bands (2 Digits + Multiplier + Tolerance)</option>
+                            <option value="5">5 Bands (3 Digits + Multiplier + Tolerance)</option>
+                        </select>
+                    </div>
+                    <div class="">
+                        <label for="preset">Common Examples</label>
+                        <select name="" id="preset">
+                            <option value="">-- Select Example --</option>
+                            <option value="redvioletbrown">Red Violet Brown (2.7Ω)</option>
+                            <option value="yellowvioletred">Yellow Violet Red (470Ω)</option>
+                            <option value="bluegraybrown">Blue Gray Brown (1kΩ)</option>
+                            <option value="greenbluebrown">Green Blue Brown (10kΩ)</option>
+                            <option value="greenbrownblack">Green Brown Black (50Ω)</option>
+                        </select>
+                    </div>
+                    <div class="">
+                        <label for="">&nbsp;</label><br>
+                        <button class="btn" id="calcBtn">Calculate</button>
+                    </div>
+                </div>
+                <div class="band-row" id="bandsContainer"></div>
+                <div class="result">
+                    <div class="">
+                        <div class="small">Resistance Value</div>
+                        <div class="value" id="resValue">-</div>
+                    </div>
+                    <div class="">
+                        <div class="small">Tolerance</div>
+                        <div class="" id="tolerance">-</div>
+                    </div>
+                    <div class="">
+                        <div class="small">Decimal (Ω)</div>
+                        <div class="resOhm" id="resOhm">-</div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <button class="ghost" id="copyBtn">Copy</button>
+                    <button class="ghost" id="resetBtn">Reset</button>
+                    <div class="help">Color Code Explanation: Common color band values/multipliers/tolerances are built-in</div>
+                </div>
+            </div>
+            <footer>
+                &copy; Author: Roy Zhan
+            </footer>
+        </div>
+    </body>
+    <script src="../script.js"></script>
+</html>

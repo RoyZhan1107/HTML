@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../style.css">
+        <title>BMI Calculator</title>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <span>BMI Calculator</span>
+                <div class="small">Mobile/Desktop Friendly</div>
+            </header>
+            <div class="card">
+                <div class="controls">
+                    <div class="">
+                        <label for="">Height(cm):</label>
+                        <input type="number" id="height" placeholder="Please enter your height" autocomplete="off" required>
+                    </div>
+                    <div class="">
+                        <label for="weight">Weight(kg):</label>
+                        <input type="number" id="weight" placeholder="Please enter your weight" autocomplete="off" required>
+                    </div>
+                    <div class="">
+                        <button class="btn" onclick="calculateBMI()">Calculate BMI</button>
+                        <div class="result" id="result"></div>
+                    </div>
+                </div>
+            </div>
+            <footer>&copy; Author: Roy Zhan</footer>
+        </div>
+    </body>
+    <script src="../script.js"></script>
+</html>

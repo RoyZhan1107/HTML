@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../style.css">
+        <title>BMI 計算機</title>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <span>BMI計算機</span>
+                <div class="small">手機/桌機皆適用</div>
+            </header>
+            <div class="card">
+                <div class="controls">
+                    <div class="">
+                        <label for="">身高(cm):</label>
+                        <input type="number" id="height" placeholder="請輸入您的身高" autocomplete="off" required>
+                    </div>
+                    <div class="">
+                        <label for="weight">體重(kg):</label>
+                        <input type="number" id="weight" placeholder="請輸入您的體重" autocomplete="off" required>
+                    </div>
+                    <div class="">
+                        <button class="btn" onclick="calculateBMI()">計算 BMI </button>
+                        <div class="result" id="result"></div>
+                    </div>
+                </div>
+            </div>
+            <footer>&copy; 作者:嚴浩軒</footer>
+        </div>
+    </body>
+    <script src="../script.js"></script>
+</html>

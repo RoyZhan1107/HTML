@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../style.css">
+        <title>Weight Calculator</title>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <span>Weight Calculator</span>
+                <div class="small">Mobile/Desktop Compatible</div>
+            </header>
+            <div class="card">
+                <div class="controls">
+                    <div class="">
+                        <label for="">Please enter weight</label>
+                        <input type="number" id="weight" placeholder="Ex:500" autocomplete="off" >
+                    </div>
+                    <div class="">
+                        <label for="from">Please select original weight</label>
+                        <select name="" id="from"></select>
+                    </div>
+                    <div class="">
+                        <label for="to">Please select converted weight</label>
+                        <select name="" id="to"></select>
+                    </div>
+                    <div class="">
+                        <button class="btn" onclick="convert()">Convert</button>
+                    </div>
+                </div>
+                <div class="result" id="result"></div>
+                
+            </div>
+            <footer>&copy; Author: Roy Zhan</footer>
+        </div>
+    </body>
+    <script src="../script.js"></script>
+</html>

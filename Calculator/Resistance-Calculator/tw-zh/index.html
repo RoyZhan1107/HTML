@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../styles.css">
+        <title>電阻計算器</title>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <span>電阻計算器</span>
+                <div class="small">4/5 環皆支援 — 手機/桌機皆適用</div>
+            </header>
+            <div class="card">
+                <div class="controls">
+                    <div class="">
+                        <label for="bandCount">色環數</label>
+                        <select name="" id="bandCount">
+                            <option value="4">4環( 2 位數 + 乘冪數 + 誤差值 )</option>
+                            <option value="5">5環( 3 位數 + 乘冪數 + 誤差值 )</option>
+                        </select>
+                    </div>
+                    <div class="">
+                        <label for="preset">常用範例</label>
+                        <select name="" id="preset">
+                            <option value="">-- 選擇範例 --</option>
+                            <option value="redvioletbrown">紅紫棕(2.7Ω)</option>
+                            <option value="yellowvioletred">黃紫紅(470Ω)</option>
+                            <option value="bluegraybrown">藍灰棕(1kΩ)</option>
+                            <option value="greenbluebrown">綠藍棕(10kΩ)</option>
+                            <option value="greenbrownblack">綠棕黑(50Ω)</option>
+                        </select>
+                    </div>
+                    <div class="">
+                        <label for="">&nbsp;</label><br>
+                        <button class="btn" id="calcBtn">計算</button>
+                    </div>
+                </div>
+                <div class="band-row" id="bandsContainer"></div>
+                <div class="result">
+                    <div class="">
+                        <div class="small">電阻值</div>
+                        <div class="value" id="resValue">-</div>
+                    </div>
+                    <div class="">
+                        <div class="small">誤差</div>
+                        <div class="" id="tolerance">-</div>
+                    </div>
+                    <div class="">
+                        <div class="small">十進位(Ω)</div>
+                        <div class="resOhm" id="resOhm">-</div>
+                    </div>
+                </div>
+                <div class="footer">
+                    <button class="ghost" id="copyBtn">複製</button>
+                    <button class="ghost" id="resetBtn">重製</button>
+                    <div class="help">顏色說明：常見色環的數字/乘冪數/誤差值已內建</div>
+                </div>
+            </div>
+            <footer>
+                &copy; 作者:嚴浩軒
+            </footer>
+        </div>
+    </body>
+    <script src="../script.js"></script>
+</html>

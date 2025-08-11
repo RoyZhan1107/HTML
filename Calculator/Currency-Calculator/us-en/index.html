@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="../style.css">
+        <title>Currency Converter</title>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <span>Currency Converter</span>
+                <div class="small">Mobile/Desktop Friendly</div>
+            </header>
+            <div class="card">
+                <div class="controls">
+                    <div class="">
+                        <label for="amount">Amount</label>
+                        <input type="number" id="amount" placeholder="Please enter amount" autocomplete="off" required>
+                    </div>
+                    <div class="">
+                        <label for="from">Please select original currency:</label>
+                        <select name="" id="from"></select>
+
+                        <label for="to">Please select target currency:</label>
+                        <select name="" id="to"></select>
+                    </div>
+                    <div class="">
+                        <label for="rate">Exchange Rate (1 unit of "Original Currency" = how many units of "Target Currency"):</label>
+                        <input type="number" id="rate" step="0.0001" placeholder="Ex:30.5"/>
+                        </div>
+                    <div class="">
+                        <button class="btn" onclick="convert()">Convert</button>
+                        <div class="result" id="result"></div>
+                    </div>
+                    <div class="help">
+                        <p>Note: Currently, the exchange rate needs to be searched manually. The automatic fetching of exchange rates is under development. We apologize for the inconvenience.</p>
+                    </div>
+                </div>
+            </div>
+            <footer>&copy; Author: Roy Zhan</footer>
+        </div>
+    </body>
+    <script src="script.js"></script>
+</html>
