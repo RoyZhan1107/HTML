@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../styles.css">
+        <title>數錢計算機</title>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <span>數錢計算機</span>
+                <div class="small">手機/桌機皆適用</div>
+            </header>
+            <div class="card">
+                <div class="controls">
+                    <div class="">
+                        <label for="amount">1元</label>
+                        <input type="number" id="nt1" placeholder="請輸入數量" autocomplete="off" required>
+                    </div>
+                    <div class="">
+                        <label for="amount">5元</label>
+                        <input type="number" id="nt5" placeholder="請輸入數量" autocomplete="off" required>
+                    </div>
+                    <div class="">
+                        <label for="amount">10元</label>
+                        <input type="number" id="nt10" placeholder="請輸入數量" autocomplete="off" required>
+                    </div>
+                    <div class="">
+                        <label for="amount">50元</label>
+                        <input type="number" id="nt50" placeholder="請輸入數量" autocomplete="off" required>
+                    </div>
+                    <div class="">
+                        <label for="amount">100元</label>
+                        <input type="number" id="nt100" placeholder="請輸入數量" autocomplete="off" required>
+                    </div>
+                    <div class="">
+                        <label for="amount">500元</label>
+                        <input type="number" id="nt500" placeholder="請輸入數量" autocomplete="off" required>
+                    </div>
+                    <div class="">
+                        <label for="amount">1000元</label>
+                        <input type="number" id="nt1000" placeholder="請輸入數量" autocomplete="off" required>
+                    </div>
+                    <div class="result" id="result"></div>
+                </div>
+                <div class="footer">
+                    <button class="btn" id="calculateBtn" onclick="calculateBtn()">計算</button>
+                    <button class="ghost" id="resetBtn" onclick="resetBtn()">重置</button>
+                    <div class="help">註:請務必輸入每個金額的數量，以便進行計算。</div>
+                </div>
+            </div>
+            <footer>&copy; 作者:嚴浩軒</footer>
+        </div>
+    </body>
+    <script src="../script.js"></script>
+</html>

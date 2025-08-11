@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../styles.css">
+        <title>Money Counter</title>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <span>Money Counter</span>
+                <div class="small">Mobile/Desktop Friendly</div>
+            </header>
+            <div class="card">
+                <div class="controls">
+                    <div class="">
+                        <label for="amount">NT$1</label>
+                        <input type="number" id="nt1" placeholder="Please enter quantity" autocomplete="off" required>
+                    </div>
+                    <div class="">
+                        <label for="amount">NT$5</label>
+                        <input type="number" id="nt5" placeholder="Please enter quantity" autocomplete="off" required>
+                    </div>
+                    <div class="">
+                        <label for="amount">NT$10</label>
+                        <input type="number" id="nt10" placeholder="Please enter quantity" autocomplete="off" required>
+                    </div>
+                    <div class="">
+                        <label for="amount">NT$50</label>
+                        <input type="number" id="nt50" placeholder="Please enter quantity" autocomplete="off" required>
+                    </div>
+                    <div class="">
+                        <label for="amount">NT$100</label>
+                        <input type="number" id="nt100" placeholder="Please enter quantity" autocomplete="off" required>
+                    </div>
+                    <div class="">
+                        <label for="amount">NT$500</label>
+                        <input type="number" id="nt500" placeholder="Please enter quantity" autocomplete="off" required>
+                    </div>
+                    <div class="">
+                        <label for="amount">NT$1000</label>
+                        <input type="number" id="nt1000" placeholder="Please enter quantity" autocomplete="off" required>
+                    </div>
+                    <div class="result" id="result"></div>
+                </div>
+                <div class="footer">
+                    <button class="btn" id="calculateBtn" onclick="calculateBtn()">Calculate</button>
+                    <button class="ghost" id="resetBtn" onclick="resetBtn()">Reset</button>
+                    <div class="help">Note: Please enter the quantity for each denomination to calculate the total.</div>
+                </div>
+            </div>
+            <footer>&copy; Author: Roy Zhan</footer>
+        </div>
+    </body>
+    <script src="../script.js"></script>
+</html>
