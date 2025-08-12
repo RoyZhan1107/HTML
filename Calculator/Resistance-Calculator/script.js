@@ -1,5 +1,5 @@
 const path = window.location.pathname.split('/');
-const folder = path.filter(Boolean)[4]; // 取第一層資料夾名稱
+const folder = path.filter(Boolean)[4]; // 取第四層資料夾名稱
 
 const langData = {
     "us-en": {
@@ -101,6 +101,7 @@ function swatchEl(color){
     return sp;
 }
 
+// 顯示色環
 function buildBands(){
     bandsContainer.innerHTML = "";
     const count = parseInt(bandCountEl.value,10);
@@ -109,7 +110,8 @@ function buildBands(){
     for(let i = 1; i <= digitCount; i++){
         const container = document.createElement("div");
         container.className = "band";
-        container.innerHTML = `<label>${data[`band${i}`]}</label>`;
+        container.innerHTML = `<label>${`色環${i}`}</label>`;
+        container.innerHTML = `<label>${data.band + i }</label>`;
         const sel = createSelect(digitColors, `band${i}`);
         container.appendChild(sel);
         const sw = document.createElement("div");
@@ -146,7 +148,6 @@ function buildBands(){
 
     Array.from(bandsContainer.querySelectorAll("select")).forEach(s => updateSwatch(s.id));
 }
-
 function updateSwatch(id){
     const el = document.getElementById(id);
     const val = el ? el.value : null;
