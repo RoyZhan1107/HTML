@@ -1,3 +1,22 @@
+const path = window.location.pathname.split('/');
+const folder = path.filter(Boolean)[4]; // 取第一層資料夾名稱
+
+const langData = {
+    "us-en": {
+        "band":  "band",
+        "multiplier": "multiplier",
+        "tolerance": "tolerance",
+        "copy": "Copy Success"
+    },
+    "tw-zh": {
+        "band":  "色環",
+        "multiplier": "乘冪",
+        "tolerance": "公差",
+        "copy": "已複製"
+    }
+}
+const data = langData[folder] || langData["tw-zh"];
+
 // 電阻顏色阻值
 const colorDigits = {
     "black": 0, "brown": 1, "red": 2, "orange": 3, "yellow": 4, "green": 5, "blue": 6, "violet": 7, "gray": 8, "white": 9
@@ -90,7 +109,7 @@ function buildBands(){
     for(let i = 1; i <= digitCount; i++){
         const container = document.createElement("div");
         container.className = "band";
-        container.innerHTML = `<label>色環 ${i}</label>`;
+        container.innerHTML = `<label>${data[`band${i}`]}</label>`;
         const sel = createSelect(digitColors, `band${i}`);
         container.appendChild(sel);
         const sw = document.createElement("div");
@@ -103,7 +122,7 @@ function buildBands(){
 
     const mult = document.createElement("div");
     mult.className = "band";
-    mult.innerHTML = `<label>乘數:</label>`;
+    mult.innerHTML = `<label>${data["multiplier"]}:</label>`;
     const multSel = createSelect(multiplierColors, "multiplier");
     mult.appendChild(multSel);
     const swM = document.createElement("div");
@@ -115,7 +134,7 @@ function buildBands(){
 
     const tol = document.createElement("div");
     tol.className = "band";
-    tol.innerHTML = `<label>公差:</label>`;
+    tol.innerHTML = `<label>${data["tolerance"]}:</label>`;
     const tolSel = createSelect(toleranceColors, "tolerance");
     tol.appendChild(tolSel);
     const swT = document.createElement("div");
@@ -228,7 +247,7 @@ preset.addEventListener("change", () =>
 copyBtn.addEventListener("click", () => {
     const text = `${resValueEl.textContent} ${toleranceEl.textContent} (${resOhmEl.textContent})`;
     navigator.clipboard.writeText(text).then(() => 
-        alert("已複製: " + text)
+        alert(`${data["copy"]} ${text}`)
     );
 });
 resetBtn.addEventListener("click", resetAll);
