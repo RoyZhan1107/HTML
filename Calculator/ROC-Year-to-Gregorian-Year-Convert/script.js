@@ -1,5 +1,5 @@
 const path = window.location.pathname.split('/');
-const folder = path.filter(Boolean)[6]; // 取第四層資料夾名稱
+const folder = path.filter(Boolean)[4]; // 取第四層資料夾名稱
 
 const RTG = document.getElementById("RTG");
 const GTR = document.getElementById("GTR");
