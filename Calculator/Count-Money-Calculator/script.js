@@ -8,7 +8,7 @@ const nt1000 = document.getElementById("nt1000");
 const result = document.getElementById("result");
 
 const path = window.location.pathname.split('/');
-const folder = path.filter(Boolean)[4]; // 取第一層資料夾名稱
+const folder = path.filter(Boolean)[4]; // 取第四層資料夾名稱
 
 const langData = {
     "us-en": {
@@ -28,7 +28,7 @@ function calculateBtn(){
     if(nt1.value === "" && nt5.value === "" && nt10.value === "" && nt50.value === "" && nt100.value === "" && nt500.value === "" && nt1000.value === ""){
         alert(data["error"]);
     } else {
-        result.innerHTML = `${data["total"]} ${total} ${data["dollar"]}`;
+        result.innerHTML = `${data["total"]} ${data["dollar"]}`;
     }
 }
 function resetBtn(){
