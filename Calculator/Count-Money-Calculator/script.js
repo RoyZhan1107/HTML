@@ -16,13 +16,13 @@ const langData = {
         "total": "Total Amount: ",
         "dollar": "Dollars"
     },
-    "zh-tw": {
+    "tw-zh": {
         "error": "數量不能為空值",
         "total": "總金額: ",
         "dollar": "元"
     }
 };
-const data = langData[folder] || langData["zh-tw"];
+const data = langData[folder] || langData["tw-zh"];
 function calculateBtn(){
     const total = (nt1.value * 1) + (nt5.value * 5) + (nt10.value * 10) + (nt50.value * 50) + (nt100.value * 100) + (nt500.value * 500) + (nt1000.value * 1000);
     if(nt1.value === "" && nt5.value === "" && nt10.value === "" && nt50.value === "" && nt100.value === "" && nt500.value === "" && nt1000.value === ""){
