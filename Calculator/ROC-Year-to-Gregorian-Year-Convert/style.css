@@ -1,0 +1,83 @@
+:root{
+    --bg: #0f1724;
+    --card: #0b1220;
+    --muted: #9aa7b2;
+    --accent: #00c0a3;
+    --white: #f5f7fb;
+    --black: #0f1724;
+}
+body{
+    margin: 0;
+    height: 95vh;
+    font-family: Inter, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, Arial, Helvetica, sans-serif;
+    background: linear-gradient(180deg, #071421, #051018);
+    color: var(--white);
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+.wrap{
+    width: 100%;
+    max-width: 920px;
+}
+header{
+    display: flex;
+    color: #fff;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+span{
+    font-size: 24px;
+    margin: 0;
+}
+.card{
+    background: rgba(255, 255, 255, 0.03);
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(1, 6, 12, 0.6);
+}
+.controls{
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+    flex-direction: column;
+    text-align: center;
+}
+label{
+    font-size: 14px;
+    color: var(--muted);
+}
+select{
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: var(--bg);
+    color: var(--white);
+    min-width: 140px;
+}
+input{
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    background: var(--bg);
+    color: var(--white);
+    min-width: 140px;
+}
+button.btn{
+    background: var(--accent);
+    border: none;
+    color: #022;
+    padding: 8px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+footer{
+    margin: 0;
+    color: var(--muted);
+    text-align: center;
+}

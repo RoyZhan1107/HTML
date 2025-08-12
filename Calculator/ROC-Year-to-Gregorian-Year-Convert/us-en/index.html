@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="../style.css">
+        <title>ROC Year and Gregorian Year Converter</title>
+    </head>
+    <body>
+        <div class="wrap">
+            <head>
+                <span>ROC Year and Gregorian Year Converter</span>
+                <div class="small">Mobile/Desktop Friendly</div>
+            </head>
+            <div class="card">
+                <div class="controls">
+                    <div class="">
+                        <label for="">Please select the year type you want to change:</label>
+                        <select id="year">
+                            <option value="RTG">ROC Year to Gregorian Year</option>
+                            <option value="GTR">Gregorian Year to ROC Year</option>
+                        </select>
+                    </div>
+                    <div class="">
+                        <label for="yearInput">Please enter the year:</label>
+                        <input type="number" id="input" placeholder="For example: 110" autocomplete="off">
+                    </div>
+                    <div class="">
+                        <button class="btn" id="convertBtn" onclick="convert()">Convert</button>
+                    </div>
+                    <div class="result" id="result"></div>
+                </div>
+            </div>
+            <footer>&copy; Author: Roy Zhan</footer>
+        </div>
+    </body>
+    <script src="../script.js"></script>
+</html>
