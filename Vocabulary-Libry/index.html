@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+        <title>英語單詞庫</title>
+    </head>
+    <body>
+        <div class="app">
+            <header>
+                <div class="brand">
+                    <svg width="26" height="26" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 3l2.09 6.26H21l-5.5 3.99L17.18 21 12 16.77 6.82 21l1.68-7.75L3 9.26h6.91L12 3z" fill="url(#g)"/><defs><linearGradient id="g" x1="3" y1="3" x2="21" y2="21" gradientUnits="userSpaceOnUse"><stop stop-color="#4cc9f0"/><stop offset="1" stop-color="#4895ef"/></linearGradient></defs></svg>
+                    <span>英語單詞庫</span>
+                </div>
+                    <nav class="tabs">
+                        <button class="tab active" data-panel="library">📚單詞庫</button>
+                        <button class="tab" data-panel="add">➕新增單詞</button>
+                        <button class="tab" data-panel="quiz">📝 拼寫測驗</button>
+                        <button class="tab" data-panel="settings">⚙️設定</button>
+                    </nav>
+            </header>
+            <!-- Library -->
+            <section class="card" id="panel-library">
+                <div class="body stack">
+                    <div class="split">
+                        <input type="search" id="search" placeholder="搜尋英文、中文或句型...(Ctrl+/)">
+                        <select name="" id="filterFav">
+                            <option value="all">全部</option>
+                            <option value="fav">收藏</option>
+                        </select>
+                    </div>
+                    <div class="list" id="list"></div>
+                </div>
+            </section>
+            <!-- Add -->
+            <section class="card hidden" id="panel-add">
+                <div class="body stack">
+                    <span>新增單詞</span>
+                    <div class="split">
+                        <input type="text" id="add-word" placeholder="英文單詞(必填)">
+                        <input type="text" id="add-meaning" placeholder="單詞意思(必填)">
+                    </div>
+                    <textarea name="" id="add-patterns" rows="3" placeholder="例句/例句(每行一條)"></textarea>
+                    <div class="flex">
+                        <button id="btnAdd">新增</button>
+                        <p class="muted">提示:可貼上多個句子，每行一條</p>
+                    </div>
+                </div>
+            </section>
+            <!-- Quiz -->
+            <section class="card hidden" id="panel-quiz">
+                <div class="body stack">
+                    <span>拼寫測驗</span>
+                    <div class="split">
+                        <select name="" id="quizScope">
+                            <option value="all">全部</option>
+                            <option value="fav">收藏</option>
+                        </select>
+                        <select name="" id="quizMode">
+                            <option value="meaning">顯示中文，拼寫英文</option>
+                            <option value="example">顯示填空句型，拼寫單詞</option>
+                        </select>
+                    </div>
+                    <div class="stack">
+                        <div class="pill" id="quizPrompt">
+                            請按"出題"開始
+                        </div>
+                        <input type="text" id="quizAnswer" placeholder="在此輸入拼寫...(Enter鍵提交)">
+                        <div class="flex">
+                            <button id="btnAsk">出題</button>
+                            <button class="ghost" id="btnCheck">檢查</button>
+                            <button class="ghost" id="btnReveal">顯示答案</button>
+                        </div>
+                        <div class="muted" id="quizResult"></div>
+                    </div>
+                </div>
+            </section>
+            <!-- Settings -->
+            <section class="card hidden" id="panel-settings">
+                <div class="body stack">
+                    <span>資料</span>
+                    <div class="flex">
+                        <button class="" id="btnExport">匯出 JSON</button>
+                        <input type="file" id="fileImport" accept="application/json" class="ghost">
+                        <button class="warn" id="btnClear">清除資料(不可復原)</button>
+                    </div>
+                    <p class="muted">資料儲存在瀏覽器的<span class="kbd">localStorage</span>。可匯出備份，或在另一台匯入。</p>
+                </div>
+            </section>
+            <div class="footer">快捷鍵: <span class="kbd">Ctrl+/</span>聚焦搜尋、<span class="kbd">/</span>也可。<span class="kbd">Enter</span>提交</div>
+        </div>
+        <footer>&copy;作者:嚴浩軒</footer>
+    </body>
+    <script src="example.js"></script>
+</html>
