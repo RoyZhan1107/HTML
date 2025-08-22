@@ -5,10 +5,10 @@ const LS_KEY = 'wordbook.v1';
 let words = [];
 
 const defaults = [
-    {word: 'significant', meaning: '重要的；顯著的', patterns: ['a significant increase in ~', 'be significant to sb/sth'], fav:true},
-    {word: 'approach', meaning: '方法；接近', patterns: ['an approach to ~', 'approach + O(及物)'], fav:false},
-    {word: 'despite', meaning: '儘管(介系詞)', patterns: ['despite + N/V-ing', 'Despite the rain, ...'], fav:false},
-    {word: 'participate', meaning: '參加；參與(不及物 + in)', patterns: ['participate in ~', 'be willing to participate in~'], fav:true},
+    {word: 'significant', meaning: '重要的；顯著的', pos: 'adjective', patterns: ['a significant increase in ~', 'be significant to sb/sth'], fav:true},
+    {word: 'approach', meaning: '方法；接近', pos:'noun', patterns: ['an approach to ~', 'approach + O(及物)'], fav:false},
+    {word: 'despite', meaning: '儘管(介系詞)', pos: 'preposition', patterns: ['despite + N/V-ing', 'Despite the rain, ...'], fav:false},
+    {word: 'participate', meaning: '參加；參與(不及物 + in)', pos: 'verb', patterns: ['participate in ~', 'be willing to participate in~'], fav:true},
 ];
 
 function load(){
@@ -54,7 +54,7 @@ function renderList(){
     const filtered = words.filter(w => {
         if(onlyFav && !w.fav) return false;
         if(!q) return true;
-        const hay = [w.word, w.meaning, ...(w.patterns || [])].join('\n').toLowerCase();
+        const hay = [w.word, w.pos, w.meaning, ...(w.patterns || [])].join('\n').toLowerCase();
         return hay.includes(q);
     });
     listEl.innerHTML = filtered.map((w, i) => itemHTML(w, i)).join('') || '<div class="muted">沒有資料，請新增或放寬篩選</div>';
@@ -64,14 +64,16 @@ function renderList(){
         el.querySelector('.star').addEventListener('click', () => toggleFav(i));
         el.querySelector('.btn-add-pattern').addEventListener('click', () => addPattern(i));
     });
+    
 }
 
 function itemHTML(w, i){
-    const patterns = (w.patterns || []).map(p => `<span class="pill">${escapeHtml(p)}</span>`).join(' ');
+    const patterns = w.patterns && w.patterns.length ? w.patterns.map(p => `<div>${p}</div>`).join('') : '';
     return `
     <div class="word" data-idx="${i}">
         <div class="top">
-            <strong>${escapeHtml(w.word)}</strong>
+            <strong>${(w.word)}</strong>
+            <span class="pos">${w.pos}</span>
             <span class="star ${w.fav?'fav':''}"title="收藏">★</span>
         </div>
         <div class="muted">${escapeHtml(w.meaning || '')}</div>

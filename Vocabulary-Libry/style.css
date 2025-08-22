@@ -58,7 +58,7 @@ header{
     border-radius: 10px;
     cursor: pointer;
 }
-.tab .active{
+.tab.active{
     color: var(--text);
     background: #152233;
     border-color: #2b3b51;
@@ -139,11 +139,25 @@ button.warn{
     justify-content: space-between;
     gap: 8px;
 }
+.pos{
+  font-size: 0.85em;
+  color: var(--text); /* 明確顏色 */
+  display: flex;
+  margin-left: 8px;
+  font-style: italic;
+  background: var(--bg);
+  padding: 2px 6px;
+  border-radius: 6px;
+}
 .star{
     cursor: pointer;
-    font-size: 18px;
+    font-size: 30px;
+    line-height: 1;
+    color: #93a4b1;
+    transition: color .15s;
+    user-select: none;
 }
-.star .fav{
+.star.fav{
     color: #ffd166;
 }
 .pill{
