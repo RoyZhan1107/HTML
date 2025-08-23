@@ -56,7 +56,7 @@ function renderList(){
         if(onlyFav && !w.fav) return false;
         if(!q) return true;
         // const hay = [w.word, w.pos, w.meaning, ...(w.patterns || [])].join('\n').toLowerCase();
-        const hay = [w.word, w.pos, w.meaning, ...(Array.isArray(w.patterns) ? w.patterns : [])].join('\n').toLowerCase();
+        const hay = [w.word, w.pos, w.meaning, (Array.isArray(w.synonym) ? w.synonym.map : []), w.derivatives, w.phrases, ...(Array.isArray(w.patterns) ? w.patterns : [])].join('\n').toLowerCase();
         return hay.includes(q);
     });
     listEl.innerHTML = filtered.map((w, i) => itemHTML(w, i)).join('') || '<div class="muted">沒有資料，請新增或放寬篩選</div>';
@@ -72,10 +72,7 @@ function renderList(){
 function itemHTML(w, i){
     
     const patterns = w.patterns && w.patterns.length ? w.patterns.map(p => `<div>${p}</div>`).join('') : '';
-    // const patterns = Array.isArray(w.patterns) ? w.patterns.filter(Boolean).map(p => `<div>${escapeHtml(p)}</div>`).join('') : '';
-    console.log(w);
-    const posText = w.pos && w.pos.trim() !== '' ? w.pos : 'unknow';
-    
+
     return `
     <div class="word" data-idx="${i}">
         <div class="top">
@@ -83,10 +80,10 @@ function itemHTML(w, i){
             <span class="pos">${w.pos || '未知詞性'}</span>
             <span class="star ${w.fav?'fav':''}"title="收藏">★</span>
         </div>
-        <div class="synonym">${w.synonym}</div>
-        <div class="antonym">${w.antonym}</div>
-        <div class="derivatives">${w.derivatives}</div>
-        <div class="phrases">${w.phrases}</div>
+        <div class="synonym">${w.synonym || 'unknow'}</div>
+        <div class="antonym">${w.antonym || 'unknow'}</div>
+        <div class="derivatives">${w.derivatives || 'unknow'}</div>
+        <div class="phrases">${w.phrases || 'unknow'}</div>
         <div class="muted">${escapeHtml(w.meaning || '')}</div>
         <div>${patterns || '<span class="muted">(尚無例句)</span>'}</div>
         <div class="flex">
@@ -254,6 +251,10 @@ function editDistance(a,b){
             .map(x => ({
                 word: String(x.word || '').trim(),
                 pos: String(x.pos || ''),
+                synonym: String(x.synonym || ''),
+                antonym: String(x.antonym || ''),
+                derivatives: String(x.derivatives || ''),
+                phrases: String(x.phrases || ''),
                 meaning: String(x.meaning || ''),
                 patterns: Array.isArray(x.patterns) ? x.patterns.filter(Boolean) : [],
                 fav: !!x.fav
