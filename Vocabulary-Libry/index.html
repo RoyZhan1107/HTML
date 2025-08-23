@@ -14,6 +14,7 @@
                 </div>
                     <nav class="tabs">
                         <button class="tab active" data-panel="library">📚單詞庫</button>
+                        <button class="tab" data-panel="type">類別</button>
                         <button class="tab" data-panel="add">➕新增單詞</button>
                         <button class="tab" data-panel="quiz">📝 拼寫測驗</button>
                         <button class="tab" data-panel="settings">⚙️設定</button>
@@ -44,6 +45,32 @@
                     <div class="flex">
                         <button id="btnAdd">新增</button>
                         <span class="muted">提示:可貼上多個句子，每行一條</span>
+                    </div>
+                </div>
+            </section>
+            <section class="card hidden" id="panel-type">
+                <div class="body stack">
+                    <span>類別</span>
+                    <div class="split">
+                        <select name="class" id="">類別
+                            <option value="">請選擇您要複習程度</option>
+                            <option value="Live-ABC-TUEE-week1">Live ABC 統測第一周</option>
+                            <option value="Live-ABC-TUEE-week2">Live ABC 統測第二周</option>
+                            <option value="Live-ABC-TUEE-week3">Live ABC 統測第三周</option>
+                            <option value="Live-ABC-TUEE-week4">Live ABC 統測第四周</option>
+                            <option value="Live-ABC-TUEE-week5">Live ABC 統測第五周</option>
+                            <option value="Live-ABC-TUEE-week6">Live ABC 統測第六周</option>
+                            <option value="Live-ABC-TUEE-week7">Live ABC 統測第七周</option>
+                            <option value="Live-ABC-TUEE-week8">Live ABC 統測第八周</option>
+                            <option value="Live-ABC-TUEE-week9">Live ABC 統測第九周</option>
+                            <option value="Live-ABC-TUEE-week10">Live ABC 統測第十周</option>
+                            <option value="Live-ABC-TUEE-week11">Live ABC 統測第十一周</option>
+                            <option value="Live-ABC-TUEE-week12">Live ABC 統測第十二周</option>
+                            <option value="Live-ABC-TUEE-week13">Live ABC 統測第十三周</option>
+                            <option value="Live-ABC-TUEE-week14">Live ABC 統測第十四周</option>
+                            <option value="Live-ABC-TUEE-week15">Live ABC 統測第十五周</option>
+                            <option value="Live-ABC-TUEE-week16">Live ABC 統測第十六周</option>
+                        </select>
                     </div>
                 </div>
             </section>
@@ -87,7 +114,7 @@
                     <p class="muted">資料儲存在瀏覽器的<span class="kbd">localStorage</span>。可匯出備份，或在另一台匯入。</p>
                 </div>
             </section>
-            <div class="footer">快捷鍵: <span class="kbd">Ctrl+/</span>聚焦搜尋。<span class="kbd">Enter</span>提交</div>
+            <div class="footer">快捷鍵: <span class="kbd">Ctrl+/</span>聚焦搜尋、<span class="kbd">/</span>也可。<span class="kbd">Enter</span>提交</div>
         </div>
         <footer>&copy;作者:嚴浩軒</footer>
     </body>

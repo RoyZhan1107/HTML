@@ -5,10 +5,10 @@ const LS_KEY = 'wordbook.v1';
 let words = [];
 
 const defaults = [
-    {word: 'significant', meaning: '重要的；顯著的', pos: 'adjective', patterns: ['a significant increase in ~', 'be significant to sb/sth'], fav:true},
-    {word: 'approach', meaning: '方法；接近', pos:'noun', patterns: ['an approach to ~', 'approach + O(及物)'], fav:false},
-    {word: 'despite', meaning: '儘管(介系詞)', pos: 'preposition', patterns: ['despite + N/V-ing', 'Despite the rain, ...'], fav:false},
-    {word: 'participate', meaning: '參加；參與(不及物 + in)', pos: 'verb', patterns: ['participate in ~', 'be willing to participate in~'], fav:true},
+    {word: 'significant', meaning: '重要的；顯著的', pos: 'adjective', synonym: 'none', antonym: 'none', derivatives: 'none', phrases: 'none', patterns: ['a significant increase in ~', 'be significant to sb/sth'], fav:true},
+    {word: 'approach', meaning: '方法；接近', pos:"noun", synonym: 'none', antonym: 'none', derivatives: 'none', phrases: 'none', patterns: ['an approach to ~', 'approach + O(及物)'], fav:false},
+    {word: 'despite', meaning: '儘管(介系詞)', pos: "preposition", synonym: 'none', antonym: 'none', derivatives: 'none', phrases: 'none', patterns: ['despite + N/V-ing', 'Despite the rain, ...'], fav:false},
+    {word: 'participate', meaning: '參加；參與(不及物 + in)', pos: "verb", synonym: 'none', antonym: 'none', derivatives: 'none', phrases: 'none', patterns: ['participate in ~', 'be willing to participate in~'], fav:true},
 ];
 
 function load(){
@@ -30,6 +30,7 @@ function save(){
 
 const panels = {
     library: document.getElementById('panel-library'),
+    type: document.getElementById('panel-type'),
     add: document.getElementById('panel-add'),
     quiz: document.getElementById('panel-quiz'),
     settings: document.getElementById('panel-settings')
@@ -51,10 +52,11 @@ const filterFavEl = document.getElementById('filterFav');
 function renderList(){
     const q = searchEl.value.trim().toLowerCase();
     const onlyFav = filterFavEl.value === 'fav';
-    const filtered = words.filter(w => {
+    const filtered = words.filter(Boolean).filter(w => {
         if(onlyFav && !w.fav) return false;
         if(!q) return true;
-        const hay = [w.word, w.pos, w.meaning, ...(w.patterns || [])].join('\n').toLowerCase();
+        // const hay = [w.word, w.pos, w.meaning, ...(w.patterns || [])].join('\n').toLowerCase();
+        const hay = [w.word, w.pos, w.meaning, ...(Array.isArray(w.patterns) ? w.patterns : [])].join('\n').toLowerCase();
         return hay.includes(q);
     });
     listEl.innerHTML = filtered.map((w, i) => itemHTML(w, i)).join('') || '<div class="muted">沒有資料，請新增或放寬篩選</div>';
@@ -68,14 +70,23 @@ function renderList(){
 }
 
 function itemHTML(w, i){
+    
     const patterns = w.patterns && w.patterns.length ? w.patterns.map(p => `<div>${p}</div>`).join('') : '';
+    // const patterns = Array.isArray(w.patterns) ? w.patterns.filter(Boolean).map(p => `<div>${escapeHtml(p)}</div>`).join('') : '';
+    console.log(w);
+    const posText = w.pos && w.pos.trim() !== '' ? w.pos : 'unknow';
+    
     return `
     <div class="word" data-idx="${i}">
         <div class="top">
             <strong>${(w.word)}</strong>
-            <span class="pos">${w.pos}</span>
+            <span class="pos">${w.pos || '未知詞性'}</span>
             <span class="star ${w.fav?'fav':''}"title="收藏">★</span>
         </div>
+        <div class="synonym">${w.synonym}</div>
+        <div class="antonym">${w.antonym}</div>
+        <div class="derivatives">${w.derivatives}</div>
+        <div class="phrases">${w.phrases}</div>
         <div class="muted">${escapeHtml(w.meaning || '')}</div>
         <div>${patterns || '<span class="muted">(尚無例句)</span>'}</div>
         <div class="flex">
@@ -238,8 +249,15 @@ function editDistance(a,b){
             if(!Array.isArray(data)){
                 throw new Error('格式錯誤');
             }
-            words = data.map(x => ({
-                word: String(x.word || '').trim(), meaning: String(x.meaning || ''), patterns: Array.isArray(x.patterns) ? x.patterns:[], fav: !!x.fav})).filter(x => x.word);
+            words = data
+            .filter(Boolean)
+            .map(x => ({
+                word: String(x.word || '').trim(),
+                pos: String(x.pos || ''),
+                meaning: String(x.meaning || ''),
+                patterns: Array.isArray(x.patterns) ? x.patterns.filter(Boolean) : [],
+                fav: !!x.fav
+            })).filter(x => x.word);
                 save();
                 renderList();
                 showPanel('library');

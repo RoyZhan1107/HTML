@@ -86,6 +86,7 @@ header{
 .card .body{
     padding: 14px;
 }
+
 input[type="text"], input[type="search"], textarea, select, input[type="number"]{
     width: 100%;
     background: var(--card);
@@ -140,14 +141,54 @@ button.warn{
     gap: 8px;
 }
 .pos{
-  font-size: 0.85em;
-  color: var(--text); /* 明確顏色 */
-  display: flex;
-  margin-left: 8px;
-  font-style: italic;
-  background: var(--bg);
-  padding: 2px 6px;
-  border-radius: 6px;
+    font-size: 0.85em;
+    color: #666; /* 明確顏色 */
+    display: flex;
+    margin-left: 8px;
+    font-style: italic;
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+.synonym{
+    font-size: 0.85em;
+    color: #666; /* 明確顏色 */
+    display: flex;
+    margin-left: 8px;
+    font-style: italic;
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+.antonym{
+    font-size: 0.85em;
+    color: #666; /* 明確顏色 */
+    display: flex;
+    margin-left: 8px;
+    font-style: italic;
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+.derivatives{
+    font-size: 0.85em;
+    color: #666; /* 明確顏色 */
+    display: flex;
+    margin-left: 8px;
+    font-style: italic;
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 6px
+}
+.phrases{
+    font-size: 0.85em;
+    color: #666; /* 明確顏色 */
+    display: flex;
+    margin-left: 8px;
+    font-style: italic;
+    background: var(--bg);
+    padding: 2px 6px;
+    border-radius: 6px;
 }
 .star{
     cursor: pointer;
@@ -156,6 +197,7 @@ button.warn{
     color: #93a4b1;
     transition: color .15s;
     user-select: none;
+    display: inline;
 }
 .star.fav{
     color: #ffd166;
