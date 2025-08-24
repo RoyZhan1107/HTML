@@ -303,6 +303,7 @@ document.getElementById('Live-ABC-TUEE').addEventListener('change', function(){
             return r.json();
         })
         .then(d => {
+            console.log(data);
             if(!Array.isArray(d)){
                 throw new Error('JSON 格式錯誤，應該是矩陣');
             }
