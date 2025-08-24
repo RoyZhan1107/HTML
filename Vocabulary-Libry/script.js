@@ -278,3 +278,47 @@ function editDistance(a,b){
     }
 load();
 renderList();
+
+function LiveABC(event){
+    event.preventDefault();
+    const LiveABC = document.getElementById("Live-ABC-TUEE");
+    LiveABC.style.display = (LiveABC.style.display === "block") ? "none" : "block";
+}
+
+document.getElementById('Live-ABC-TUEE').addEventListener('change', function(){
+    const sv = this.value;
+    const c = document.getElementById('list');
+
+    if(!sv){
+        c.innerHTML = '<p>請選擇一個檔案</p>';
+        return;
+    }
+    const fp = `json/The-Unified-Entrance-Exam/${sv}.json`;
+
+    fetch(fp)
+        .then(r => {
+            if(!r.ok){
+                throw new Error(`無法載入 ${fp}`);
+            }
+            return r.json();
+        })
+        .then(d => {
+            if(!Array.isArray(d)){
+                throw new Error('JSON 格式錯誤，應該是矩陣');
+            }
+            const html = d.map(item => 
+                `<div class="word">
+                <strong>${item.word || '未知單詞'}</strong>
+                <span>(${item.pos || '未知詞性'})</span>
+                </div>`
+            ).join('');
+            c.itemHTML = html;
+        })
+        .catch(err => {
+            c.innerHTML = `<p style="color: red;">錯誤: ${err.message}</p>`;
+        });
+});
+
+document.getElementById('btn-refresh').addEventListener('click', function(){
+    location.reload();
+});

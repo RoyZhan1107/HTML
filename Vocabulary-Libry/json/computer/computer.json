@@ -1,0 +1,211 @@
+[
+    {
+        "word": "resistance",
+        "meaning" : "電阻",
+        "pos": "noun",
+        "synonym": "none",
+        "antonym": "none",
+        "derivatives": "none",
+        "phrases": "none",
+        "patterns": ["Resistance can increase the impedance in a circuit."],
+        "fav": false
+    },
+    {
+        "word": "Capacitance",
+        "meaning" : "電容",
+        "pos": "noun",
+        "synonym": "none",
+        "antonym": "none",
+        "derivatives": "none",
+        "phrases": "none",
+        "patterns": ["A capacitor stores electrical energy in a circuit."],
+        "fav": false
+    },
+    {
+        "word": "Transistor",
+        "meaning": "電晶體",
+        "pos": "noun",
+        "synonym": "none",
+        "antonym": "none",
+        "derivatives": "none",
+        "phrases": "none",
+        "patterns": [""],
+        "fav": ""
+    },
+    {
+        "word": "Quartz Crystal",
+        "meaning" : "石英晶體",
+        "pos": "noun",
+        "synonym": "none",
+        "antonym": "none",
+        "derivatives": "none",
+        "phrases": "none",
+        "patterns": ["A quartz crystal can provide stability in a circuit."],
+        "fav": false
+    },
+    {
+        "word": "push button",
+        "meaning" : "按壓開關",
+        "pos": "noun",
+        "synonym": "none",
+        "antonym": "none",
+        "derivatives": "none",
+        "phrases": "none",
+        "patterns": ["A push button control conductivity in the circuit."],
+        "fav": false
+    },
+    {
+        "word": "7 segment display",
+        "meaning" : "七段顯示器",
+        "pos": "noun",
+        "synonym": "none",
+        "antonym": "none",
+        "derivatives": "none",
+        "phrases": "none",
+        "patterns": ["7 segment display are commonly see electronic clocks."],
+        "fav": false
+    },
+    {
+        "word": "flip-flop",
+        "meaning": "正反器",
+        "pos": "noun",
+        "synonym": "none",
+        "antonym": "none",
+        "derivatives": "none",
+        "phrases": "none",
+        "patterns": ["The flip-flop in the circuit provides a counting function.", "Flip-flops include JK, SR, D, and T types."],
+        "fav": false
+    },
+    {
+        "word": "Encoder",
+        "meaning": "編碼器",
+        "pos": "noun",
+        "synonym": "none",
+        "antonym": "none",
+        "derivatives": "none",
+        "phrases": "none",
+        "patterns": [""],
+        "fav": false
+    },
+    {
+        "word": "Decode",
+        "meaning": "解碼器",
+        "pos": "noun",
+        "synonym": "none",
+        "antonym": "none",
+        "derivatives": "none",
+        "phrases": "none",
+        "patterns": [""],
+        "fav": false
+    },
+    {
+        "word": "Mux",
+        "meaning": "多工器",
+        "pos": "noun",
+        "synonym": "none",
+        "antonym": "none",
+        "derivatives": "none",
+        "phrases": "none",
+        "patterns": [""],
+        "fav": false
+    },
+    {
+        "word": "Demux",
+        "meaning": "解多工器",
+        "pos": "noun",
+        "synonym": "none",
+        "antonym": "none",
+        "derivatives": "none",
+        "phrases": "none",
+        "patterns": [""],
+        "fav": false
+    },
+    {
+        "word": "",
+        "meaning": "",
+        "pos": "",
+        "synonym": "",
+        "antonym": "",
+        "derivatives": "",
+        "phrases": "",
+        "patterns": [""],
+        "fav": ""
+    },
+    {
+        "word": "",
+        "meaning": "",
+        "pos": "",
+        "synonym": "",
+        "antonym": "",
+        "derivatives": "",
+        "phrases": "",
+        "patterns": [""],
+        "fav": ""
+    },
+    {
+        "word": "",
+        "meaning": "",
+        "pos": "",
+        "synonym": "",
+        "antonym": "",
+        "derivatives": "",
+        "phrases": "",
+        "patterns": [""],
+        "fav": ""
+    },
+    {
+        "word": "",
+        "meaning": "",
+        "pos": "",
+        "synonym": "",
+        "antonym": "",
+        "derivatives": "",
+        "phrases": "",
+        "patterns": [""],
+        "fav": ""
+    },
+    {
+        "word": "",
+        "meaning": "",
+        "pos": "",
+        "synonym": "",
+        "antonym": "",
+        "derivatives": "",
+        "phrases": "",
+        "patterns": [""],
+        "fav": ""
+    },
+    {
+        "word": "",
+        "meaning": "",
+        "pos": "",
+        "synonym": "",
+        "antonym": "",
+        "derivatives": "",
+        "phrases": "",
+        "patterns": [""],
+        "fav": ""
+    },
+    {
+        "word": "",
+        "meaning": "",
+        "pos": "",
+        "synonym": "",
+        "antonym": "",
+        "derivatives": "",
+        "phrases": "",
+        "patterns": [""],
+        "fav": ""
+    },
+    {
+        "word": "",
+        "meaning": "",
+        "pos": "",
+        "synonym": "",
+        "antonym": "",
+        "derivatives": "",
+        "phrases": "",
+        "patterns": [""],
+        "fav": ""
+    }
+]

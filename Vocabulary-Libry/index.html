@@ -52,25 +52,28 @@
                 <div class="body stack">
                     <span>類別</span>
                     <div class="split">
-                        <select name="class" id="">類別
-                            <option value="">請選擇您要複習程度</option>
-                            <option value="Live-ABC-TUEE-week1">Live ABC 統測第一周</option>
-                            <option value="Live-ABC-TUEE-week2">Live ABC 統測第二周</option>
-                            <option value="Live-ABC-TUEE-week3">Live ABC 統測第三周</option>
-                            <option value="Live-ABC-TUEE-week4">Live ABC 統測第四周</option>
-                            <option value="Live-ABC-TUEE-week5">Live ABC 統測第五周</option>
-                            <option value="Live-ABC-TUEE-week6">Live ABC 統測第六周</option>
-                            <option value="Live-ABC-TUEE-week7">Live ABC 統測第七周</option>
-                            <option value="Live-ABC-TUEE-week8">Live ABC 統測第八周</option>
-                            <option value="Live-ABC-TUEE-week9">Live ABC 統測第九周</option>
-                            <option value="Live-ABC-TUEE-week10">Live ABC 統測第十周</option>
-                            <option value="Live-ABC-TUEE-week11">Live ABC 統測第十一周</option>
-                            <option value="Live-ABC-TUEE-week12">Live ABC 統測第十二周</option>
-                            <option value="Live-ABC-TUEE-week13">Live ABC 統測第十三周</option>
-                            <option value="Live-ABC-TUEE-week14">Live ABC 統測第十四周</option>
-                            <option value="Live-ABC-TUEE-week15">Live ABC 統測第十五周</option>
-                            <option value="Live-ABC-TUEE-week16">Live ABC 統測第十六周</option>
-                        </select>
+                        <div class="Live-abc">
+                            <img src="img/104977.jpg" alt="" onclick="LiveABC(event)" height="200px" width="150px">
+                            <select name="Live-ABC-TUEE" class="Live-ABC-TUEE" id="Live-ABC-TUEE">類別
+                                <option value="">請選擇您要複習程度</option>
+                                <option value="Week1">Live ABC 統測第一周</option>
+                                <option value="Week2">Live ABC 統測第二周</option>
+                                <option value="Week3">Live ABC 統測第三周</option>
+                                <option value="Week4">Live ABC 統測第四周</option>
+                                <option value="Week5">Live ABC 統測第五周</option>
+                                <option value="Week6">Live ABC 統測第六周</option>
+                                <option value="Week7">Live ABC 統測第七周</option>
+                                <option value="Week8">Live ABC 統測第八周</option>
+                                <option value="Week9">Live ABC 統測第九周</option>
+                                <option value="Week10">Live ABC 統測第十周</option>
+                                <option value="Week11">Live ABC 統測第十一周</option>
+                                <option value="Week12">Live ABC 統測第十二周</option>
+                                <option value="Week13">Live ABC 統測第十三周</option>
+                                <option value="Week14">Live ABC 統測第十四周</option>
+                                <option value="Week15">Live ABC 統測第十五周</option>
+                                <option value="Week16">Live ABC 統測第十六周</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -110,6 +113,7 @@
                         <button class="" id="btnExport">匯出 JSON</button>
                         <input type="file" id="fileImport" accept="application/json" class="ghost">
                         <button class="warn" id="btnClear">清除資料(不可復原)</button>
+                        <button class="rtp" id="btn-refresh">刷新頁面</button>
                     </div>
                     <p class="muted">資料儲存在瀏覽器的<span class="kbd">localStorage</span>。可匯出備份，或在另一台匯入。</p>
                 </div>
