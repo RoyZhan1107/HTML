@@ -318,6 +318,25 @@ document.getElementById('Live-ABC-TUEE').addEventListener('change', function(){
         .catch(error => {
             container.innerHTML = `<p style="color: red;">錯誤: ${error.message}</p>`;
         });
+        return `
+    <div class="word" data-idx="${i}">
+        <div class="top">
+            <strong>${(w.word)}</strong>
+            <span class="pos">${w.pos || '未知詞性'}</span>
+            <span class="star ${w.fav?'fav':''}"title="收藏">★</span>
+        </div>
+        <div class="synonym">${w.synonym || 'unknow'}</div>
+        <div class="antonym">${w.antonym || 'unknow'}</div>
+        <div class="derivatives">${w.derivatives || 'unknow'}</div>
+        <div class="phrases">${w.phrases || 'unknow'}</div>
+        <div class="muted">${escapeHtml(w.meaning || '')}</div>
+        <div>${patterns || '<span class="muted">(尚無例句)</span>'}</div>
+        <div class="flex">
+            <input class="pattern-input" placeholder="新增例句/句型...(Enter)">
+            <button class="btn-add-pattern ghost">新增</button>
+            </div>
+        </div>
+    `;
 });
 
 document.getElementById('btn-refresh').addEventListener('click', function(){
