@@ -286,37 +286,37 @@ function LiveABC(event){
 }
 
 document.getElementById('Live-ABC-TUEE').addEventListener('change', function(){
-    const sv = this.value;
-    const c = document.getElementById('list');
+    const selectedValue = this.value;
+    const container = document.getElementById('list');
 
-    if(!sv){
-        c.innerHTML = '<p>請選擇一個檔案</p>';
+    if(!selectedValue){
+        container.innerHTML = '<p>請選擇一個檔案</p>';
         return;
     }
-    const fp = `json/The-Unified-Entrance-Exam/${sv}.json`;
+    const filePath = `json/The-Unified-Entrance-Exam/${selectedValue}.json`;
 
-    fetch(fp)
-        .then(r => {
-            if(!r.ok){
-                throw new Error(`無法載入 ${fp}`);
+    fetch(filePath)
+        .then(response => {
+            if(!response.ok){
+                throw new Error(`無法載入 ${filePath}`);
             }
-            return r.json();
+            return response.json();
         })
-        .then(d => {
+        .then(data => {
             console.log(data);
-            if(!Array.isArray(d)){
+            if(!Array.isArray(data)){
                 throw new Error('JSON 格式錯誤，應該是矩陣');
             }
-            const html = d.map(item => 
+            const html = data.map(item => 
                 `<div class="word">
                 <strong>${item.word || '未知單詞'}</strong>
                 <span>(${item.pos || '未知詞性'})</span>
                 </div>`
             ).join('');
-            c.itemHTML = html;
+            container.itemHTML = html;
         })
-        .catch(err => {
-            c.innerHTML = `<p style="color: red;">錯誤: ${err.message}</p>`;
+        .catch(error => {
+            container.innerHTML = `<p style="color: red;">錯誤: ${error.message}</p>`;
         });
 });
 
