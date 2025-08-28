@@ -322,10 +322,10 @@ function renderWords(words){
             ? (Array.isArray(w.antonym) ? w.synonym.join(', ') : w.antonym)
             : 'unknow';
         const derivatives = w.derivatives && w.derivatives.length
-            ? w.derivatives.join(', ')
+            ? (Array.isArray(w.derivatives) ? w.synonym.join(', ') : w.derivatives)
             : 'unknow';
         const phrases = w.phrases && w.phrases.length
-            ? w.phrases.join(', ')
+            ? (Array.isArray(w.phrases) ? w.synonym.join(', ') : w.phrases)
             : 'unknow';
         const html = `
             <div class="word" data-idx="${i}">
