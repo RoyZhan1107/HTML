@@ -1,14 +1,23 @@
 // Helpers
 const el = sel => document.querySelector(sel);
-const els = sel => Array.from(document.querySelector(sel));
+document.addEventListener('DOMContentLoaded', () => {
+    const btn = el('#btnSplit');
+    if (btn) {
+        btn.addEventListener('click', () => {
+            sentences = splitIntoSentences(el('#textInput').value || '');
+            idx = 0;
+            renderSentence();
+        });
+    }
+});
 
-function splitIntoSentences(text){
-    // 粗略分據: 以 . ! ? 或換行分割
+const els = sel => Array.from(document.querySelectorAll(sel) || []);
+
+function splitIntoSentences(text) {
+    if (!text || typeof text !== 'string') return [];
     return text
-        .replace(/\s+/g, ' ')
-        .split(/(?<=[.!?])\s+|\n+/) // 正規化空白
-        .map(s => s.trim())
-        .filter(Boolean);
+        .split(/(?<=[.!?])\s+/) // 依據標點切句
+        .filter(s => s.trim().length > 0); // 去掉空白
 }
 function tokensize(s){
     return s
@@ -115,6 +124,7 @@ function speak(text){
 const Rec = window.SpeechRecognition || window.webkitSpeechRecognition;
 let rec = null;
 if(Rec){
+    rec = new Rec();
     rec.continuous = false;
     rec.interimResults = false;
     rec.onstart = () => el('#status').textContent = '錄音中...';
@@ -150,7 +160,7 @@ function renderSentence(){
         sp.addEventListener('click', () => speak(sp.textContent));
     });
     el('#recResult').innHTML = '';
-    el('#statOk').textContent = el('#statNear').textContent = el('#StatBad').textContent = '0';
+    el('#statOK').textContent = el('#statNear').textContent = el('#statBad').textContent = '0';
     el('#score').textContent = '分數: -';
     el('$sentCount').textContent = `${sentences.length} 句(目前第${Math.min(idx + 1, Math.max(1, sentences.length))}句)`;
 }
