@@ -1,16 +1,17 @@
+// 預設儲存檔案名稱
 const LS_KEY = 'wordbook.v1';
 
 /** @type {{word:string, meaning:string, patterns:string[], fav:boolean}[]} */
-
+// 儲存單字
 let words = [];
-
+// 預設單字
 const defaults = [
     {word: 'significant', meaning: '重要的；顯著的', pos: 'adjective', synonym: 'none', antonym: 'none', derivatives: 'none', phrases: 'none', patterns: ['a significant increase in ~', 'be significant to sb/sth'], fav:true},
     {word: 'approach', meaning: '方法；接近', pos:"noun", synonym: 'none', antonym: 'none', derivatives: 'none', phrases: 'none', patterns: ['an approach to ~', 'approach + O(及物)'], fav:false},
     {word: 'despite', meaning: '儘管(介系詞)', pos: "preposition", synonym: 'none', antonym: 'none', derivatives: 'none', phrases: 'none', patterns: ['despite + N/V-ing', 'Despite the rain, ...'], fav:false},
     {word: 'participate', meaning: '參加；參與(不及物 + in)', pos: "verb", synonym: 'none', antonym: 'none', derivatives: 'none', phrases: 'none', patterns: ['participate in ~', 'be willing to participate in~'], fav:true},
 ];
-
+// 載入檔案
 function load(){
     try{
         words = JSON.parse(localStorage.getItem(LS_KEY) || '[]');
@@ -23,11 +24,11 @@ function load(){
         save();
     }
 }
-
+// 儲存功能紐
 function save(){
     localStorage.setItem(LS_KEY, JSON.stringify(words));
 }
-
+// 功能表按鈕
 const panels = {
     library: document.getElementById('panel-library'),
     type: document.getElementById('panel-type'),
@@ -99,6 +100,7 @@ function toggleFav(i){
     save();
     renderList();
 }
+// 新增單字功能
 function addPattern(i){
     const card = listEl.querySelector(`[data-idx="${i}"]`);
     const inp = card.querySelector('.pattern-input');
@@ -110,7 +112,7 @@ function addPattern(i){
     save();
     renderList();
 }
-
+// 搜尋功能
 searchEl.addEventListener('input', renderList);
 filterFavEl.addEventListener('change', renderList);
 
@@ -184,7 +186,7 @@ function pickQ(){
     quizAnswerEl.focus();
     document.getElementById('quizResult').textContent = '';
 }
-
+// 檢查單字功能
 function checkAnswer(){
     if(!currentQ) return;
     const a = (quizAnswerEl.value || '').trim();
@@ -203,7 +205,7 @@ function checkAnswer(){
         resEl.innerHTML = `<span class="result-bad">錯誤:</span> 正解<b>${escapeHtml(ans)}</b>`;
     }
 }
-
+// 新增句子功能
 function editDistance(a,b){
     const dp = Array.from({ length: a.length + 1}, () => Array(b.length + 1).fill(0));
     for(let i = 0; i <= a.length; i++){
@@ -286,57 +288,23 @@ function LiveABC(event){
 }
 
 document.getElementById('Live-ABC-TUEE').addEventListener('change', function(){
-    const selectedValue = this.value;
-    const container = document.getElementById('list');
-
-    if(!selectedValue){
-        container.innerHTML = '<p>請選擇一個檔案</p>';
-        return;
-    }
-    const filePath = `json/The-Unified-Entrance-Exam/${selectedValue}.json`;
-
-    fetch(filePath)
+    const selctedValue = this.value;
+    if(!selctedValue) return;
+    const jsonPath = `json/The-Unified-Entrance-Exam/${selctedValue}.json`;
+    fetch(jsonPath)
         .then(response => {
             if(!response.ok){
-                throw new Error(`無法載入 ${filePath}`);
+                throw new Error('網路錯誤或檔案不存在');
             }
             return response.json();
         })
         .then(data => {
-            console.log(data);
-            if(!Array.isArray(data)){
-                throw new Error('JSON 格式錯誤，應該是矩陣');
-            }
-            const html = data.map(item => 
-                `<div class="word">
-                <strong>${item.word || '未知單詞'}</strong>
-                <span>(${item.pos || '未知詞性'})</span>
-                </div>`
-            ).join('');
-            container.itemHTML = html;
+            console.log('載入成功:', data);
+            renderList(data);
         })
         .catch(error => {
-            container.innerHTML = `<p style="color: red;">錯誤: ${error.message}</p>`;
-        });
-        return `
-    <div class="word" data-idx="${i}">
-        <div class="top">
-            <strong>${(w.word)}</strong>
-            <span class="pos">${w.pos || '未知詞性'}</span>
-            <span class="star ${w.fav?'fav':''}"title="收藏">★</span>
-        </div>
-        <div class="synonym">${w.synonym || 'unknow'}</div>
-        <div class="antonym">${w.antonym || 'unknow'}</div>
-        <div class="derivatives">${w.derivatives || 'unknow'}</div>
-        <div class="phrases">${w.phrases || 'unknow'}</div>
-        <div class="muted">${escapeHtml(w.meaning || '')}</div>
-        <div>${patterns || '<span class="muted">(尚無例句)</span>'}</div>
-        <div class="flex">
-            <input class="pattern-input" placeholder="新增例句/句型...(Enter)">
-            <button class="btn-add-pattern ghost">新增</button>
-            </div>
-        </div>
-    `;
+            console.error('讀取 JSON 發生錯誤:', error);
+        })
 });
 
 document.getElementById('btn-refresh').addEventListener('click', function(){
