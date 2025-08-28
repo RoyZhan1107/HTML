@@ -315,16 +315,16 @@ function renderWords(words){
         const patterns = w.patterns && w.patterns.length
             ? w.patterns.map(p => `<div>${p}</div>`).join('')
             : '<span class="muted">(尚無例句)</span>';
-        const synonym = w.synonym && w.synonym.length
+        const synonymText = w.synonym && w.synonym.length
             ? (Array.isArray(w.synonym) ? w.synonym.join(', ') : w.synonym || '無')
             : 'unknow';
-        const antonym = w.antonym && w.antonym.length
+        const antonymText = w.antonym && w.antonym.length
             ? (Array.isArray(w.antonym) ? w.synonym.join(', ') : w.antonym || '無')
             : 'unknow';
-        const derivatives = w.derivatives && w.derivatives.length
+        const derivativesText = w.derivatives && w.derivatives.length
             ? (Array.isArray(w.derivatives) ? w.synonym.join(', ') : w.derivatives || '無')
             : 'unknow';
-        const phrases = w.phrases && w.phrases.length
+        const phrasesText = w.phrasesText && w.phrases.length
             ? (Array.isArray(w.phrases) ? w.synonym.join(', ') : w.phrases || '無')
             : 'unknow';
         const html = `
@@ -334,10 +334,10 @@ function renderWords(words){
                     <span class="pos">${w.pos || '未知詞性'}</span>
                     <span class="star ${w.fav ? 'fav' : ''}" title="收藏">★</span>
                 </div>
-                <div class="synonym">${synonym}</div>
-                <div class="antonym">${antonym}</div>
-                <div class="derivatives">${derivatives}</div>
-                <div class="phrases">${phrases}</div>
+                <div class="synonym">${synonymText}</div>
+                <div class="antonym">${antonymText}</div>
+                <div class="derivatives">${derivativesText}</div>
+                <div class="phrases">${phrasesText}</div>
                 <div class="muted">${escapeHtml(w.meaning || '')}</div>
                 <div>${patterns}</div>
             </div>
