@@ -308,7 +308,7 @@ document.getElementById('Live-ABC-TUEE').addEventListener('change', function(){
 });
 
 function renderWords(words){
-    const container = document.getElementById('list');
+    const container = document.querySelector('list');
     container.innerHTML = '';
 
     words.forEach((w, i) => {
