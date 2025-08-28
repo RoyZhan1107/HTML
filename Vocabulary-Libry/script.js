@@ -79,7 +79,7 @@ function itemHTML(w, i){
         <div class="top">
             <strong>${(w.word)}</strong>
             <span class="pos">${w.pos || '未知詞性'}</span>
-            <span class="star ${w.fav?'fav':''}"title="收藏">★</span>
+            <span class="star ${w.fav ? 'fav' : ''}"title="收藏">★</span>
         </div>
         <div class="synonym">${w.synonym || 'unknow'}</div>
         <div class="antonym">${w.antonym || 'unknow'}</div>
@@ -315,29 +315,29 @@ function renderWords(words){
         const patterns = w.patterns && w.patterns.length
             ? w.patterns.map(p => `<div>${p}</div>`).join('')
             : '<span class="muted">(尚無例句)</span>';
-        const synonymText = w.synonym && w.synonym.length
+        const synonym = w.synonym && w.synonym.length
             ? (Array.isArray(w.synonym) ? w.synonym.join(', ') : w.synonym || '無')
             : (typeof w.synonym === "string" ? w.synonym : "");
-        const antonymText = w.antonym && w.antonym.length
+        const antonym = w.antonym && w.antonym.length
             ? (Array.isArray(w.antonym) ? w.synonym.join(', ') : w.antonym || '無')
             : 'unknow';
-        const derivativesText = w.derivatives && w.derivatives.length
+        const derivatives = w.derivatives && w.derivatives.length
             ? (Array.isArray(w.derivatives) ? w.synonym.join(', ') : w.derivatives || '無')
             : 'unknow';
-        const phrasesText = w.phrasesText && w.phrases.length
+        const phrases = w.phrasesText && w.phrases.length
             ? (Array.isArray(w.phrases) ? w.synonym.join(', ') : w.phrases || '無')
             : 'unknow';
         const html = `
             <div class="word" data-idx="${i}">
                 <div class="top">
-                    <strong>${w.word}</strong>
+                    <strong>${(w.word)}</strong>
                     <span class="pos">${w.pos || '未知詞性'}</span>
                     <span class="star ${w.fav ? 'fav' : ''}" title="收藏">★</span>
                 </div>
-                <div class="synonym">${synonymText}</div>
-                <div class="antonym">${antonymText}</div>
-                <div class="derivatives">${derivativesText}</div>
-                <div class="phrases">${phrasesText}</div>
+                <div class="synonym">${synonym || 'unknow'}</div>
+                <div class="antonym">${antonym || 'unknow'}</div>
+                <div class="derivatives">${derivatives || 'unknow'}</div>
+                <div class="phrases">${phrases || 'unknow'}</div>
                 <div class="muted">${escapeHtml(w.meaning || '')}</div>
                 <div>${patterns}</div>
             </div>
