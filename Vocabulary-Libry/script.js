@@ -316,16 +316,16 @@ function renderWords(words){
             ? w.patterns.map(p => `<div>${p}</div>`).join('')
             : '<span class="muted">(尚無例句)</span>';
         const synonym = w.synonym && w.synonym.length
-            ? (Array.isArray(w.synonym) ? w.synonym.join(', ') : w.synonym)
+            ? (Array.isArray(w.synonym) ? w.synonym.join(', ') : w.synonym || '無')
             : 'unknow';
         const antonym = w.antonym && w.antonym.length
-            ? (Array.isArray(w.antonym) ? w.synonym.join(', ') : w.antonym)
+            ? (Array.isArray(w.antonym) ? w.synonym.join(', ') : w.antonym || '無')
             : 'unknow';
         const derivatives = w.derivatives && w.derivatives.length
-            ? (Array.isArray(w.derivatives) ? w.synonym.join(', ') : w.derivatives)
+            ? (Array.isArray(w.derivatives) ? w.synonym.join(', ') : w.derivatives || '無')
             : 'unknow';
         const phrases = w.phrases && w.phrases.length
-            ? (Array.isArray(w.phrases) ? w.synonym.join(', ') : w.phrases)
+            ? (Array.isArray(w.phrases) ? w.synonym.join(', ') : w.phrases || '無')
             : 'unknow';
         const html = `
             <div class="word" data-idx="${i}">
