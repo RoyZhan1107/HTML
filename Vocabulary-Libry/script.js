@@ -317,7 +317,7 @@ function renderWords(words){
             : '<span class="muted">(尚無例句)</span>';
         const synonymText = w.synonym && w.synonym.length
             ? (Array.isArray(w.synonym) ? w.synonym.join(', ') : w.synonym || '無')
-            : 'unknow';
+            : (typeof w.synonym === "string" ? w.synonym : "");
         const antonymText = w.antonym && w.antonym.length
             ? (Array.isArray(w.antonym) ? w.synonym.join(', ') : w.antonym || '無')
             : 'unknow';
