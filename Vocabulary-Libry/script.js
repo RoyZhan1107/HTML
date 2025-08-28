@@ -316,10 +316,10 @@ function renderWords(words){
             ? w.patterns.map(p => `<div>${p}</div>`).join('')
             : '<span class="muted">(尚無例句)</span>';
         const synonym = w.synonym && w.synonym.length
-            ? w.synonym.join(', ')
+            ? (Array.isArray(w.synonym) ? w.synonym.join(', ') : w.synonym)
             : 'unknow';
         const antonym = w.antonym && w.antonym.length
-            ? w.antonym.join(', ')
+            ? (Array.isArray(w.antonym) ? w.synonym.join(', ') : w.antonym)
             : 'unknow';
         const derivatives = w.derivatives && w.derivatives.length
             ? w.derivatives.join(', ')
