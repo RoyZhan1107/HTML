@@ -300,12 +300,62 @@ document.getElementById('Live-ABC-TUEE').addEventListener('change', function(){
         })
         .then(data => {
             console.log('載入成功:', data);
-            renderList(data);
+            renderWords(data);
         })
         .catch(error => {
             console.error('讀取 JSON 發生錯誤:', error);
-        })
+        });
 });
+
+function renderWords(words){
+    const container = document.getElementById('list');
+    container.innerHTML = '';
+
+    words.forEach((w, i) => {
+        const patterns = w.patterns && w.patterns.length
+            ? w.patterns.map(p => `<div>${p}</div>`).join('')
+            : '<span class="muted">(尚無例句)</span>';
+        const synonym = w.synonym && w.synonym.length
+            ? w.synonym.join(', ')
+            : 'unknow';
+        const antonym = w.antonym && w.antonym.length
+            ? w.antonym.join(', ')
+            : 'unknow';
+        const derivatives = w.derivatives && w.derivatives.length
+            ? w.derivatives.join(', ')
+            : 'unknow';
+        const phrases = w.phrases && w.phrases.length
+            ? w.phrases.join(', ')
+            : 'unknow';
+        const html = `
+            <div class="word" data-idx="${i}">
+                <div class="top">
+                    <strong>${w.word}</strong>
+                    <span class="pos">${w.pos || '未知詞性'}</span>
+                    <span class="star ${w.fav ? 'fav' : ''}" title="收藏">★</span>
+                </div>
+                <div class="synonym">${synonym}</div>
+                <div class="antonym">${antonym}</div>
+                <div class="derivatives">${derivatives}</div>
+                <div class="phrases">${phrases}</div>
+                <div class="muted">${escapeHtml(w.meaning || '')}</div>
+                <div>${patterns}</div>
+            </div>
+        `;
+        container.insertAdjacentHTML('beforeend', html);
+    });
+}
+
+function escapeHtml(text){
+    const map = {
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot',
+        "'": '&#039;'
+    };
+    return text.replace(/[&<>"']/g, m => map[m]);
+}
 
 document.getElementById('btn-refresh').addEventListener('click', function(){
     location.reload();
