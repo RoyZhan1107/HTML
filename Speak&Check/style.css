@@ -163,3 +163,8 @@ button:disabled{
     align-items: center;
     gap: 10px;
 }
+footer{
+    justify-content: center;
+    display: flex;
+    margin: 0;
+}
