@@ -80,19 +80,8 @@
         "fav": false
     },
     {
-        "word": "construct",
-        "meaning": "建造",
-        "pos": "verb",
-        "synonym": "none",
-        "antonym": "ruin",
-        "derivatives": "none",
-        "phrases": "construction",
-        "patterns": ["The building was constructed of glass and steel."],
-        "fav": false
-    },
-    {
         "word": "contact",
-        "meaning": "聯繫",
+        "meaning": "聯繫；連絡",
         "pos": ["noun","verb"],
         "synonym": "none",
         "antonym": "none",
@@ -147,6 +136,17 @@
         "derivatives": "none",
         "phrases": "none",
         "patterns": ["Mandy wrote the poem especially for Gary's birthday."],
+        "fav": false
+    },
+    {
+        "word": "construct",
+        "meaning": "建造",
+        "pos": "verb",
+        "synonym": "none",
+        "antonym": "ruin",
+        "derivatives": "none",
+        "phrases": "construction",
+        "patterns": ["The building was constructed of glass and steel."],
         "fav": false
     },
     {
