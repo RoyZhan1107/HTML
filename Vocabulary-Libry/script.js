@@ -26,11 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
         try{
             const response = await fetch(url);
-            if(!response.ok) throw new Error(`讀取失敗:${response.status}}`);
+            if(!response.ok) throw new Error(`讀取失敗:${response.status}`);
             const data = await response.json();
-            container.innerHTML = words.map((w, i) => itemHTML(w, i)).join("");
-            
-        }catch{
+            words = data;
+            save();
+            renderList();
+        }catch(error){
             console.error('讀取 JSON 發生錯誤:', error);
         }
     });
@@ -120,6 +121,15 @@ function itemHTML(w, i){
         </div>
     `;
     
+}
+function sepakWord(word){
+    if(!window.speechSynthesis){
+        alert('您的瀏覽器不支援語音功能');
+        return;
+    }
+    const utterance = new SpeechSynthesisUtterance(word);
+    utterance.lang = 'en-US';
+    window.speechSynthesis.speak(utterance);
 }
 /*
 // 綁定朗讀事件
