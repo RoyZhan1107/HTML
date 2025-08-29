@@ -344,6 +344,7 @@ document.getElementById('Live-ABC-TUEE').addEventListener('change', function(){
         .then(data => {
             console.log('載入成功:', data);
             renderList(data);
+            load();
         })
         .catch(error => {
             console.error('讀取 JSON 發生錯誤:', error);
