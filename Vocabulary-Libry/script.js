@@ -118,6 +118,7 @@ function itemHTML(w, i){
                 <button class="btn-sepak" data-word="${escapeHtml(w.word)}">🔊朗讀</button>
                 <button class="btn-check" data-word="${escapeHtml(w.word)}">🎤檢查口說</button>
             </div>
+        <div class="" id="recognition-result"></div>
         </div>
     `;
     
@@ -358,8 +359,7 @@ function editDistance(a,b){
     }
 load();
 renderList();
-
-
+/*
 function renderWords(words){
     const container = document.getElementById('list');
     container.innerHTML = '';
@@ -442,7 +442,7 @@ container.querySelectorAll('.btn-check').forEach(btn => {
     });
 });
 }
-
+*/
 function escapeHtml(text){
     if(typeof text !== 'string'){
         text = String(text);   
@@ -454,6 +454,36 @@ function escapeHtml(text){
                 .replace(/'/g, "&#039;");
 }
 
+const startRecBtn = document.getElementById('btn-speak');
+const recognitionResult = document.getElementById('recognition-result');
+
+if('webkitSpeechRecognition' in window || 'SpeechRecognition' in window){
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    startRecBtn.addEventListener('click', () => {
+        recognition.start();
+        recognitionResult.textContent = '請朗讀單字...';
+    });
+    recognition.addEventListener('result', (event) => {
+        const spoken = event.results[0][0].transcript.trim().toLowerCase();
+        recognitionResult.textContent = `你說了:${spoken}`;
+
+        if(currentWord && spoken === currentWord.toLowerCase()){
+            recognitionResult.textContent = '🎉正確!';
+        }else{
+            recognitionResult.textContent = '❌不正確，請在試一次!';
+        }
+    });
+    recognition.addEventListener('error', (event) => {
+        recognitionResult.textContent = '語音識別錯誤:' + event.error;
+    });
+}else{
+    startRecBtn.disabled = true;
+    recognitionResult.textContent = '您的瀏覽器不支援語音識別功能';
+}
 
 document.getElementById('btn-refresh').addEventListener('click', function(){
     location.reload();
