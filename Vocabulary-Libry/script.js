@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
     select.addEventListener('change', async(e) => {
         const value = e.target.value;
         if(!value) return;
-        const url = `/The-Unified-Entrance-Exam/${value}.json`;
+        const url = `json/The-Unified-Entrance-Exam/${value}.json`;
 
         try{
             const response = await fetch(url);
