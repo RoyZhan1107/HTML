@@ -6,8 +6,8 @@ const LS_KEY = 'wordbook.v1';
 let words = [];
 // 預設單字
 const defaults = [
-    {word: 'significant', meaning: '重要的；顯著的', pos: 'adjective', synonym: 'none', antonym: 'none', derivatives: 'none', phrases: 'none', patterns: ['a significant increase in ~', 'be significant to sb/sth'], fav:true},
-    {word: 'approach', meaning: '方法；接近', pos:"noun", synonym: 'none', antonym: 'none', derivatives: 'none', phrases: 'none', patterns: ['an approach to ~', 'approach + O(及物)'], fav:false},
+    {word: 'significant', meaning: '重要的；顯著的', pos: 'adjective', synonym: 'important', antonym: 'insignificant', derivatives: 'significance', phrases: 'none', patterns: ['a significant increase in ~', 'be significant to sb/sth'], fav:true},
+    {word: 'approach', meaning: '方法；接近', pos:"noun", synonym: 'method', antonym: 'none', derivatives: 'none', phrases: 'none', patterns: ['an approach to ~', 'approach + O(及物)'], fav:false},
     {word: 'despite', meaning: '儘管(介系詞)', pos: "preposition", synonym: 'none', antonym: 'none', derivatives: 'none', phrases: 'none', patterns: ['despite + N/V-ing', 'Despite the rain, ...'], fav:false},
     {word: 'participate', meaning: '參加；參與(不及物 + in)', pos: "verb", synonym: 'none', antonym: 'none', derivatives: 'none', phrases: 'none', patterns: ['participate in ~', 'be willing to participate in~'], fav:true},
 ];
@@ -69,9 +69,8 @@ function renderList(){
     });
     
 }
-
+// 顯示單字
 function itemHTML(w, i){
-    
     const patterns = w.patterns && w.patterns.length ? w.patterns.map(p => `<div>${p}</div>`).join('') : '';
 
     return `
@@ -91,10 +90,56 @@ function itemHTML(w, i){
             <input class="pattern-input" placeholder="新增例句/句型...(Enter)">
             <button class="btn-add-pattern ghost">新增</button>
             </div>
+        <div class="actions">
+                <button class="btn-sepak" data-word="${escapeHtml(w.word)}">🔊朗讀</button>
+                <button class="btn-check" data-word="${escapeHtml(w.word)}">🎤檢查口說</button>
+            </div>
         </div>
     `;
+    
 }
-
+/*
+// 綁定朗讀事件
+    container.querySelectorAll('.btn-speak').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const word = btn.dataset.word;
+            const utterance = new SpeechSynthesisUtterance(word);
+            utterance.lang = 'en-US';
+            speechSynthesis.speak(utterance);
+        });
+    });
+// 綁定語音檢查事件
+container.querySelectorAll('.btn-check').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const word = btn.dataset.word.toLowerCase();
+        const resultSpan = btn.parentElement.querySelectorAll('.check-result');
+        if(!('webkitSpeechRecognition' in window)){
+            resultSpan.textContent = '不支援語音識別';
+            return;
+        }
+        const recognition = new webkitSpeechRecognition();
+        recognition.lang = 'en-US';
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+        recognition.start();
+        resultSpan.textContent = '錄音...';
+        recognition.onresult = (event) => {
+            const spoken = event.results[0][0].transcript.toLowerCase();
+            if(spoken === word){
+                resultSpan.textContent = `正確(${spoken})`;
+                resultSpan.style.color = 'green';
+            }else{
+                resultSpan.textContent = `錯誤(${spoken})`;
+                resultSpan.style.color = 'red';
+            }
+        };
+        recognition.onerror = () => {
+            resultSpan.textContent = '語音識別失敗';
+            resultSpan.style.color = 'orange';
+        };
+    });
+});
+*/
 function toggleFav(i){
     words[i].fav = !words[i].fav;
     save();
@@ -310,7 +355,7 @@ document.getElementById('Live-ABC-TUEE').addEventListener('change', function(){
 function renderWords(words){
     const container = document.getElementById('list');
     container.innerHTML = '';
-
+    // const hay = [w.word, w.pos, w.meaning, (Array.isArray(w.synonym) ? w.synonym.map : []), w.derivatives, w.phrases, ...(Array.isArray(w.patterns) ? w.patterns : [])].join('\n').toLowerCase();
     words.forEach((w, i) => {
         const patterns = w.patterns && w.patterns.length
             ? w.patterns.map(p => `<div>${p}</div>`).join('')
@@ -340,10 +385,54 @@ function renderWords(words){
                 <div class="phrases">${phrases || 'unknow'}</div>
                 <div class="muted">${escapeHtml(w.meaning || '')}</div>
                 <div>${patterns}</div>
+                <div class="actions">
+                    <button class="btn-sepak" data-word="${escapeHtml(w.word)}">🔊朗讀</button>
+                    <button class="btn-check" data-word="${escapeHtml(w.word)}">🎤檢查口說</button>
+                </div>
             </div>
         `;
         container.insertAdjacentHTML('beforeend', html);
     });
+    // 綁定朗讀事件
+    container.querySelectorAll('.btn-speak').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const word = btn.dataset.word;
+            const utterance = new SpeechSynthesisUtterance(word);
+            utterance.lang = 'en-US';
+            speechSynthesis.speak(utterance);
+        });
+    });
+// 綁定語音檢查事件
+container.querySelectorAll('.btn-check').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const word = btn.dataset.word.toLowerCase();
+        const resultSpan = btn.parentElement.querySelectorAll('.check-result');
+        if(!('webkitSpeechRecognition' in window)){
+            resultSpan.textContent = '不支援語音識別';
+            return;
+        }
+        const recognition = new webkitSpeechRecognition();
+        recognition.lang = 'en-US';
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+        recognition.start();
+        resultSpan.textContent = '錄音...';
+        recognition.onresult = (event) => {
+            const spoken = event.results[0][0].transcript.toLowerCase();
+            if(spoken === word){
+                resultSpan.textContent = `正確(${spoken})`;
+                resultSpan.style.color = 'green';
+            }else{
+                resultSpan.textContent = `錯誤(${spoken})`;
+                resultSpan.style.color = 'red';
+            }
+        };
+        recognition.onerror = () => {
+            resultSpan.textContent = '語音識別失敗';
+            resultSpan.style.color = 'orange';
+        };
+    });
+});
 }
 
 function escapeHtml(text){
