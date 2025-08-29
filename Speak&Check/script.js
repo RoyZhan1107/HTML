@@ -1,35 +1,26 @@
 // Helpers
 const el = sel => document.querySelector(sel);
-document.addEventListener('DOMContentLoaded', () => {
-    const btn = el('#btnSplit');
-    if (btn) {
-        btn.addEventListener('click', () => {
-            sentences = splitIntoSentences(el('#textInput').value || '');
-            idx = 0;
-            renderSentence();
-        });
-    }
-});
-
-const els = sel => Array.from(document.querySelectorAll(sel) || []);
+const els = sel => Array.from(document.querySelectorAll(sel));
 
 function splitIntoSentences(text) {
-    if (!text || typeof text !== 'string') return [];
+    //  粗略分句:以 . ! ? 或換行分割
     return text
-        .split(/(?<=[.!?])\s+/) // 依據標點切句
-        .filter(s => s.trim().length > 0); // 去掉空白
+        .replace(/\s+/g,' ')    // 正規化空白
+        .split(/(?<=[.!?])\s+|\n+/)
+        .map(s => s.trim())
+        .filter(Boolean);
 }
-function tokensize(s){
+
+function tokenize(s){
     return s
         .toLowerCase()
-        .replace(/[^a-zA-Z'\-\s]/g,' ') // 移除標點(保留縮寫符號)
+        .replace(/[^a-zA-Z'\-\s]/g,'') // 移除標點(保留縮寫符號)
         .split(/\s+/)
         .filter(Boolean);
 }
+
 function levenshtein(a, b){
-    const dp = Array.from({
-        length: a.length + 1
-    }, () => Array(b.length + 1).fill(0));
+    const dp = Array.from({length: a.length + 1}, () => Array(b.length + 1).fill(0));
     for(let i = 0; i <= a.length; i++){
         dp[i][0] = i;
     }
@@ -48,16 +39,17 @@ function levenshtein(a, b){
     }
     return dp[a.length][b.length];
 }
+
 function wordScore(target, said){
-    // 0: 錯 1:接近 2:5正確
+    // 0: 錯 1:接近 2:正確
     if(!said) return 0;
     if(target === said) return 2;
     const d = levenshtein(target, said);
     return d <= 1 ? 1 : 0;  // 一個編輯距離以內算接近
 }
 function highlightCompare(targetStr, saidStr){
-    const tks = tokensize(targetStr);
-    const sks = tokensize(saidStr);
+    const tks = tokenize(targetStr);
+    const sks = tokenize(saidStr);
 
     const used = Array(sks.length).fill(false);
     let ok = 0, near = 0, bad = 0;
@@ -102,7 +94,7 @@ const voiceSel = el('#voiceSel');
 let voices = [];
 function loadVoices(){
     voices = window.speechSynthesis ? window.speechSynthesis.getVoices() : [];
-    voiceSel.innHTML = '<option value="">系統預設</option>' + voices.map((v, i) => `<option value="${i}">${v.lang} - ${v.name}</option>`).join('');
+    voiceSel.innerHTML = '<option value="">系統預設</option>' + voices.map((v, i) => `<option value="${i}">${v.lang} - ${v.name}</option>`).join('');
 }
 if('speechSynthesis' in window){
     loadVoices();
@@ -113,7 +105,7 @@ function speak(text){
     const u = new SpeechSynthesisUtterance(text);
     const sel = voiceSel.value;
     if(sel){
-        u.voice = voice[ + sel];
+        u.voice = voices[+ sel];
     }
     u.rate = parseFloat(el('#rate').value || '1');
     u.lang = (voices[ + sel]?.lang) || el('#lang').value || 'en-US';
@@ -129,9 +121,9 @@ if(Rec){
     rec.interimResults = false;
     rec.onstart = () => el('#status').textContent = '錄音中...';
     rec.onend = () => el('#status').textContent = '待機';
-    rec.onerror = (e) => el('#status').textContent = '錯誤:' + (e.error || 'unknow');
+    rec.onerror = (e) => el('#status').textContent = '錯誤:' + (e.error || 'unknown');
     rec.onresult = (e) => {
-        const text = Array.from(e.result).map(r => r[0].transcript).join('  ');
+        const text = Array.from(e.results).map(r => r[0].transcript).join(' ');
         showResult(text);
     };
 }
@@ -153,21 +145,22 @@ function stopRec(){
 }
 function renderSentence(){
     const s = sentences[idx] || '';
-    const words = tokensize(s);
+    const words = tokenize(s);
     const html = words.map(w => `<span class="word" title="點我朗讀">${w}</span>`).join('  ');
-    el('#targetSentence').innHTML = html || '<span class="muted">尚未載入句子，請先分據</span>';
+    el('#targetSentence').innerHTML = html || '<span class="muted">尚未載入句子，請先分句</span>';
     els('#targetSentence .word').forEach(sp => {
         sp.addEventListener('click', () => speak(sp.textContent));
     });
-    el('#recResult').innHTML = '';
+    el('#recResult').innerHTML = '';
     el('#statOK').textContent = el('#statNear').textContent = el('#statBad').textContent = '0';
     el('#score').textContent = '分數: -';
-    el('$sentCount').textContent = `${sentences.length} 句(目前第${Math.min(idx + 1, Math.max(1, sentences.length))}句)`;
+    el('#sentCount').textContent = `${sentences.length} 句(目前第${Math.min(idx + 1, Math.max(1, sentences.length))}句)`;
 }
+
 function showResult(text){
     const s = sentences[idx] || '';
     const {html, stats} = highlightCompare(s, text);
-    el('#recResult').innHTML = html;
+    el('#recResult').innerHTML = html;
     el('#statOk').textContent = stats.ok;
     el('#statNear').textContent = stats.near;
     el('#statBad').textContent = stats.bad;
@@ -175,7 +168,7 @@ function showResult(text){
     const score = total ? Math.round((stats.ok + 0.5 * stats.near) / total * 100) : 0;
     el('#score').textContent = `分數:${score}`;
     // 允許點擊識別結果中的每個字進行朗讀
-    els('#recResult .word').forEach(sp => sp.addEventListener('click', () => speak(sp.dadaset.word || sp.textContent)));
+    els('#recResult .word').forEach(sp => sp.addEventListener('click', () => speak(sp.dataset.word || sp.textContent)));
 }
 // Events
 el('#btnSplit').addEventListener('click', () => {
@@ -201,7 +194,7 @@ el('#btnNext').addEventListener('click', () => {
         renderSentence();
     }
 });
-el('#btnSpeak').addEventListener('click', speak(sentences[idx] || ''));
+el('#btnSpeak').addEventListener('click', () => speak(sentences[idx] || ''));
 el('#btnRecStart').addEventListener('click', startRec);
 el('#btnRecStop').addEventListener('click', stopRec);
 

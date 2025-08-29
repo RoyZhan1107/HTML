@@ -7,15 +7,15 @@
     </head>
     <body>
         <div class="container">
-            <span>口說練習語發音糾正</span>
+            <span>⭐ 口說練習語發音糾正</span>
             <div class="row">
                 <div class="card grow">
                     <div class="stack">
                         <label for="textInput" class="hint">貼上文章，或使用預設範例:</label>
-                        <textarea name="" id="textInput" placeholder="貼上你的文章...">
-                            Please accept this small gift to thank you for everything you have done for me.
-                            Learning a new language takes time and practice. Speak clearly and at natural pace.
-                            Pronunciation improves when you listen carefully and repeat difficult words.
+                        <textarea name="" id="textInput" placeholder="貼上你的文章...">Want to learn a new language but not sure if you're saying the words correctly?
+Try this website! It helps you practice speaking confidently.
+You can break down sentences into individual words, making it easier to improve your speaking skills.
+Pronunciation improves when you listen carefully and repeat difficult words.
                         </textarea>
                         <div class="controls">
                             <button class="ghost" id="btnSplit">分句 / 產生練習</button>
@@ -31,12 +31,13 @@
                                     <option value="en-GB">English (UK)</option>
                                     <option value="en-AU">English (AU)</option>
                                     <option value="zh-TW">中文(台灣)</option>
-                                    <option value="-">韓文</option>
+                                    <option value="ko-KR">韓文</option>
                                 </select>
                             </label>
                             <label for="" class="center small">朗讀語音
                                 <select name="" id="voiceSel"><option value="">系統預設</option></select>
-                                <label for="" class="center small">語速</label>
+                            </label>
+                            <label for="" class="center small">語速
                                 <select name="" id="rate">
                                     <option value="0.5">0.5x</option>
                                     <option value="0.8">0.8x</option>
@@ -50,26 +51,29 @@
                 </div>
                 <div class="card grow">
                     <div class="stack">
-                        <button class="" id="btnPrev">上一句</button>
-                        <button class="" id="btnNext">下一句</button>
-                        <button class="primary" id="btnSpeak">🔊朗讀此句</button>
-                        <button class="" id="btnRecStart">🎤開始錄音</button>
-                        <button class="" id="btnRecStop">⏹停止</button>
+                        <div class="controls">
+                            <button class="" id="btnPrev">上一句</button>
+                            <button class="" id="btnNext">下一句</button>
+                            <button class="primary" id="btnSpeak">🔊朗讀此句</button>
+                            <button class="" id="btnRecStart">🎤開始錄音</button>
+                            <button class="" id="btnRecStop">⏹停止</button>
+                        </div>
+                        <div class="list" id="targetSentence"></div>
+                        <div class="">
+                            <div class="hint small">識別結果</div>
+                            <div class="transcript list" id="recResult"></div>
+                        </div>
+                        <div class="stat">
+                            <span class="pill">✅正確<b id="statOK">0</b></span>
+                            <span class="pill">⚠接近<b id="statNear">0</b></span>
+                            <span class="pill">❌錯誤<b id="statBad">0</b></span>
+                        </div>
+                        <div class="footer small">若瀏覽器不支援語音識別(如: iOS Safari)，會無法錄音。請使用桌面版 Chrome 或 Edge。
+                        </div>
                     </div>
-                    <div class="list" id="targetSentence"></div>
-                    <div class="">
-                        <div class="hint small">識別結果</div>
-                        <div class="transcript list" id="recResult"></div>
-                    </div>
-                    <div class="stat">
-                        <span class="pill">✅正確<b id="statOK">0</b></span>
-                        <span class="pill">⚠接近<b id="statNear">0</b></span>
-                        <span class="pill">❌錯誤<b id="statBad">0</b></span>
-                    </div>
-                    <div class="footer small">若瀏覽器不支援語音識別(如: iOS Safari)，會無法錄音。請使用桌面版 Chrome 或 Edge。</div>
                 </div>
             </div>
         </div>
+        <script src="script.js"></script>
     </body>
-    <script src="script.js"></script>
 </html>
