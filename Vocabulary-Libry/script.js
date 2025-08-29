@@ -29,11 +29,13 @@ document.addEventListener('DOMContentLoaded', () => {
             if(!response.ok) throw new Error(`讀取失敗:${response.status}}`);
             const data = await response.json();
             console.log(`成功載入 ${value}.json`, data);
+            rednerWords(data);
         }catch{
             console.error('讀取 JSON 發生錯誤:', error);
         }
-    })
+    });
 });
+
 // 載入檔案
 function load(){
     try{
@@ -348,7 +350,6 @@ load();
 renderList();
 
 
-/*
 function renderWords(words){
     const container = document.getElementById('list');
     container.innerHTML = '';
@@ -431,7 +432,7 @@ container.querySelectorAll('.btn-check').forEach(btn => {
     });
 });
 }
-*/
+
 function escapeHtml(text){
     const map = {
         '&': '&amp;',
