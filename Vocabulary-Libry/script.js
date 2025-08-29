@@ -123,6 +123,17 @@ function itemHTML(w, i){
     `;
     
 }
+document.getElementById('list').addEventListener('click', (e) => {
+    const target = e.target;
+    if(target.classList.contains('btn-speak')){
+        const word = target.getAttribute('data-word');
+        sepakWord(word);
+    }
+    if(target.classList.contains('btn-check')){
+        const word = target.getAttribute('data-word');
+        startSpeechRecognition(word, target);
+    }
+});
 // 朗讀功能
 function sepakWord(word){
     if(!window.speechSynthesis){
