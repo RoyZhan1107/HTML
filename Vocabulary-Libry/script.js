@@ -17,26 +17,22 @@ function LiveABC(event){
     LiveABC.style.display = (LiveABC.style.display === "block") ? "none" : "block";
 }
 
-document.getElementById('Live-ABC-TUEE').addEventListener('change', function(){
-    const selctedValue = this.value;
-    if(!selctedValue) return;
-    const jsonPath = `json/The-Unified-Entrance-Exam/${selctedValue}.json`;
-    fetch(jsonPath)
-        .then(response => {
-            if(!response.ok){
-                throw new Error('網路錯誤或檔案不存在');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('載入成功:', data);
-            renderList(data);
-            load();
-            itemHTML(w, i);
-        })
-        .catch(error => {
+document.addEventListener('DOMContentLoaded', () => {
+    const select = document.getElementById('Live-ABC-TUEE');
+    select.addEventListener('change', async(e) => {
+        const value = e.target.value;
+        if(!value) return;
+        const url = `/The-Unified-Entrance-Exam/${value}.json`;
+
+        try{
+            const response = await fetch(url);
+            if(!response.ok) throw new Error(`讀取失敗:${response.status}}`);
+            const data = await response.json();
+            console.log(`成功載入 ${value}.json`, data);
+        }catch{
             console.error('讀取 JSON 發生錯誤:', error);
-        });
+        }
+    })
 });
 // 載入檔案
 function load(){
