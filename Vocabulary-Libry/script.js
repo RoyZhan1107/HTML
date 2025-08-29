@@ -28,8 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const response = await fetch(url);
             if(!response.ok) throw new Error(`讀取失敗:${response.status}}`);
             const data = await response.json();
-            console.log(`成功載入 ${value}.json`, data);
-            rednerWords(data);
+            container.innerHTML = words.map((w, i) => itemHTML(w, i)).join("");
+            
         }catch{
             console.error('讀取 JSON 發生錯誤:', error);
         }
