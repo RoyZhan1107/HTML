@@ -1,7 +1,7 @@
 [
     {
         "word": "access",
-        "meaning" : "",
+        "meaning" : "取得；使用",
         "pos": "noun",
         "synonym": "none",
         "antonym": "none",
@@ -12,7 +12,7 @@
     },
     {
         "word": "appointment",
-        "meaning" : "",
+        "meaning" : "(正式的)約會",
         "pos": "noun",
         "synonym": "none",
         "antonym": "none",
@@ -23,7 +23,7 @@
     },
     {
         "word": "bother",
-        "meaning" : "",
+        "meaning" : ["煩躁；操心", "麻煩"],
         "pos": ["verb", "noun"],
         "synonym": "none",
         "antonym": "none",
@@ -36,7 +36,7 @@
     },
     {
         "word": "bright",
-        "meaning" : "",
+        "meaning" : "明亮的；顏色鮮豔的；(前途、景況)光明的",
         "pos": "adjective",
         "synonym": "none",
         "antonym": "none",
@@ -49,7 +49,7 @@
     },
     {
         "word": "certain",
-        "meaning" : "",
+        "meaning" : "確定的；某些的",
         "pos": "adjective",
         "synonym": "none",
         "antonym": "none",
@@ -61,7 +61,7 @@
     },
     {
         "word": "complete",
-        "meaning" : "",
+        "meaning" : ["完整的；完全的", "完成"],
         "pos": ["adjective", "verb"],
         "synonym": "none",
         "antonym": "none",
@@ -73,7 +73,7 @@
     },
     {
         "word": "confindence",
-        "meaning" : "",
+        "meaning" : "信心",
         "pos": "noun",
         "synonym": "",
         "antonym": "none",
@@ -84,7 +84,7 @@
     },
     {
         "word": "contain",
-        "meaning" : "",
+        "meaning" : "包含；容納",
         "pos": "verb",
         "synonym": "none",
         "antonym": "none",
@@ -95,7 +95,7 @@
     },
     {
         "word": "culture",
-        "meaning" : "",
+        "meaning" : "文化",
         "pos": "noun",
         "synonym": "none",
         "antonym": "none",
@@ -106,7 +106,7 @@
     },
     {
         "word": "custom",
-        "meaning" : "",
+        "meaning" : "習俗",
         "pos": "noun",
         "synonym": "none",
         "antonym": "none",
@@ -117,7 +117,7 @@
     },
     {
         "word": "develop",
-        "meaning" : "",
+        "meaning" : "發展；逐漸養成；罹患(疾病)",
         "pos": "verb",
         "synonym": "none",
         "antonym": "none",
@@ -130,7 +130,7 @@
     },
     {
         "word": "disabled",
-        "meaning" : "",
+        "meaning" : "有殘疾的；喪失能力的",
         "pos": "adjective",
         "synonym": "handicapped",
         "antonym": "none",
@@ -141,7 +141,7 @@
     },
     {
         "word": "disappointed",
-        "meaning" : "",
+        "meaning" : "失望的",
         "pos": "adjective",
         "synonym": "discouraged",
         "antonym": "none",
@@ -152,7 +152,7 @@
     },
     {
         "word": "disease",
-        "meaning" : "",
+        "meaning" : "疾病",
         "pos": "noun",
         "synonym": "illness",
         "antonym": "none",
@@ -163,7 +163,7 @@
     },
     {
         "word": "entertain",
-        "meaning" : "",
+        "meaning" : "使娛樂",
         "pos": "noun",
         "synonym": "none",
         "antonym": "none",
@@ -174,7 +174,7 @@
     },
     {
         "word": "environment",
-        "meaning" : "",
+        "meaning" : "環境",
         "pos": "noun",
         "synonym": "none",
         "antonym": "none",
@@ -185,7 +185,7 @@
     },
     {
         "word": "improve",
-        "meaning" : "",
+        "meaning" : "感善；增進",
         "pos": "noun",
         "synonym": "none",
         "antonym": "none",
@@ -196,7 +196,7 @@
     },
     {
         "word": "industry",
-        "meaning" : "",
+        "meaning" : "產業；工業",
         "pos": "noun",
         "synonym": "none",
         "antonym": "none",
@@ -207,7 +207,7 @@
     },
     {
         "word": "local",
-        "meaning" : "",
+        "meaning" : "當地的",
         "pos": "adjective",
         "synonym": "none",
         "antonym": "none",
@@ -218,7 +218,7 @@
     },
     {
         "word": "manner",
-        "meaning" : "",
+        "meaning" : "禮儀；方式",
         "pos": "noun",
         "synonym": "none",
         "antonym": "none",
@@ -230,7 +230,7 @@
     },
     {
         "word": "notice",
-        "meaning" : "",
+        "meaning" : ["注意到", "通知單"],
         "pos": ["verb", "noun"],
         "synonym": "detect",
         "antonym": "none",
@@ -242,7 +242,7 @@
     },
     {
         "word": "provide",
-        "meaning" : "",
+        "meaning" : "提供；供應",
         "pos": "verb",
         "synonym": "supply",
         "antonym": "none",
@@ -253,7 +253,7 @@
     },
     {
         "word": "region",
-        "meaning" : "",
+        "meaning" : "區域；地帶",
         "pos": "noun",
         "synonym": "area",
         "antonym": "none",
@@ -264,7 +264,7 @@
     },
     {
         "word": "reluctantly",
-        "meaning" : "",
+        "meaning" : "不情願地；免強地",
         "pos": "adverb",
         "synonym": "unwillingly",
         "antonym": "none",
@@ -275,7 +275,7 @@
     },
     {
         "word": "replace",
-        "meaning" : "",
+        "meaning" : "取代",
         "pos": "verb",
         "synonym": "none",
         "antonym": "none",
@@ -286,7 +286,7 @@
     },
     {
         "word": "reserved",
-        "meaning" : "",
+        "meaning" : "保留的",
         "pos": "adjective",
         "synonym": "none",
         "antonym": "none",
@@ -297,7 +297,7 @@
     },
     {
         "word": "softly",
-        "meaning" : "",
+        "meaning" : "輕柔地",
         "pos": "adverb",
         "synonym": "none",
         "antonym": "none",
@@ -308,7 +308,7 @@
     },
     {
         "word": "spoil",
-        "meaning" : "",
+        "meaning" : "破壞(計畫等)；掃興",
         "pos": "verb",
         "synonym": "none",
         "antonym": "none",
@@ -319,7 +319,7 @@
     },
     {
         "word": "tight",
-        "meaning" : "",
+        "meaning" : "緊的；合身的",
         "pos": "adjective",
         "synonym": "none",
         "antonym": "loose",
@@ -330,7 +330,7 @@
     },
     {
         "word": "volunteer",
-        "meaning" : "",
+        "meaning" : ["志工", "自願"],
         "pos": ["noun", "verb"],
         "synonym": "none",
         "antonym": "none",
@@ -341,7 +341,7 @@
     },
     {
         "word": "and so on",
-        "meaning" : "",
+        "meaning" : "等等；諸如此類",
         "pos": "none",
         "synonym": "none",
         "antonym": "none",
@@ -352,7 +352,7 @@
     },
     {
         "word": "be regarded as",
-        "meaning" : "",
+        "meaning" : "被視為...",
         "pos": "none",
         "synonym": "be seen as",
         "antonym": "none",
@@ -363,7 +363,7 @@
     },
     {
         "word": "put up with",
-        "meaning" : "",
+        "meaning" : "忍受；容忍",
         "pos": "none",
         "synonym": "tolerate",
         "antonym": "none",
@@ -374,7 +374,7 @@
     },
     {
         "word": "so far",
-        "meaning" : "",
+        "meaning" : "到目前為止",
         "pos": "none",
         "synonym": "none",
         "antonym": "none",
@@ -385,7 +385,7 @@
     },
     {
         "word": "take care of",
-        "meaning" : "",
+        "meaning" : "照顧(某人)；處理或負責(某事物)",
         "pos": "none",
         "synonym": "look after",
         "antonym": "none",
