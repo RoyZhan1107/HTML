@@ -444,15 +444,16 @@ container.querySelectorAll('.btn-check').forEach(btn => {
 }
 
 function escapeHtml(text){
-    const map = {
-        '&': '&amp;',
-        '<': '&lt;',
-        '>': '&gt;',
-        '"': '&quot',
-        "'": '&#039;'
-    };
-    return text.replace(/[&<>"']/g, m => map[m]);
+    if(typeof text !== 'string'){
+        text = String(text);   
+    }
+    return text.replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
 }
+
 
 document.getElementById('btn-refresh').addEventListener('click', function(){
     location.reload();
