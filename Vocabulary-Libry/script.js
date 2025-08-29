@@ -11,6 +11,33 @@ const defaults = [
     {word: 'despite', meaning: '儘管(介系詞)', pos: "preposition", synonym: 'none', antonym: 'none', derivatives: 'none', phrases: 'none', patterns: ['despite + N/V-ing', 'Despite the rain, ...'], fav:false},
     {word: 'participate', meaning: '參加；參與(不及物 + in)', pos: "verb", synonym: 'none', antonym: 'none', derivatives: 'none', phrases: 'none', patterns: ['participate in ~', 'be willing to participate in~'], fav:true},
 ];
+function LiveABC(event){
+    event.preventDefault();
+    const LiveABC = document.getElementById("Live-ABC-TUEE");
+    LiveABC.style.display = (LiveABC.style.display === "block") ? "none" : "block";
+}
+
+document.getElementById('Live-ABC-TUEE').addEventListener('change', function(){
+    const selctedValue = this.value;
+    if(!selctedValue) return;
+    const jsonPath = `json/The-Unified-Entrance-Exam/${selctedValue}.json`;
+    fetch(jsonPath)
+        .then(response => {
+            if(!response.ok){
+                throw new Error('網路錯誤或檔案不存在');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('載入成功:', data);
+            renderList(data);
+            load();
+            itemHTML(w, i);
+        })
+        .catch(error => {
+            console.error('讀取 JSON 發生錯誤:', error);
+        });
+});
 // 載入檔案
 function load(){
     try{
@@ -324,33 +351,7 @@ function editDistance(a,b){
 load();
 renderList();
 
-function LiveABC(event){
-    event.preventDefault();
-    const LiveABC = document.getElementById("Live-ABC-TUEE");
-    LiveABC.style.display = (LiveABC.style.display === "block") ? "none" : "block";
-}
 
-document.getElementById('Live-ABC-TUEE').addEventListener('change', function(){
-    const selctedValue = this.value;
-    if(!selctedValue) return;
-    const jsonPath = `json/The-Unified-Entrance-Exam/${selctedValue}.json`;
-    fetch(jsonPath)
-        .then(response => {
-            if(!response.ok){
-                throw new Error('網路錯誤或檔案不存在');
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('載入成功:', data);
-            renderList(data);
-            load();
-            itemHTML(w, i);
-        })
-        .catch(error => {
-            console.error('讀取 JSON 發生錯誤:', error);
-        });
-});
 /*
 function renderWords(words){
     const container = document.getElementById('list');
