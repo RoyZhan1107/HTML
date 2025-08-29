@@ -56,7 +56,6 @@ function renderList(){
     const filtered = words.filter(Boolean).filter(w => {
         if(onlyFav && !w.fav) return false;
         if(!q) return true;
-        // const hay = [w.word, w.pos, w.meaning, ...(w.patterns || [])].join('\n').toLowerCase();
         const hay = [w.word, w.pos, w.meaning, (Array.isArray(w.synonym) ? w.synonym.map : []), w.derivatives, w.phrases, ...(Array.isArray(w.patterns) ? w.patterns : [])].join('\n').toLowerCase();
         return hay.includes(q);
     });
@@ -67,7 +66,6 @@ function renderList(){
         el.querySelector('.star').addEventListener('click', () => toggleFav(i));
         el.querySelector('.btn-add-pattern').addEventListener('click', () => addPattern(i));
     });
-    
 }
 // 顯示單字
 function itemHTML(w, i){
@@ -345,13 +343,13 @@ document.getElementById('Live-ABC-TUEE').addEventListener('change', function(){
         })
         .then(data => {
             console.log('載入成功:', data);
-            renderWords(data);
+            renderList(data);
         })
         .catch(error => {
             console.error('讀取 JSON 發生錯誤:', error);
         });
 });
-
+/*
 function renderWords(words){
     const container = document.getElementById('list');
     container.innerHTML = '';
@@ -434,7 +432,7 @@ container.querySelectorAll('.btn-check').forEach(btn => {
     });
 });
 }
-
+*/
 function escapeHtml(text){
     const map = {
         '&': '&amp;',
