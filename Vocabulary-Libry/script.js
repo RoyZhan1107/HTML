@@ -118,11 +118,12 @@ function itemHTML(w, i){
                 <button class="btn-sepak" data-word="${escapeHtml(w.word)}">🔊朗讀</button>
                 <button class="btn-check" data-word="${escapeHtml(w.word)}">🎤檢查口說</button>
             </div>
-        <div class="" id="recognition-result"></div>
+        <div id="recognition-result"></div>
         </div>
     `;
     
 }
+// 朗讀功能
 function sepakWord(word){
     if(!window.speechSynthesis){
         alert('您的瀏覽器不支援語音功能');
@@ -132,48 +133,36 @@ function sepakWord(word){
     utterance.lang = 'en-US';
     window.speechSynthesis.speak(utterance);
 }
-/*
-// 綁定朗讀事件
-    container.querySelectorAll('.btn-speak').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const word = btn.dataset.word;
-            const utterance = new SpeechSynthesisUtterance(word);
-            utterance.lang = 'en-US';
-            speechSynthesis.speak(utterance);
-        });
-    });
-// 綁定語音檢查事件
-container.querySelectorAll('.btn-check').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const word = btn.dataset.word.toLowerCase();
-        const resultSpan = btn.parentElement.querySelectorAll('.check-result');
-        if(!('webkitSpeechRecognition' in window)){
-            resultSpan.textContent = '不支援語音識別';
-            return;
-        }
-        const recognition = new webkitSpeechRecognition();
-        recognition.lang = 'en-US';
-        recognition.interimResults = false;
-        recognition.maxAlternatives = 1;
+const startRecBtn = document.getElementById('btn-speak');
+const recognitionResult = document.getElementById('recognition-result');
+// 語音識別功能
+if('webkitSpeechRecognition' in window || 'SpeechRecognition' in window){
+    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    const recognition = new SpeechRecognition();
+    recognition.lang = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+    startRecBtn.addEventListener('click', () => {
         recognition.start();
-        resultSpan.textContent = '錄音...';
-        recognition.onresult = (event) => {
-            const spoken = event.results[0][0].transcript.toLowerCase();
-            if(spoken === word){
-                resultSpan.textContent = `正確(${spoken})`;
-                resultSpan.style.color = 'green';
-            }else{
-                resultSpan.textContent = `錯誤(${spoken})`;
-                resultSpan.style.color = 'red';
-            }
-        };
-        recognition.onerror = () => {
-            resultSpan.textContent = '語音識別失敗';
-            resultSpan.style.color = 'orange';
-        };
+        recognitionResult.textContent = '請朗讀單字...';
     });
-});
-*/
+    recognition.addEventListener('result', (event) => {
+        const spoken = event.results[0][0].transcript.trim().toLowerCase();
+        recognitionResult.textContent = `你說了:${spoken}`;
+
+        if(currentWord && spoken === currentWord.toLowerCase()){
+            recognitionResult.textContent = '🎉正確!';
+        }else{
+            recognitionResult.textContent = '❌不正確，請在試一次!';
+        }
+    });
+    recognition.addEventListener('error', (event) => {
+        recognitionResult.textContent = '語音識別錯誤:' + event.error;
+    });
+}else{
+    startRecBtn.disabled = true;
+    recognitionResult.textContent = '您的瀏覽器不支援語音識別功能';
+}
 function toggleFav(i){
     words[i].fav = !words[i].fav;
     save();
@@ -359,90 +348,6 @@ function editDistance(a,b){
     }
 load();
 renderList();
-/*
-function renderWords(words){
-    const container = document.getElementById('list');
-    container.innerHTML = '';
-    // const hay = [w.word, w.pos, w.meaning, (Array.isArray(w.synonym) ? w.synonym.map : []), w.derivatives, w.phrases, ...(Array.isArray(w.patterns) ? w.patterns : [])].join('\n').toLowerCase();
-    words.forEach((w, i) => {
-        const patterns = w.patterns && w.patterns.length
-            ? w.patterns.map(p => `<div>${p}</div>`).join('')
-            : '<span class="muted">(尚無例句)</span>';
-        const synonym = w.synonym && w.synonym.length
-            ? (Array.isArray(w.synonym) ? w.synonym.join(', ') : w.synonym || '無')
-            : (typeof w.synonym === "string" ? w.synonym : "");
-        const antonym = w.antonym && w.antonym.length
-            ? (Array.isArray(w.antonym) ? w.synonym.join(', ') : w.antonym || '無')
-            : 'unknow';
-        const derivatives = w.derivatives && w.derivatives.length
-            ? (Array.isArray(w.derivatives) ? w.synonym.join(', ') : w.derivatives || '無')
-            : 'unknow';
-        const phrases = w.phrasesText && w.phrases.length
-            ? (Array.isArray(w.phrases) ? w.synonym.join(', ') : w.phrases || '無')
-            : 'unknow';
-        const html = `
-            <div class="word" data-idx="${i}">
-                <div class="top">
-                    <strong>${(w.word)}</strong>
-                    <span class="pos">${w.pos || '未知詞性'}</span>
-                    <span class="star ${w.fav ? 'fav' : ''}" title="收藏">★</span>
-                </div>
-                <div class="synonym">${synonym || 'unknow'}</div>
-                <div class="antonym">${antonym || 'unknow'}</div>
-                <div class="derivatives">${derivatives || 'unknow'}</div>
-                <div class="phrases">${phrases || 'unknow'}</div>
-                <div class="muted">${escapeHtml(w.meaning || '')}</div>
-                <div>${patterns}</div>
-                <div class="actions">
-                    <button class="btn-sepak" data-word="${escapeHtml(w.word)}">🔊朗讀</button>
-                    <button class="btn-check" data-word="${escapeHtml(w.word)}">🎤檢查口說</button>
-                </div>
-            </div>
-        `;
-        container.insertAdjacentHTML('beforeend', html);
-    });
-    // 綁定朗讀事件
-    container.querySelectorAll('.btn-speak').forEach(btn => {
-        btn.addEventListener('click', () => {
-            const word = btn.dataset.word;
-            const utterance = new SpeechSynthesisUtterance(word);
-            utterance.lang = 'en-US';
-            speechSynthesis.speak(utterance);
-        });
-    });
-// 綁定語音檢查事件
-container.querySelectorAll('.btn-check').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const word = btn.dataset.word.toLowerCase();
-        const resultSpan = btn.parentElement.querySelectorAll('.check-result');
-        if(!('webkitSpeechRecognition' in window)){
-            resultSpan.textContent = '不支援語音識別';
-            return;
-        }
-        const recognition = new webkitSpeechRecognition();
-        recognition.lang = 'en-US';
-        recognition.interimResults = false;
-        recognition.maxAlternatives = 1;
-        recognition.start();
-        resultSpan.textContent = '錄音...';
-        recognition.onresult = (event) => {
-            const spoken = event.results[0][0].transcript.toLowerCase();
-            if(spoken === word){
-                resultSpan.textContent = `正確(${spoken})`;
-                resultSpan.style.color = 'green';
-            }else{
-                resultSpan.textContent = `錯誤(${spoken})`;
-                resultSpan.style.color = 'red';
-            }
-        };
-        recognition.onerror = () => {
-            resultSpan.textContent = '語音識別失敗';
-            resultSpan.style.color = 'orange';
-        };
-    });
-});
-}
-*/
 function escapeHtml(text){
     if(typeof text !== 'string'){
         text = String(text);   
@@ -454,37 +359,9 @@ function escapeHtml(text){
                 .replace(/'/g, "&#039;");
 }
 
-const startRecBtn = document.getElementById('btn-speak');
-const recognitionResult = document.getElementById('recognition-result');
-
-if('webkitSpeechRecognition' in window || 'SpeechRecognition' in window){
-    const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-    const recognition = new SpeechRecognition();
-    recognition.lang = 'en-US';
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
-    startRecBtn.addEventListener('click', () => {
-        recognition.start();
-        recognitionResult.textContent = '請朗讀單字...';
-    });
-    recognition.addEventListener('result', (event) => {
-        const spoken = event.results[0][0].transcript.trim().toLowerCase();
-        recognitionResult.textContent = `你說了:${spoken}`;
-
-        if(currentWord && spoken === currentWord.toLowerCase()){
-            recognitionResult.textContent = '🎉正確!';
-        }else{
-            recognitionResult.textContent = '❌不正確，請在試一次!';
-        }
-    });
-    recognition.addEventListener('error', (event) => {
-        recognitionResult.textContent = '語音識別錯誤:' + event.error;
-    });
-}else{
-    startRecBtn.disabled = true;
-    recognitionResult.textContent = '您的瀏覽器不支援語音識別功能';
-}
-
 document.getElementById('btn-refresh').addEventListener('click', function(){
     location.reload();
+});
+document.addEventListener("contextmenu", function(event){
+    event.preventDefault();
 });
