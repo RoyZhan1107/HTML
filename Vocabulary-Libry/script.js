@@ -178,7 +178,11 @@ function startSpeechRecognition(word, buttonElement){
             }
         };
         recognition.onerror = (event) => {
-            recognitionResult.textContent = '語音識別錯誤:' + event.error;
+            if(resultDiv){
+                recognitionResult.textContent = '語音識別錯誤:' + event.error;
+            }else{
+                console.error('找不到結果顯示的元素');
+            }
         };
     }
 
