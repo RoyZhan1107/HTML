@@ -144,8 +144,10 @@ function speakWord(word){
     utterance.lang = 'en-US';
     window.speechSynthesis.speak(utterance);
 }
+/*
 const startRecBtn = document.getElementById('btn-speak');
 const recognitionResult = document.getElementById('recognition-result');
+*/
 // 語音識別功能
 function startSpeechRecognition(word, buttonElement){
     if(!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)){
@@ -177,8 +179,8 @@ function startSpeechRecognition(word, buttonElement){
         };
         recognition.onerror = (event) => {
             recognitionResult.textContent = '語音識別錯誤:' + event.error;
-        }
-    };
+        };
+    }
 
     function toggleFav(i){
     words[i].fav = !words[i].fav;
