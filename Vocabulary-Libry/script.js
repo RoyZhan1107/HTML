@@ -125,6 +125,7 @@ function itemHTML(w, i){
 }
 document.getElementById('list').addEventListener('click', (e) => {
     const target = e.target;
+
     if(target.classList.contains('btn-speak')){
         const word = target.getAttribute('data-word');
         speakWord(word);
@@ -136,12 +137,13 @@ document.getElementById('list').addEventListener('click', (e) => {
 });
 // 朗讀功能
 function speakWord(word){
-    if(!window.speechSynthesis){
+    if(!('speechSynthesis' in window)){
         alert('您的瀏覽器不支援語音功能');
         return;
     }
     const utterance = new SpeechSynthesisUtterance(word);
     utterance.lang = 'en-US';
+    window.speechSynthesis.cancel();
     window.speechSynthesis.speak(utterance);
 }
 /*
@@ -154,13 +156,18 @@ function startSpeechRecognition(word, buttonElement){
         alert('您的瀏覽器不支援語音識別功能');
         return;
     }
+    const card = buttonElement.closest('.word') || buttonElement.closest('.card');
+    if(!card){
+        console.err('找不到卡片容器');
+        return;
+    }
         const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
         const recognition = new SpeechRecognition();
         recognition.lang = 'en-US';
         recognition.interimResults = false;
         recognition.maxAlternatives = 1;
         
-        const card = buttonElement.closest('.card');
+        // const card = buttonElement.closest('.card');
         const resultDiv = card.querySelector('.recognition-result');
 
         resultDiv.textContent = '請開始說單字...';
