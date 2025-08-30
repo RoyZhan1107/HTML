@@ -179,9 +179,9 @@ function startSpeechRecognition(word, buttonElement){
             resultDiv.textContent = `你說了:${spoken}`;
         
             if(spoken === word.toLowerCase()){
-                recognitionResult.textContent = '🎉正確!';
+                resultDiv.textContent = '🎉正確!';
             }else{
-            recognitionResult.textContent = '❌不正確，請在試一次!';
+            resultDiv.textContent = '❌不正確，請在試一次!';
             }
         };
         recognition.onerror = (event) => {
