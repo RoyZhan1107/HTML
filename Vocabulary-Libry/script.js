@@ -118,7 +118,7 @@ function itemHTML(w, i){
                 <button class="btn-sepak" data-word="${escapeHtml(w.word)}">🔊朗讀</button>
                 <button class="btn-check" data-word="${escapeHtml(w.word)}">🎤檢查口說</button>
             </div>
-        <div id="recognition-result"></div>
+        <div class="recognition-result"></div>
         </div>
     `;
     
