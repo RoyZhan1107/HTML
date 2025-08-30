@@ -127,7 +127,7 @@ document.getElementById('list').addEventListener('click', (e) => {
     const target = e.target;
     if(target.classList.contains('btn-speak')){
         const word = target.getAttribute('data-word');
-        sepakWord(word);
+        speakWord(word);
     }
     if(target.classList.contains('btn-check')){
         const word = target.getAttribute('data-word');
@@ -135,7 +135,7 @@ document.getElementById('list').addEventListener('click', (e) => {
     }
 });
 // 朗讀功能
-function sepakWord(word){
+function speakWord(word){
     if(!window.speechSynthesis){
         alert('您的瀏覽器不支援語音功能');
         return;
@@ -148,7 +148,7 @@ const startRecBtn = document.getElementById('btn-speak');
 const recognitionResult = document.getElementById('recognition-result');
 // 語音識別功能
 function startSpeechRecognition(word, buttonElement){
-    if('webkitSpeechRecognition' in window || 'SpeechRecognition' in window){
+    if(!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)){
         alert('您的瀏覽器不支援語音識別功能');
         return;
     }
@@ -169,7 +169,7 @@ function startSpeechRecognition(word, buttonElement){
             const spoken = event.results[0][0].transcript.trim().toLowerCase();
             resultDiv.textContent = `你說了:${spoken}`;
         
-            if(currentWord === word.toLowerCase()){
+            if(spoken === word.toLowerCase()){
                 recognitionResult.textContent = '🎉正確!';
             }else{
             recognitionResult.textContent = '❌不正確，請在試一次!';
