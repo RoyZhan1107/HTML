@@ -116,7 +116,7 @@ function itemHTML(w, i){
             </div>
         <div class="actions">
                 <button class="btn-sepak" data-word="${escapeHtml(w.word)}">🔊朗讀</button>
-                <button class="btn-check" data-word="${escapeHtml(w.word)}">🎤檢查口說</button>
+                <button class="btn-check" data-word="${escapeHtml(w.word)} onclick="speahWord(document).getElement"">🎤檢查口說</button>
             </div>
         <div class="recognition-result"></div>
         </div>
@@ -392,6 +392,30 @@ function escapeHtml(text){
 document.getElementById('btn-refresh').addEventListener('click', function(){
     location.reload();
 });
+// 禁止使用右鍵
 document.addEventListener("contextmenu", function(event){
     event.preventDefault();
 });
+// 訊息公告
+const modal = document.getElementById('announcementModal');
+const closeModal = document.getElementById('closeModal');
+const announcementText = document.getElementById('announcementText');
+
+// 開啟公告視窗
+function showAnnouncement(message){
+    announcementText.textContent = message;
+    modal.style.display = 'flex';
+}
+// 關閉公告視窗
+closeModal.addEventListener('click', () => {
+    modal.style.display = 'none';
+});
+// 點擊背景關閉
+window.addEventListener('click', (e) => {
+    if(e.target === modal){
+        modal.style.display = 'none';
+    }
+});
+window.onload = () => {
+    showAnnouncement('目前程度只有Live ABC的統測前16周總複習，其餘程度正在努力撰寫中...敬請見諒');
+}
