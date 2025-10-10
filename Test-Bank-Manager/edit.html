@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <title>Test Bank Manager</title>
+    </head>
+    <body>
+        <header>
+            <span>題庫管理器</span>
+            <div class="small">純前端: 支持單選/複選/填充/聽力/閱讀/簡答題，圖片選填，匯出 Word(.doc) 與 Excel(.xlsx)</div>
+        </header>
+        <main class="wrap">
+            <!-- left side: test bank manager list and operation -->
+            <aside class="panel">
+                <div class="left-side">
+                    <strong>我的題庫</strong>
+                    <div class="right-top">
+                        <button class="btn" id="newBankBtn">＋新增題庫</button>
+                    </div>
+                </div>
+                <div class="banks" id="banksList"></div>
+                <div class="controls">
+                    <input type="text" id="bankName" placeholder="新增題庫名稱" autocomplete="off">
+                    <button class="btn" id="createBank">建立</button>
+                </div>
+                <hr class="hr">
+                <div class="small muted">匯入/匯出整個題庫集</div>
+                <div class="in-out">
+                    <button class="btn ghost" id="exportAll">⬇ 匯出全部 (JSON)</button>
+                    <button class="btn ghost" id="importAll">⬆ 匯入</button>
+                    <input type="file" style="display: none" id="importAllFile" accept="application/json">
+                </div>
+            </aside>
+            <!-- right side: edit test bank, upload question, and test -->
+            <section class="panel">
+                <div class="right-side">
+                    <div>
+                        <strong class="" id="currentBankTitle">未選擇題庫</strong>
+                        <div class="small muted" id="bankMeta">0 題</div>
+                    </div>
+                    <div class="right-side-button">
+                        <button class="btn ghost" id="exportBank">匯出此題庫(Word)</button>
+                        <button class="btn ghost" id="exportExcel">匯出 Excel</button>
+                        <button class="btn ghost" id="deleteBank">刪除題庫</button>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="grid-two">
+                        <div class="">
+                            <div class="label">新增題目</div>
+                            <div class="">
+                                <label for="" class="small">題型</label>
+                                <select name="" class="question-type" id="qType">
+                                    <option value="single">單選題(Single Choice)</option>
+                                    <option value="multiple">複選題(Multiple Choice)</option>
+                                    <option value="fill">填充題(Fill in the blank)</option>
+                                    <option value="listening">聽力題(Listening)</option>
+                                    <option value="reading">閱讀題(Reading)</option>
+                                    <option value="short">簡答題(Short answer)</option>
+                                </select>
+                            </div>
+                            <div class="require">
+                                <label for="" class="small">題幹/提示(必填)</label>
+                                <textarea name="" id="qPrompt" class="" placeholder="題幹或題目文字：閱讀題可放段落，聽力題可附音檔" autocomplete="off"></textarea>
+                            </div>
+                            <div class="choice" id="choicesArea">
+                                <div class="small">選項(僅單/複選顯示)</div>
+                                <div class="choice-list" id="choiceList"></div>
+                                <div class="require">
+                                    <button class="btn ghost" id="addChoice">＋ 新增選項</button>
+                                </div>
+                                <div class="small muted require">在選項輸入框內使用 `|` 分隔，左側為選項文字，右側可用 `correct` 標記為正解，例如：<br><code>Apple| correct</code></div>
+                            </div>
+                            <div class="require">
+                                <label for="" class="small">填充題(空格位置要用 _____)</label>
+                                <input type="text" class="" id="qFillAnswer" placeholder="填充題正確答案或多個用逗號分隔" autocomplete="off">
+                            </div>
+                            <div class="require">
+                                <label for="" class="small">附加檔案(圖片/音檔，選填)</label>
+                                <input type="file" class="" id="qFile" accept="image/*, audio/*">
+                                <div class="require" id="filePreview"></div>
+                            </div>
+                            <div class="show">
+                                <button class="btn" id="addQuestion">加入題庫</button>
+                                <button class="btn ghost" id="clearForm">清除表單</button>
+                            </div>
+                        </div>
+                        <div class="">
+                            <div class="quiz-preview" id="previewArea">題目預覽</div>
+                            <div class="preview">
+                                <button class="btn" id="startQuiz">▶預覽測驗</button>
+                                <button class="btn ghost" id="prevQ">⬅</button>
+                                <button class="btn ghost" id="nextQ">➡</button>
+                                <button class="btn ghost" id="playAudio">🔊播放音檔</button>
+                            </div>
+                        </div>
+                    </div>
+                <hr class="hr">
+                <div class="">
+                    <strong>題庫預覽/編輯</strong>
+                    <div class="require" id="questionsList"></div>
+                </div>
+                </div>
+            </section>
+        </main>
+        <footer>本工具為純前端示範，資料儲存在 Local Storage； Word 匯出為 .doc(HTML 內嵌圖片)， Excel 使用 SheetJS 產生 .xlsx</footer>
+    </body>
+    <script src="script.js"></script>
+    <script src="https://cdn.sheetjs.com/xlsx-latest/package/dist/xlsx.full.min.js"></script>
+</html>
