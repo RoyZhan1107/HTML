@@ -1,3 +1,4 @@
+/* edit of style.css */
 :root{
     --bg: #f6f8fb;
     --card: #fff;
@@ -228,4 +229,41 @@ footer{
     margin: 12px 0;
     border: none;
     border-top: 1px solid #f0f4fb;
+}
+/* test of style.css */
+.card{
+    background: var(--w);
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(20, 30, 60, .06);
+    max-width: 900px;
+    margin: 0 auto;
+}
+.qimg{
+    max-width: 100%;
+    max-width: 260px;
+    object-fit: contain;
+}
+.controls{
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+.small{
+    font-size: 13px;
+    color: var(--muted);
+}
+.result-row{
+    border-top: 1px solid #eef2ff;
+    padding-top: 8px;
+    margin-top: 8px;
+}
+.style{
+    margin-top: 12px;
+}
+.body{
+    padding: 16px;
+}
+.card span{
+    font-size: 18px;
 }
