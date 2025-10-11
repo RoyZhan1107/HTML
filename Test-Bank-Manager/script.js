@@ -1,3 +1,4 @@
+// edit of script.js
 (() => {
     const storagekey = 'image_vocab_banks_v2';
     let banks = JSON.parse(localStorage.getItem(storagekey) || '[]');
@@ -257,7 +258,11 @@
         }
         clearForm.addEventListener('click', clearFormFields);
     }
-
+// play TTS for current form text
+  playTTS.addEventListener('click', ()=>{
+    const text = qTextToSpeech.value.trim(); if(!text) return alert('請先貼上要朗讀的文字'); speakText(text);
+  });
+  function speakText(text){ const msg = new SpeechSynthesisUtterance(text); const v = voiceSelect.value; if(v){ const voices = window.speechSynthesis.getVoices(); const sel = voices.find(x=>x.name===v); if(sel) msg.voice = sel; } msg.rate = parseFloat(speechRate.value) || 1; window.speechSynthesis.cancel(); window.speechSynthesis.speak(msg); }
         // questions list render
         function renderQuestionsList(bank){
             questionsList.innerHTML = '';
@@ -503,90 +508,6 @@
         renderBanks();
         renderBankPanel();
 })();
-
-(function(){
-  const storagekey = '${storagekey}';
-  const bankId = '${bank.id}';
-  let banks = JSON.parse(localStorage.getItem(storagekey) || '[]');
-  const bank = banks.find(b=>b.id===bankId);
-  if(!bank){ document.getElementById('qArea').innerText = '無法讀取題庫。請回到題庫頁確認。'; return; }
-  let idx = 0; let answers = [];
-  const total = bank.questions.length; document.getElementById('progress').innerText = `1 / ${total}`;
-
-  function render(){ const q = bank.questions[idx]; const area = document.getElementById('qArea'); area.innerHTML = ''; const h = document.createElement('div'); h.innerHTML = `<div style="font-weight:700">${idx+1}. ${escapeHtml(q.prompt)}</div>`; area.appendChild(h);
-    if(q.file && q.file.type && q.file.type.startsWith('image/')){ const img = document.createElement('img'); img.src = q.file.dataUrl; img.className='qimg'; area.appendChild(img); }
-    // input area according to type
-    const inputWrap = document.createElement('div'); inputWrap.style.marginTop='8px';
-    if(q.type==='single' || q.type==='multiple'){
-      q.choices.forEach((c,ci)=>{
-        const id = 'opt'+ci; const row = document.createElement('div'); const inp = document.createElement('input'); inp.type = q.type==='single'?'radio':'checkbox'; inp.name='choice'; inp.value = ci; inp.id = id; if(answers[idx]!==undefined){ if(q.type==='single') inp.checked = (answers[idx]==ci); else inp.checked = (answers[idx] && answers[idx].includes(ci)); }
-        const lab = document.createElement('label'); lab.htmlFor = id; lab.innerText = ` ${String.fromCharCode(65+ci)}. ${c.text}`; row.appendChild(inp); row.appendChild(lab); inputWrap.appendChild(row);
-      });
-    } else if(q.type==='fill'){
-      const inp = document.createElement('input'); inp.type='text'; inp.style.width='100%'; inp.value = answers[idx] || ''; inputWrap.appendChild(inp);
-    } else if(q.type==='listening'){
-      inputWrap.innerHTML = '<div class="small">播放音檔或使用 TTS 聽力</div>'; const btnPlay = document.createElement('button'); btnPlay.className='btn'; btnPlay.innerText='▶ 播放音檔'; btnPlay.addEventListener('click', ()=>{ if(q.audio) new Audio(q.audio.dataUrl).play(); else if(q.file && q.file.type && q.file.type.startsWith('audio/')) new Audio(q.file.dataUrl).play(); else if(q.ttsText) speak(q.ttsText, q.ttsVoice, q.ttsRate); else alert('無音檔'); }); inputWrap.appendChild(btnPlay); const ansinp = document.createElement('input'); ansinp.type='text'; ansinp.placeholder='輸入答案'; ansinp.style.display='block'; ansinp.style.marginTop='8px'; ansinp.style.width='100%'; ansinp.value = answers[idx] || ''; inputWrap.appendChild(ansinp);
-    } else if(q.type==='reading'){
-      const p = document.createElement('div'); p.className='small'; p.style.whiteSpace='pre-wrap'; p.innerText = q.prompt; inputWrap.appendChild(p); // reading may have attached questions — for now just show
-      const ansinp = document.createElement('input'); ansinp.type='text'; ansinp.placeholder='輸入答案（如果有）'; ansinp.style.display='block'; ansinp.style.marginTop='8px'; ansinp.style.width='100%'; ansinp.value = answers[idx] || ''; inputWrap.appendChild(ansinp);
-    } else if(q.type==='short'){
-      const ta = document.createElement('textarea'); ta.style.width='100%'; ta.style.minHeight='80px'; ta.value = answers[idx] || ''; inputWrap.appendChild(ta);
-    }
-    area.appendChild(inputWrap);
-
-    // save current input to answers on change
-    function saveInput(){ if(q.type==='single'){ const sel = area.querySelector('input[type=radio]:checked'); answers[idx] = sel? parseInt(sel.value) : undefined; } else if(q.type==='multiple'){ const sels = Array.from(area.querySelectorAll('input[type=checkbox]:checked')).map(i=>parseInt(i.value)); answers[idx] = sels; } else if(q.type==='fill' || q.type==='listening' || q.type==='reading'){ const v = inputWrap.querySelector('input[type=text]')?.value || inputWrap.querySelector('input')?.value || ''; answers[idx] = v.trim(); } else if(q.type==='short'){ answers[idx] = inputWrap.querySelector('textarea').value.trim(); } localStorage.setItem('quiz_answers_'+bankId, JSON.stringify(answers)); }
-    area.addEventListener('input', saveInput);
-    area.addEventListener('change', saveInput);
-
-    document.getElementById('progress').innerText = (idx+1) + ' / ' + total;
-  }
-
-  document.getElementById('prev').addEventListener('click', ()=>{ if(idx>0){ idx--; render(); } });
-  document.getElementById('next').addEventListener('click', ()=>{ if(idx<total-1){ idx++; render(); } });
-
-  function speak(text, voiceName, rate){ const ut = new SpeechSynthesisUtterance(text); const voices = window.speechSynthesis.getVoices(); if(voiceName){ const v = voices.find(x=>x.name===voiceName); if(v) ut.voice = v; } ut.rate = rate||1; window.speechSynthesis.cancel(); window.speechSynthesis.speak(ut); }
-  document.getElementById('playTTS').addEventListener('click', ()=>{ const q = bank.questions[idx]; if(q.ttsText) speak(q.ttsText, q.ttsVoice, q.ttsRate); else alert('此題無 TTS 文字'); });
-
-  document.getElementById('submit').addEventListener('click', ()=>{
-    // compute score
-    let correctCount = 0; const details = [];
-    bank.questions.forEach((q,i)=>{
-      const ans = answers[i]; let ok = false; let expect = '';
-      if(q.type==='single'){
-        const correctIdx = q.choices.findIndex(c=>c.correct);
-        expect = correctIdx>=0?String.fromCharCode(65+correctIdx):'';
-        ok = (ans!==undefined && parseInt(ans)===correctIdx);
-      } else if(q.type==='multiple'){
-        const correctIdxs = q.choices.map((c,i)=> c.correct? i : -1).filter(i=>i!==-1);
-        expect = correctIdxs.map(i=>String.fromCharCode(65+i)).join(',');
-        if(Array.isArray(ans)){
-          const sortedAns = ans.slice().sort(); const sortedCorrect = correctIdxs.slice().sort(); ok = JSON.stringify(sortedAns) === JSON.stringify(sortedCorrect);
-        }
-      } else if(q.type==='fill'){
-        expect = (q.answers||[]).join('/'); if(typeof ans==='string'){
-          ok = (q.answers||[]).map(s=>s.toLowerCase()).includes(ans.toLowerCase());
-        }
-      } else if(q.type==='listening' || q.type==='reading'){
-        // auto-check if expected provided in q.answers
-        expect = (q.answers||[]).join('/'); if(q.answers && ans) ok = (q.answers.map(s=>s.toLowerCase()).includes((ans+'').toLowerCase()));
-      } else if(q.type==='short'){
-        expect = q.model || '';
-        // mark as not auto-graded unless model exists and matches exactly
-        if(q.model && ans) ok = (q.model.toLowerCase() === (ans+'').toLowerCase());
-      }
-      if(ok) correctCount++; details.push({index:i+1, ok, expect, answer: ans});
-    });
-    const score = correctCount;
-    const wrap = document.getElementById('scoreWrap'); wrap.innerHTML = `<div style="font-weight:700">分數：${score} / ${total}</div>`;
-    const list = document.createElement('div'); list.className='result-row'; list.innerHTML = details.map(d=>`<div>第 ${d.index} 題：${d.ok?'<span style="color:green">答對</span>':'<span style="color:red">答錯</span>'}；你的答案：${escapeHtml(String(d.answer||''))}；正答：${escapeHtml(String(d.expect||''))}</div>`).join(''); wrap.appendChild(list);
-    // allow download results
-    const dl = document.createElement('button'); dl.className='btn'; dl.textContent='⬇ 下載成績 (JSON)'; dl.addEventListener('click', ()=>{
-      const data = {bankId: bankId, name: bank.name, score, total, details}; const blob = new Blob([JSON.stringify(data, null, 2)], {type:'application/json'}); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = `${bank.name}_result.json`; a.click(); URL.revokeObjectURL(a.href);
-    }); wrap.appendChild(dl);
-  });
-
-  // initial render
-  render();
-})();
-function escapeHtml(s){ if(!s) return ''; return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;'); }
+// test of script.js
+const aArea = document.getElementById('aArea');
+aArea.innerHTML = html;
