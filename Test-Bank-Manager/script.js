@@ -258,6 +258,7 @@
         }
         clearForm.addEventListener('click', clearFormFields);
     }
+/*
 // play TTS for current form text
   playTTS.addEventListener('click', ()=>{
     const text = qTextToSpeech.value.trim(); if(!text) return alert('請先貼上要朗讀的文字'); speakText(text);
@@ -299,6 +300,7 @@
                 questionsList.appendChild(el);
             });
     };
+    */
     function editQuestion(bankId, qId){
         const bank = banks.find(b => b.id === bankId);
         const q = bank.questions.find(x => x.id === qId);
