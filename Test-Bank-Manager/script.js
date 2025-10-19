@@ -510,6 +510,8 @@
         renderBanks();
         renderBankPanel();
 })();
+/*
 // test of script.js
 const aArea = document.getElementById('aArea');
 aArea.innerHTML = html;
+*/
