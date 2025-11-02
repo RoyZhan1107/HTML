@@ -6,3 +6,8 @@ span{
     justify-content: center;
     display: flex;
 }
+ul{
+    display: flex;
+    text-decoration: none;
+    color: #fff;
+}
