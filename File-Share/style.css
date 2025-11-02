@@ -8,6 +8,10 @@ span{
 }
 ul{
     display: flex;
-    text-decoration: none;
     color: #fff;
+    flex-direction: column;
+}
+li{
+    text-decoration: none;
+    list-style: none;
 }
