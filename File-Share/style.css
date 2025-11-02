@@ -1,0 +1,17 @@
+body{
+    color: #fff;
+    background: #000;
+}
+span{
+    justify-content: center;
+    display: flex;
+}
+ul{
+    display: flex;
+    color: #fff;
+    flex-direction: column;
+}
+li{
+    text-decoration: none;
+    list-style: none;
+}
