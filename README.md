@@ -1,0 +1,1 @@
+This is my built-up website, and I use Artificial Intelligence. And you can explore more websites, for example: Calculator, Learning website, and more. If you have a good idea or a website that you need me to build, I can help you too. Reminder: GitHub only accepts the front end; it can't accept the back end.
