@@ -4,17 +4,29 @@ body{
 }
 span{
     justify-content: center;
-    display: flex;
+    display: none;
 }
 ul{
-    display: flex;
+    display: none;
     color: #fff;
     flex-direction: column;
+    font-size: 18px;
 }
 li{
-    text-decoration: none;
     list-style: none;
 }
 .btn{
     color: #fff;
+    text-decoration: none;
+}
+.small{
+    display: none;
+    font-size: 15px;
+}
+.content{
+    font-size: 48px;
+    justify-content: center;
+    display: flex;
+    margin-top: 20%;
+
 }
